@@ -1,5 +1,11 @@
 # Estequiometría y cálculos químicos — Software complementario
 
+[![DOI](https://zenodo.org/badge/1448600320.svg)](https://doi.org/10.5281/zenodo.24020474)
+
+**DOI del software:** https://doi.org/10.5281/zenodo.24020474
+
+**DOI del libro asociado:** https://doi.org/10.5281/zenodo.24013068
+
 **Autor y titular del copyright:** David Arboledas Brihuega.
 **Versión de preparación:** 0.9.0 · **Licencia:** [MIT](LICENSE).
 **DOI del libro:** [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
