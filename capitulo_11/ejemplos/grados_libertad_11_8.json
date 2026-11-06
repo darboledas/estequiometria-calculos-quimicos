@@ -1,0 +1,9 @@
+{
+  "basis": "mass", "components": ["Etanol", "Agua"],
+  "units": [{"id":"Mezclador"}],
+  "streams": [
+    {"id":"1", "from":null,"to":"Mezclador","total":"120,0","fractions":{"Etanol":"0,20"}},
+    {"id":"2", "from":null,"to":"Mezclador","fractions":{"Etanol":"0,60"}},
+    {"id":"3", "from":"Mezclador","to":null}
+  ]
+}

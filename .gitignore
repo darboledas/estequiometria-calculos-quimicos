@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+# Edición
+~$*.docx
+.DS_Store
+# No publicar informes locales
+*.log
+
+# Artefactos locales y descargas
+.DS_Store
+Thumbs.db
+*.egg-info/
+.dist/
+.build/

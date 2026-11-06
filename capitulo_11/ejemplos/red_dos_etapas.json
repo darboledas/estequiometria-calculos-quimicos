@@ -1,0 +1,11 @@
+{
+  "basis": "mass", "components": ["NaCl", "H2O"],
+  "units": [{"id":"Mezclador1"}, {"id":"Mezclador2"}],
+  "streams": [
+    {"id":"1", "from":null,"to":"Mezclador1","total":"100,0","fractions":{"NaCl":"0,200"}},
+    {"id":"2", "from":null,"to":"Mezclador1","total":"50,0","fractions":{"NaCl":"0"}},
+    {"id":"3", "from":"Mezclador1","to":"Mezclador2"},
+    {"id":"4", "from":null,"to":"Mezclador2","fractions":{"NaCl":"0"}},
+    {"id":"5", "from":"Mezclador2","to":null,"fractions":{"NaCl":"0,0800"}}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "basis": "mass",
+  "components": ["NaCl", "H2O"],
+  "units": [{"id": "M1"}],
+  "streams": [
+    {"id": "1", "from": null, "to": "M1", "total": "120,0", "fractions": {"NaCl": "0,0800"}},
+    {"id": "2", "from": null, "to": "M1", "total": "80,0", "fractions": {"NaCl": "0,200"}},
+    {"id": "3", "from": "M1", "to": null}
+  ]
+}

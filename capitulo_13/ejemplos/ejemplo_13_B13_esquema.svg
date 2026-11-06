@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180mm" height="110.96mm" viewBox="0 0 1400 863">
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="flecha" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,1 L11,6 L0,11 Z" fill="#2e5675"/></marker></defs>
+<text x="700" y="55" font-family="DejaVu Sans, Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="#17263a">Balance de materia con reacción química</text>
+<text x="700" y="89" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="middle" fill="#496073">Balance con una reacción - semicontinuo</text>
+<rect x="500" y="155" width="410" height="195" rx="14" fill="#e5f2fd" stroke="#2e5675" stroke-width="2.7"/>
+<text x="705.0" y="191" font-family="DejaVu Sans, Arial, sans-serif" font-size="23" font-weight="bold" text-anchor="middle" fill="#17263a">Sistema reactivo</text>
+<text x="705.0" y="225" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="normal" text-anchor="middle" fill="#17263a">1 C16H18N2O4S + 1 H2O</text>
+<text x="705.0" y="252" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="normal" text-anchor="middle" fill="#17263a">→ 1 C8H12N2O3S + 1 C8H8O2</text>
+<path d="M130 245 H480" stroke="#2e5675" stroke-width="3" fill="none" marker-end="url(#flecha)"/>
+<path d="M910 245 H1270" stroke="#2e5675" stroke-width="3" fill="none" marker-end="url(#flecha)"/>
+<text x="155" y="229" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="start" fill="#17263a">Inventario + alimentación</text>
+<text x="1070" y="229" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="start" fill="#17263a">Cantidad final</text>
+<text x="700" y="415" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="normal" text-anchor="middle" fill="#17263a">Duración de alimentación: 20,0; sin salida durante el intervalo</text>
+<text x="70" y="475" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="start" fill="#17263a">Extensiones: xi = 5,80 mol; Velocidad media = 0,290 mol min^-1</text>
+<rect x="55" y="500" width="1280" height="53" rx="7" fill="#d8ecf9"/>
+<text x="75" y="534" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="bold" text-anchor="start" fill="#17263a">Especie</text>
+<text x="410" y="534" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="bold" text-anchor="start" fill="#17263a">Antes de reaccionar</text>
+<text x="710" y="534" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="bold" text-anchor="start" fill="#17263a">Después de reaccionar</text>
+<text x="1030" y="534" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="bold" text-anchor="start" fill="#17263a">Unidad</text>
+<rect x="55" y="554" width="1280" height="32" fill="#f5f8fb"/>
+<text x="75" y="580" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">C16H18N2O4S</text>
+<text x="410" y="580" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">6,20</text>
+<text x="710" y="580" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">0,400</text>
+<text x="1030" y="580" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">mol</text>
+<text x="75" y="614" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">H2O</text>
+<text x="410" y="614" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">50,0</text>
+<text x="710" y="614" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">44,2</text>
+<text x="1030" y="614" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">mol</text>
+<rect x="55" y="622" width="1280" height="32" fill="#f5f8fb"/>
+<text x="75" y="648" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">C8H12N2O3S</text>
+<text x="410" y="648" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">0</text>
+<text x="710" y="648" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">5,80</text>
+<text x="1030" y="648" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">mol</text>
+<text x="75" y="682" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">C8H8O2</text>
+<text x="410" y="682" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">0</text>
+<text x="710" y="682" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">5,80</text>
+<text x="1030" y="682" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="normal" text-anchor="start" fill="#17263a">mol</text>
+<text x="70" y="751" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="normal" text-anchor="start" fill="#566579">Esquema de estados: las flechas no representan entradas ni salidas físicas.</text>
+</svg>

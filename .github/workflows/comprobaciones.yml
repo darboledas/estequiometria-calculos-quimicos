@@ -1,0 +1,39 @@
+name: Comprobaciones Python
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Comprobar sintaxis
+        run: python -m compileall -q capitulo_02 capitulo_03 capitulo_04 capitulo_05 capitulo_06 capitulo_07 capitulo_08 capitulo_09 capitulo_10 capitulo_11 capitulo_12 capitulo_13 capitulo_14 capitulo_15
+      - name: Pruebas capítulo 9
+        run: python pruebas_capitulo9.py
+        working-directory: capitulo_09
+      - name: Pruebas capítulo 11
+        run: python pruebas_capitulo11.py
+        working-directory: capitulo_11
+      - name: Pruebas capítulo 13
+        run: python -m unittest discover -s pruebas -v
+        working-directory: capitulo_13
+      - name: Autopruebas capítulo 10
+        run: |
+          python capitulo_10/disoluciones_electroliticas.py --selftest
+          python capitulo_10/propiedades_coligativas.py --selftest
+      - name: Autopruebas capítulo 14
+        run: python capitulo_14/combustion.py --self-test
+      - name: Validación capítulo 15
+        run: python capitulo_15/psicrometria.py --validar

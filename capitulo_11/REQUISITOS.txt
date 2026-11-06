@@ -1,0 +1,5 @@
+Python >= 3.10
+Bibliotecas estándar: json, csv, decimal, argparse, math, re, pathlib, dataclasses, typing, unittest.
+Opcional, SOLO para exportar gráficas PNG: matplotlib.
+No se necesitan: numpy, scipy, pandas, sympy ni acceso a Internet.
+Para instalar lo opcional: python -m pip install matplotlib

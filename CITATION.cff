@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: >-
+  Si utiliza este software en una publicación, cite la versión empleada.
+  Cuando Zenodo emita el DOI del software, se incorporará aquí.
+title: "Estequiometría y cálculos químicos: software complementario"
+type: software
+version: "0.9.0"
+authors:
+  - family-names: "Arboledas Brihuega"
+    given-names: "David"
+license: MIT
+abstract: >-
+  Colección de 28 aplicaciones Python de apoyo al libro
+  Estequiometría y cálculos químicos: Fundamentos, balances de materia y aplicaciones.
+  Incluye manuales individuales de usuario y pruebas de regresión.
+keywords:
+  - estequiometría
+  - química
+  - Python
+  - balances de materia
+  - educación
