@@ -2,15 +2,11 @@
 
 [![DOI](https://zenodo.org/badge/1448600320.svg)](https://doi.org/10.5281/zenodo.24020474)
 
-**DOI del software:** https://doi.org/10.5281/zenodo.24020474
-
-**DOI del libro asociado:** https://doi.org/10.5281/zenodo.24013068
-
 **Autor y titular del copyright:** David Arboledas Brihuega.
-**Versión de preparación:** 0.9.0 · **Licencia:** [MIT](LICENSE).
+**Versión publicada:** 0.9.0 · **Licencia:** [MIT](LICENSE).
 **DOI del libro:** [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
-**DOI del software:** pendiente de asignación por Zenodo tras publicar una versión GitHub.
-
+**DOI general del software:** [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474).
+**DOI de la versión 0.9.0:** [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473).
 El presente repositorio reúne 28 aplicaciones de cálculo y comprobación en Python, organizadas por capítulos. El contenido del libro impreso/eBook es independiente y no se distribuye en este repositorio.
 
 ## Inicio rápido (Windows)
