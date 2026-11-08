@@ -18,6 +18,7 @@ solución con su ejercicio correspondiente.
 
 **Autor y titular del copyright:** David Arboledas Brihuega.  
 **Versión publicada en GitHub:** 1.0.0 · **Última versión publicada en Zenodo:** 1.0.0 · **Licencia:** [MIT](LICENSE).
+
 **DOI del libro:** [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).  
 **DOI del software, versión 1.0.0:** [10.5281/zenodo.24052749](https://doi.org/10.5281/zenodo.24052749)
 
