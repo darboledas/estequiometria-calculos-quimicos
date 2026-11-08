@@ -1,5 +1,19 @@
 # Estequiometría y cálculos químicos — Software complementario
 
+## Libro de texto y solucionario
+
+<img src="PORTADA_ESTEQUIOMETRIA.png" alt="Portada de Estequiometría y cálculos químicos" width="300">
+
+**Estequiometría y cálculos químicos**  
+David Arboledas Brihuega · Ediciones Fermat
+
+El solucionario complementario contiene las soluciones desarrolladas de los
+556 ejercicios de los capítulos 2 a 15. No incluye los enunciados, que deben
+consultarse en el libro de texto. La numeración permite relacionar cada
+solución con su ejercicio correspondiente.
+
+[Descargar el solucionario en PDF](https://github.com/darboledas/estequiometria-calculos-quimicos/releases/download/v1.0.0/Solucionario_Estequiometria.pdf)
+
 [![DOI](https://zenodo.org/badge/1448600320.svg)](https://doi.org/10.5281/zenodo.24020474)
 
 **Autor y titular del copyright:** David Arboledas Brihuega.  
