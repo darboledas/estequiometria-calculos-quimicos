@@ -17,7 +17,7 @@ solución con su ejercicio correspondiente.
 [![DOI](https://zenodo.org/badge/1448600320.svg)](https://doi.org/10.5281/zenodo.24020474)
 
 **Autor y titular del copyright:** David Arboledas Brihuega.  
-**Versión publicada en GitHub: 1.0.0 · **Última versión publicada en Zenodo:** 0.9.0 · **Licencia:** [MIT](LICENSE).  
+**Versión publicada en GitHub:** 1.0.0 · **Última versión publicada en Zenodo:** 0.9.0 · **Licencia:** [MIT](LICENSE).
 **DOI del libro:** [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).  
 **DOI general del software:** [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474).  
 **DOI de la versión 0.9.0:** [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473).
