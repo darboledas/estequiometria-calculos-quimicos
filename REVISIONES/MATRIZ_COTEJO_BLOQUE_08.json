@@ -1,0 +1,297 @@
+{
+  "bloque": 8,
+  "fecha": "2026-11-07",
+  "no_publicado": true,
+  "pruebas_bloque": 44,
+  "ejercicios_bloque": 40,
+  "ejercicios_nuevos": 23,
+  "ejercicios_recontrastados": 17,
+  "guardias_adicionales": 4,
+  "pruebas_acumuladas": 418,
+  "ejercicios_acumulados": 211,
+  "total_identificadores": 556,
+  "ejercicios_pendientes": 345,
+  "limites": "No valida experimentalmente modelos ni todos los modos; algunos problemas requieren álgebra auxiliar.",
+  "matriz": [
+    {
+      "ejercicio": "2.B.3",
+      "pagina_PDF_libro": 96,
+      "funcion_de_comprobacion": "v2b3",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "2.B.4",
+      "pagina_PDF_libro": 96,
+      "funcion_de_comprobacion": "v2b4",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "2.B.5",
+      "pagina_PDF_libro": 96,
+      "funcion_de_comprobacion": "v2b5",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "3.B.1",
+      "pagina_PDF_libro": 158,
+      "funcion_de_comprobacion": "v3b1",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "3.B.2",
+      "pagina_PDF_libro": 158,
+      "funcion_de_comprobacion": "v3b2",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "3.B.3",
+      "pagina_PDF_libro": 158,
+      "funcion_de_comprobacion": "v3b3",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "4.B.2",
+      "pagina_PDF_libro": 190,
+      "funcion_de_comprobacion": "v4b2",
+      "recontrastado_previamente": false,
+      "resultado": "conforme; ver errata intermedia del solucionario"
+    },
+    {
+      "ejercicio": "4.B.3",
+      "pagina_PDF_libro": 190,
+      "funcion_de_comprobacion": "v4b3",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "4.B.5",
+      "pagina_PDF_libro": 190,
+      "funcion_de_comprobacion": "v4b5",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "5.B.4",
+      "pagina_PDF_libro": 246,
+      "funcion_de_comprobacion": "v5b4",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "5.B.9",
+      "pagina_PDF_libro": 247,
+      "funcion_de_comprobacion": "v5b9",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "6.B.2",
+      "pagina_PDF_libro": 291,
+      "funcion_de_comprobacion": "v6b2",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "6.B.3",
+      "pagina_PDF_libro": 291,
+      "funcion_de_comprobacion": "v6b3",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "6.B.4",
+      "pagina_PDF_libro": 291,
+      "funcion_de_comprobacion": "v6b4",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "6.B.5",
+      "pagina_PDF_libro": 291,
+      "funcion_de_comprobacion": "v6b5",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "6.B.6",
+      "pagina_PDF_libro": 292,
+      "funcion_de_comprobacion": "v6b6",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "6.B.7",
+      "pagina_PDF_libro": 292,
+      "funcion_de_comprobacion": "v6b7",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "7.B.4",
+      "pagina_PDF_libro": 358,
+      "funcion_de_comprobacion": "v7b4",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "7.B.5",
+      "pagina_PDF_libro": 358,
+      "funcion_de_comprobacion": "v7b5",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "7.B.9",
+      "pagina_PDF_libro": 360,
+      "funcion_de_comprobacion": "v7b9",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "8.B.2",
+      "pagina_PDF_libro": 456,
+      "funcion_de_comprobacion": "v8b2",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "8.B.4",
+      "pagina_PDF_libro": 457,
+      "funcion_de_comprobacion": "v8b4",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "8.B.5",
+      "pagina_PDF_libro": 457,
+      "funcion_de_comprobacion": "v8b5",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "9.B.2",
+      "pagina_PDF_libro": 513,
+      "funcion_de_comprobacion": "v9b2",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "9.B.3",
+      "pagina_PDF_libro": 514,
+      "funcion_de_comprobacion": "v9b3",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "9.B.4",
+      "pagina_PDF_libro": 514,
+      "funcion_de_comprobacion": "v9b4",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "10.B.3",
+      "pagina_PDF_libro": 587,
+      "funcion_de_comprobacion": "v10b3",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "10.B.4",
+      "pagina_PDF_libro": 587,
+      "funcion_de_comprobacion": "v10b4",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "11.B.1",
+      "pagina_PDF_libro": 657,
+      "funcion_de_comprobacion": "v11b1",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "11.B.2",
+      "pagina_PDF_libro": 658,
+      "funcion_de_comprobacion": "v11b2",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "11.B.3",
+      "pagina_PDF_libro": 658,
+      "funcion_de_comprobacion": "v11b3",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "12.B.2",
+      "pagina_PDF_libro": 711,
+      "funcion_de_comprobacion": "v12b2",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "12.B.5",
+      "pagina_PDF_libro": 712,
+      "funcion_de_comprobacion": "v12b5",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "13.B.2",
+      "pagina_PDF_libro": 759,
+      "funcion_de_comprobacion": "v13b2",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "13.B.4",
+      "pagina_PDF_libro": 759,
+      "funcion_de_comprobacion": "v13b4",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "14.B.2",
+      "pagina_PDF_libro": 807,
+      "funcion_de_comprobacion": "v14b2",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "14.B.3",
+      "pagina_PDF_libro": 807,
+      "funcion_de_comprobacion": "v14b3",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "15.B.1",
+      "pagina_PDF_libro": 883,
+      "funcion_de_comprobacion": "v15b1",
+      "recontrastado_previamente": false,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "15.B.3",
+      "pagina_PDF_libro": 883,
+      "funcion_de_comprobacion": "v15b3",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    },
+    {
+      "ejercicio": "15.B.4",
+      "pagina_PDF_libro": 884,
+      "funcion_de_comprobacion": "v15b4",
+      "recontrastado_previamente": true,
+      "resultado": "conforme"
+    }
+  ]
+}

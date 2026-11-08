@@ -2,11 +2,12 @@
 
 [![DOI](https://zenodo.org/badge/1448600320.svg)](https://doi.org/10.5281/zenodo.24020474)
 
-**Autor y titular del copyright:** David Arboledas Brihuega.
-**Versión publicada:** 0.9.0 · **Licencia:** [MIT](LICENSE).
-**DOI del libro:** [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
-**DOI general del software:** [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474).
+**Autor y titular del copyright:** David Arboledas Brihuega.  
+**Versión candidata del código:** 1.0.0 (aún no publicada) · **Última versión publicada en Zenodo:** 0.9.0 · **Licencia:** [MIT](LICENSE).  
+**DOI del libro:** [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).  
+**DOI general del software:** [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474).  
 **DOI de la versión 0.9.0:** [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473).
+
 El presente repositorio reúne 28 aplicaciones de cálculo y comprobación en Python, organizadas por capítulos. El contenido del libro impreso/eBook es independiente y no se distribuye en este repositorio.
 
 ## Inicio rápido (Windows)
@@ -78,4 +79,21 @@ Las herramientas automatizan cálculo y comprobación en el marco de sus modelos
 
 ## Licencia y publicación
 
-El código y la documentación de este repositorio se distribuyen bajo **[licencia MIT](LICENSE)**. La obra editorial independiente no se distribuye aquí ni queda cubierta por esta licencia. Los metadatos de `CITATION.cff` y `.zenodo.json` están preparados para que el software obtenga **su propio DOI** cuando se publique y archive una versión en Zenodo. Consulte [la guía de GitHub y Zenodo](GUIA_PUBLICACION_GITHUB_ZENODO.md).
+El código y la documentación de este repositorio se distribuyen bajo **[licencia MIT](LICENSE)**. La obra editorial independiente no se distribuye aquí ni queda cubierta por esta licencia. El software ya dispone de **DOI general** y de **DOI específico de la versión 0.9.0**, indicados al comienzo. `CITATION.cff` y `.zenodo.json` incluyen los metadatos de citación del proyecto. Consulte [la guía de GitHub y Zenodo](GUIA_PUBLICACION_GITHUB_ZENODO.md).
+
+
+## Pruebas científicas adicionales
+
+El directorio `pruebas_revision` incorpora casos independientes para las **28 aplicaciones** y pruebas de invariantes de conservación, inversión numérica y rechazo de datos no físicos. Para ejecutarlas:
+
+```bash
+python -m unittest discover -s pruebas_revision -v
+```
+
+La revisión integral se documenta en [`REVISIONES/INFORME_AUDITORIA_INTEGRAL.md`](REVISIONES/INFORME_AUDITORIA_INTEGRAL.md). La aprobación de los casos disponibles no equivale a una validación científica exhaustiva de todos los algoritmos o condiciones de uso.
+
+## Auditoría conceptual y estado de esta copia de trabajo
+
+La revisión local de prepublicación incluye 588 pruebas transversales y una lectura científica de los 206 ejercicios conceptuales A. Se han señalado tres propuestas de precisión en el solucionario, pendientes de decisión editorial. Consultar `REVISIONES/INFORME_REVISION_CONCEPTUAL_A_206.md`.
+
+**Candidata `v1.0.0` preparada localmente; no se debe crear la Release hasta comprobar las acciones de GitHub en Python 3.11 y 3.13.** Los DOI y metadatos de versión que aparecen en el inicio corresponden a la última versión realmente publicada (`v0.9.0`).

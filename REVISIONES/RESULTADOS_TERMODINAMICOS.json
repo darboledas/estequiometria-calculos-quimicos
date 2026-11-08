@@ -1,0 +1,18 @@
+{
+  "fecha": "2026-11-07",
+  "estado": "local_no_publicado",
+  "version_archivada": "v0.9.0",
+  "nuevos_metodos_unittest": 14,
+  "total_metodos_unittest_transversales": 99,
+  "bateria_capitulo_09": 24,
+  "bateria_capitulo_10a": 39,
+  "bateria_capitulo_10b": 38,
+  "bateria_capitulo_11": 58,
+  "bateria_capitulo_13": 12,
+  "bateria_capitulo_14": 23,
+  "validaciones_capitulo_15": 12,
+  "alertas": [
+    "No representa validación científica universal",
+    "Contraste con ejercicios del libro todavía pendiente"
+  ]
+}

@@ -1,0 +1,66 @@
+[
+  [
+    "02-03",
+    0,
+    0,
+    4749,
+    "",
+    "t_pie_cubico_a_litros (test_capitulos_02_03.UnidadesEIncertidumbres.test_pie_cubico_a_litros) ... ok\ntest_pulgada_a_metro (test_capitulos_02_03.UnidadesEIncertidumbres.test_pulgada_a_metro) ... ok\ntest_redondeo_al_par (test_capitulos_02_03.UnidadesEIncertidumbres.test_redondeo_al_par) ... ok\ntest_reynolds_adimensional (test_capitulos_02_03.UnidadesEIncertidumbres.test_reynolds_adimensional) ... ok\n\n----------------------------------------------------------------------\nRan 46 tests in 5.465s\n\nOK\n"
+  ],
+  [
+    "09",
+    0,
+    397,
+    1640,
+    "ardar SVG   4. Ambos formatos\n  Guardado: /tmp/tmpyltwesgl/figura.png\n  Guardado: /tmp/tmpyltwesgl/figura.svg\n  1. Mostrar | 2. PNG 300 ppp | 3. SVG vectorial | 4. PNG y SVG\n  Guardado /tmp/tmpyltwesgl/tx.png\n  Guardado /tmp/tmpyltwesgl/tx.svg\n  1. Mostrar | 2. PNG 300 ppp | 3. SVG vectorial | 4. PNG y SVG\n  Guardado /tmp/tmpyltwesgl/presiones.png\n",
+    ".test_9_C_3) ... ok\ntest_9_C_4 (__main__.VerificacionC.test_9_C_4) ... ok\ntest_9_C_5 (__main__.VerificacionC.test_9_C_5) ... ok\ntest_9_C_6 (__main__.VerificacionC.test_9_C_6) ... ok\ntest_ejemplo_9_1 (__main__.VerificacionEjemplos.test_ejemplo_9_1) ... ok\ntest_ejemplo_9_2 (__main__.VerificacionEjemplos.test_ejemplo_9_2) ... ok\ntest_ejemplo_9_3 (__main__.VerificacionEjemplos.test_ejemplo_9_3) ... ok\n\n----------------------------------------------------------------------\nRan 24 tests in 3.742s\n\nOK\n"
+  ],
+  [
+    "10A",
+    0,
+    2704,
+    0,
+    " referencia=0.17\nPASS 10.C.7 NaCl 0,45% c_osm | calculado=0.1540041067761807 | referencia=0.154004\nPASS 10.C.7 NaCl 0,90% c_osm | calculado=0.3080082135523614 | referencia=0.308008\nPASS 10.C.7 NaCl 3,00% c_osm | calculado=1.026694045174538 | referencia=1.026694\nPASS formato actividad | calculado=1 | referencia=1\nRESULTADO: 39/39 pruebas correctas.\n",
+    ""
+  ],
+  [
+    "10B",
+    0,
+    2833,
+    0,
+    "ras | calculado=4 | referencia=4\nPASS cifras coma | calculado=3 | referencia=3\nPASS cifras ceros | calculado=3 | referencia=3\nPASS formato | calculado=1 | referencia=1\nPASS bisección | calculado=1.4142135623260401 | referencia=1.4142135623730951\nPASS ajuste QR | calculado=1.0000000000000022 | referencia=1\nRESULTADO: 38/38 comprobaciones correctas.\n",
+    ""
+  ],
+  [
+    "11",
+    0,
+    0,
+    4533,
+    "",
+    "a_gas_motor) ... ok\ntest_balance_tipo_C7_concentraciones_motor (__main__.PruebasIntegracionAplicada.test_balance_tipo_C7_concentraciones_motor) ... ok\ntest_json_reacciones_fuentes_no_fisicas (__main__.PruebasIntegracionAplicada.test_json_reacciones_fuentes_no_fisicas) ... ok\ntest_reproducibilidad_transitorio_y_csv (__main__.PruebasIntegracionAplicada.test_reproducibilidad_transitorio_y_csv) ... ok\n\n----------------------------------------------------------------------\nRan 58 tests in 0.007s\n\nOK\n"
+  ],
+  [
+    "13",
+    0,
+    0,
+    1297,
+    "",
+    "compartidas (test_cap13.BalanceCap13Tests.test_precision_restricciones_compartidas) ... ok\ntest_precision_sistema_acoplado (test_cap13.BalanceCap13Tests.test_precision_sistema_acoplado) ... ok\ntest_semicontinuo_farmaceutico_B13 (test_cap13.BalanceCap13Tests.test_semicontinuo_farmaceutico_B13) ... ok\ntest_una_reaccion_ejemplo_13_4 (test_cap13.BalanceCap13Tests.test_una_reaccion_ejemplo_13_4) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.003s\n\nOK\n"
+  ],
+  [
+    "14",
+    0,
+    719,
+    0,
+    "s\n  [OK] 14.C.10 CH8O2\n  [OK] 14.C.4 detecta mezcla no física\n  [OK] 14.C.7 detecta datos incompatibles\n  [OK] 14.C.6 sistema inverso resoluble\n  [OK] 14.C.9 mezcla inversa resoluble\n  [OK] 14.B.5 cantidad de butano\n  [OK] Entrada con coma decimal\n  [OK] Cero de composición no limita cifras\n  [OK] Parser Ca(OH)2\n\nResultado global: CORRECTO (23/23)\n",
+    ""
+  ],
+  [
+    "15",
+    0,
+    84,
+    0,
+    "Validación correcta: 12 grupos de comprobaciones físicas, numéricas y de precisión.\n",
+    ""
+  ]
+]

@@ -281,16 +281,20 @@ def saturation_pressure_water(T_c: float) -> float:
 
 
 def humidity_ratio_from_pw(pw: float, P: float) -> float:
-    if pw < 0:
-        raise PsychrometricError("La presión parcial de vapor no puede ser negativa.")
+    if not math.isfinite(P) or P <= 0:
+        raise PsychrometricError("La presión total debe ser positiva y finita.")
+    if not math.isfinite(pw) or pw < 0:
+        raise PsychrometricError("La presión parcial de vapor debe ser finita y no negativa.")
     if pw >= P:
         raise PsychrometricError("La presión parcial de vapor debe ser menor que la presión total.")
     return EPSILON * pw / (P - pw)
 
 
 def pw_from_humidity_ratio(W: float, P: float) -> float:
-    if W < 0:
-        raise PsychrometricError("La razón de humedad no puede ser negativa.")
+    if not math.isfinite(P) or P <= 0:
+        raise PsychrometricError("La presión total debe ser positiva y finita.")
+    if not math.isfinite(W) or W < 0:
+        raise PsychrometricError("La razón de humedad debe ser finita y no negativa.")
     return P * W / (EPSILON + W)
 
 
@@ -475,6 +479,8 @@ def make_state(
         raise PsychrometricError("La presión total debe ser positiva.")
     if not (T_MIN_CORR <= Tdb <= T_MAX_CORR):
         raise PsychrometricError("La temperatura de bulbo seco queda fuera del intervalo de la correlación.")
+    if not math.isfinite(W):
+        raise PsychrometricError("La razón de humedad debe ser finita.")
     if W < -1e-12:
         raise PsychrometricError("La razón de humedad calculada es negativa.")
     W = max(0.0, W)
@@ -1414,11 +1420,26 @@ def mode_11_compare() -> None:
 
 
 def antoine_psat_kpa(T_c: float, A: float, B: float, C: float) -> float:
-    """log10(P_sat/kPa) = A - B/(T[°C] + C); coeficientes para estas unidades."""
+    """log10(P_sat/kPa) = A - B/(T[°C] + C); coeficientes para estas unidades.
+
+    Esta modalidad de gas-vapor usa T en grados Celsius; no confundir sus
+    coeficientes con los de la tabla 6.1 del libro, expresados para T en K.
+    """
+    if not all(math.isfinite(v) for v in (T_c, A, B, C)):
+        raise PsychrometricError("La temperatura y los coeficientes de Antoine deben ser finitos.")
     den = T_c + C
-    if abs(den) < 1e-14:
+    if not math.isfinite(den) or abs(den) < 1e-14:
         raise PsychrometricError("La correlación de Antoine es singular a esta temperatura.")
-    return 10.0 ** (A - B / den)
+    exponent = A - B / den
+    if not math.isfinite(exponent):
+        raise PsychrometricError("La correlación de Antoine produce un exponente no finito.")
+    try:
+        psat = 10.0 ** exponent
+    except OverflowError as exc:
+        raise PsychrometricError("La presión de Antoine excede el rango numérico.") from exc
+    if not math.isfinite(psat) or psat <= 0.0:
+        raise PsychrometricError("La presión calculada con Antoine no es positiva y finita.")
+    return psat
 
 
 def mode_12_general_gas_vapor() -> None:

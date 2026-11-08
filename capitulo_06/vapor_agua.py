@@ -462,6 +462,8 @@ def quality_from_property(row: SatRow, prop: str, value: float) -> Tuple[float, 
     if prop not in mapping:
         raise ValueError("Propiedad no válida. Use v, h o s.")
     yf, yg = mapping[prop]
+    if not all(math.isfinite(float(v)) for v in (value, yf, yg)):
+        raise ValueError("La propiedad y los valores de saturación deben ser finitos.")
     if math.isclose(yg, yf):
         raise ValueError("En el punto crítico no puede definirse la calidad de vapor.")
     x = (value - yf) / (yg - yf)

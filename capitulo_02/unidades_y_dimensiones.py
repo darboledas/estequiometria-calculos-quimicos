@@ -34,11 +34,11 @@ grupos adimensionales. No se escriben archivos ni se modifican datos externos.
 
 Uso
 ---
-    python herramientas_capitulo_2.py
-    python herramientas_capitulo_2.py --help
-    python herramientas_capitulo_2.py convertir 2,5 atm Pa
-    python herramientas_capitulo_2.py redondear 12,345 4
-    python herramientas_capitulo_2.py --autocomprobar
+    python unidades_y_dimensiones.py
+    python unidades_y_dimensiones.py --help
+    python unidades_y_dimensiones.py convertir 2,5 atm Pa
+    python unidades_y_dimensiones.py redondear 12,345 4
+    python unidades_y_dimensiones.py --autocomprobar
 
 El menú interactivo reúne todas las funciones. Las funciones internas pueden
 importarse desde otros programas sin iniciar el menú.
@@ -274,6 +274,10 @@ def convertir_intervalo_temperatura(valor: float, origen: str, destino: str) -> 
 def cifras_significativas_texto(texto: str) -> int:
     """Cuenta cifras significativas y señala enteros con ceros finales ambiguos."""
     original = texto.strip().replace(" ", "").replace("−", "-")
+    # Validar la expresión numérica COMPLETA, incluido el exponente.
+    # Antes, «1e» y «1eXYZ» se aceptaban porque solo se inspeccionaba
+    # la mantisa. La validación no altera el conteo de los ceros finales.
+    decimal_desde_texto(original)
     mantisa = re.split(r"[eE]", original, maxsplit=1)[0].lstrip("+-")
     posee_decimal = "." in mantisa or "," in mantisa
     digitos = mantisa.replace(".", "").replace(",", "")
@@ -352,6 +356,37 @@ def incertidumbre_relativa(valor: float, incertidumbre: float) -> tuple[float, f
     return relativa, 100.0 * relativa
 
 
+def validar_correlaciones_semidefinidas(correlaciones: Sequence[Sequence[float]]) -> None:
+    """Exige una matriz de correlación semidefinida positiva (sin NumPy).
+
+    Utiliza eliminación simétrica (complementos de Schur) con tolerancia
+    absoluta para manejar correlaciones perfectas y redondeo numérico.
+    Una matriz con elementos entre -1 y 1 y diagonal 1 no es
+    necesariamente una matriz de correlación físicamente admisible.
+    """
+    n = len(correlaciones)
+    resto = [list(map(float, fila)) for fila in correlaciones]
+    tolerancia = 1e-10
+    for k in range(n):
+        pivote = resto[k][k]
+        if pivote < -tolerancia:
+            raise ValueError(
+                "La matriz de correlaciones no es semidefinida positiva."
+            )
+        if abs(pivote) <= tolerancia:
+            if any(abs(resto[i][k]) > tolerancia for i in range(k + 1, n)):
+                raise ValueError(
+                    "La matriz de correlaciones no es semidefinida positiva."
+                )
+            continue
+        columna = [resto[i][k] for i in range(k + 1, n)]
+        for i in range(k + 1, n):
+            for j in range(i, n):
+                nuevo = resto[i][j] - columna[i-k-1] * columna[j-k-1] / pivote
+                resto[i][j] = nuevo
+                resto[j][i] = nuevo
+
+
 def matriz_covarianzas(
     incertidumbres: Sequence[float],
     correlaciones: Sequence[Sequence[float]] | None = None,
@@ -375,6 +410,10 @@ def matriz_covarianzas(
             if not math.isclose(r, float(correlaciones[j][i]), abs_tol=1e-12):
                 raise ValueError("La matriz de correlaciones debe ser simétrica.")
             cov[i][j] = r * incertidumbres[i] * incertidumbres[j]
+    # Una matriz simétrica con diagonal 1 y |r_ij| <= 1 no basta:
+    # debe ser semidefinida positiva, incluso si las sensibilidades
+    # particulares del cálculo producen una varianza positiva.
+    validar_correlaciones_semidefinidas(correlaciones)
     return cov
 
 

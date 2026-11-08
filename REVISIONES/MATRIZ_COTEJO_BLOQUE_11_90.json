@@ -1,0 +1,730 @@
+{
+  "bloque": "XI",
+  "fecha": "2026-11-07",
+  "base_pruebas": 482,
+  "pruebas_nuevas": 90,
+  "total": 572,
+  "metodologia": "test exacto contra ejercicios del libro o solucionario; ver método por caso; no equiparar cálculo auxiliar a función del software",
+  "ejercicios": [
+    {
+      "ejercicio": "2.B.7",
+      "caso_test": "test_2_B_7_homogeneidad_energia",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 2,
+      "pagina_pdf_libro": 97,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "2.B.8",
+      "caso_test": "test_2_B_8_dimensiones_velocidad_sonido",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 2,
+      "pagina_pdf_libro": 97,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "2.B.9",
+      "caso_test": "test_2_B_9_cifras_significativas",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 2,
+      "pagina_pdf_libro": 97,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "2.B.10",
+      "caso_test": "test_2_B_10_propagar_uncertumbre_AB_sobre_C",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 2,
+      "pagina_pdf_libro": 97,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "2.B.11",
+      "caso_test": "test_2_B_11_incertidumbre_carga",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 2,
+      "pagina_pdf_libro": 97,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "2.B.12",
+      "caso_test": "test_2_B_12_incertidumbre_relativa",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 2,
+      "pagina_pdf_libro": 97,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "2.C.2",
+      "caso_test": "test_2_C_2_grupos_adimensionales",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 2,
+      "pagina_pdf_libro": 98,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.B.7",
+      "caso_test": "test_3_B_7_masa_por_densidad",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 3,
+      "pagina_pdf_libro": 158,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.B.8",
+      "caso_test": "test_3_B_8_fraccion_masica_etanol",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 158,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.B.9",
+      "caso_test": "test_3_B_9_fracciones_molares_O2_N2",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 158,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.B.10",
+      "caso_test": "test_3_B_10_equivalente_H2SO4",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 158,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.B.17",
+      "caso_test": "test_3_B_17_ajuste_yoduro_plomo",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 160,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.B.18",
+      "caso_test": "test_3_B_18_urea_disolucion",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 160,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.B.19",
+      "caso_test": "test_3_B_19_permanganato_normalidad",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 160,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.B.13",
+      "caso_test": "test_11_B_13_dilucion",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 11,
+      "pagina_pdf_libro": 659,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.B.14",
+      "caso_test": "test_11_B_14_balance_residual",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 11,
+      "pagina_pdf_libro": 660,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.B.15",
+      "caso_test": "test_11_B_15_mezcla_dos_corrientes",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 11,
+      "pagina_pdf_libro": 660,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.B.16",
+      "caso_test": "test_11_B_16_cancelacion_residuos",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 11,
+      "pagina_pdf_libro": 660,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "12.B.12",
+      "caso_test": "test_12_B_12_extraccion_dos_contactos",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 12,
+      "pagina_pdf_libro": 713,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "12.B.13",
+      "caso_test": "test_12_B_13_acumulacion_membrana",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 12,
+      "pagina_pdf_libro": 713,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "13.B.6",
+      "caso_test": "test_13_B_6_NH4NO3_nitrogeno",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 13,
+      "pagina_pdf_libro": 760,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "13.B.9",
+      "caso_test": "test_13_B_9_dos_reacciones_etanol",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 13,
+      "pagina_pdf_libro": 760,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "13.B.10",
+      "caso_test": "test_13_B_10_recuperacion_filtrado",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 13,
+      "pagina_pdf_libro": 761,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "13.B.11",
+      "caso_test": "test_13_B_11_extension_unica",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 13,
+      "pagina_pdf_libro": 761,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "13.B.12",
+      "caso_test": "test_13_B_12_carbono_salida",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 13,
+      "pagina_pdf_libro": 761,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "13.B.13",
+      "caso_test": "test_13_B_13_enzimatico_penicilina",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 13,
+      "pagina_pdf_libro": 761,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "14.B.9",
+      "caso_test": "test_14_B_9_combustible_CHO",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 14,
+      "pagina_pdf_libro": 808,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "14.B.10",
+      "caso_test": "test_14_B_10_azufre_e_inertes",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 14,
+      "pagina_pdf_libro": 808,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "14.B.12",
+      "caso_test": "test_14_B_12_etano_conversion",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 14,
+      "pagina_pdf_libro": 808,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "14.B.14",
+      "caso_test": "test_14_B_14_base_humeda_seca",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 14,
+      "pagina_pdf_libro": 808,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "14.B.15",
+      "caso_test": "test_14_B_15_inverso_hc_gas_seco",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 14,
+      "pagina_pdf_libro": 808,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.6",
+      "caso_test": "test_15_B_6_rocio_tabla",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 15,
+      "pagina_pdf_libro": 884,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.10",
+      "caso_test": "test_15_B_10_humidificacion_balance_agua",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 15,
+      "pagina_pdf_libro": 885,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.11",
+      "caso_test": "test_15_B_11_mezcla_vapores",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 15,
+      "pagina_pdf_libro": 885,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.12",
+      "caso_test": "test_15_B_12_entallpia_mezcla",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 15,
+      "pagina_pdf_libro": 885,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.13",
+      "caso_test": "test_15_B_13_entalpia_constantes_libro",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 15,
+      "pagina_pdf_libro": 885,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.14",
+      "caso_test": "test_15_B_14_volumen_aire_humedo",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 15,
+      "pagina_pdf_libro": 885,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.15",
+      "caso_test": "test_15_B_15_carta_30C_50RH",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 15,
+      "pagina_pdf_libro": 885,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.16",
+      "caso_test": "test_15_B_16_carta_30C_20Twb",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 15,
+      "pagina_pdf_libro": 886,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.17",
+      "caso_test": "test_15_B_17_nitrogeno_etanol",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 15,
+      "pagina_pdf_libro": 886,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.18",
+      "caso_test": "test_15_B_18_nitrogeno_acetona",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 15,
+      "pagina_pdf_libro": 886,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "15.B.19",
+      "caso_test": "test_15_B_19_condensacion",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 15,
+      "pagina_pdf_libro": 886,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.8",
+      "caso_test": "test_3_C_8_reduccion_hematita",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 162,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.9",
+      "caso_test": "test_3_C_9_hidroxido_sulfato",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 162,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.10",
+      "caso_test": "test_3_C_10_densidad_API",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 162,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.11",
+      "caso_test": "test_3_C_11_grados_Baume",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 163,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.12",
+      "caso_test": "test_3_C_12_etanol_agua",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 163,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.13",
+      "caso_test": "test_3_C_13_fosforo_horno_y_escoria",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 163,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.14",
+      "caso_test": "test_3_C_14_selectividad_etileno",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 3,
+      "pagina_pdf_libro": 163,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.15",
+      "caso_test": "test_3_C_15_fosgeno_inerte",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 163,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.16",
+      "caso_test": "test_3_C_16_efervescente_acido_limitante",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 164,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.17",
+      "caso_test": "test_3_C_17_sulfato_agua_precipitacion",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 3,
+      "pagina_pdf_libro": 164,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.18",
+      "caso_test": "test_3_C_18_aspirina_pureza_y_recuperacion",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 3,
+      "pagina_pdf_libro": 165,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.19",
+      "caso_test": "test_3_C_19_fermentacion_etanol",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 165,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.20",
+      "caso_test": "test_3_C_20_Baume_Brix_correlacion_extrapolada",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 3,
+      "pagina_pdf_libro": 166,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "3.C.21",
+      "caso_test": "test_3_C_21_biorreactor_CH0",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 3,
+      "pagina_pdf_libro": 166,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "4.C.12",
+      "caso_test": "test_4_C_12_hidrogenacion_presion",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 4,
+      "pagina_pdf_libro": 193,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "4.C.13",
+      "caso_test": "test_4_C_13_metano_combustion_seca",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 4,
+      "pagina_pdf_libro": 193,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "4.C.14",
+      "caso_test": "test_4_C_14_oxidacion_SO2",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 4,
+      "pagina_pdf_libro": 193,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.B.8",
+      "caso_test": "test_5_B_8_diagrama_Z_reducido",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 247,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.B.10",
+      "caso_test": "test_5_B_10_oxigeno_baja_densidad_iteracion",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 247,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.B.11",
+      "caso_test": "test_5_B_11_factor_acentrico",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 5,
+      "pagina_pdf_libro": 247,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.B.14",
+      "caso_test": "test_5_B_14_Raices_PR_butano",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 248,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.B.18",
+      "caso_test": "test_5_B_18_Lee_Kesler_nitrogeno_etanol",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 249,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.C.8",
+      "caso_test": "test_5_C_8_PR_bombona_oxigeno",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 252,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.C.9",
+      "caso_test": "test_5_C_9_PR_CO2_denso",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 252,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.C.10",
+      "caso_test": "test_5_C_10_PR_metano_deposito",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 253,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.C.11",
+      "caso_test": "test_5_C_11_propano_saturacion_fugacidad",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 253,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.C.12",
+      "caso_test": "test_5_C_12_butano_presion_saturacion_dos_T",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 253,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.C.13",
+      "caso_test": "test_5_C_13_CO2_alta_temperatura",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 253,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.C.14",
+      "caso_test": "test_5_C_14_agua_dos_estados",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 253,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.C.15",
+      "caso_test": "test_5_C_15_CO2_tabla_PR_SRK",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 254,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "5.C.16",
+      "caso_test": "test_5_C_16_CO2_oxigeno_mismo_recipiente",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 5,
+      "pagina_pdf_libro": 254,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "6.C.11",
+      "caso_test": "test_6_C_11_saturacion_tolueno_y_masa_vapor",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 6,
+      "pagina_pdf_libro": 296,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "7.C.9",
+      "caso_test": "test_7_C_9_rocío_ternario_y_flash",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 7,
+      "pagina_pdf_libro": 366,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "7.C.10",
+      "caso_test": "test_7_C_10_destilacion_rayleigh",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 7,
+      "pagina_pdf_libro": 366,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "8.C.6",
+      "caso_test": "test_8_C_6_flash_margules_balance",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 8,
+      "pagina_pdf_libro": 463,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "8.C.7",
+      "caso_test": "test_8_C_7_sensibilidad_azeotropo",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 8,
+      "pagina_pdf_libro": 464,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "8.C.8",
+      "caso_test": "test_8_C_8_azeotropo_acetona_cloroformo",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 8,
+      "pagina_pdf_libro": 464,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "9.C.5",
+      "caso_test": "test_9_C_5_liquido_liquido_fraccion_molar_global",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 9,
+      "pagina_pdf_libro": 519,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "9.C.6",
+      "caso_test": "test_9_C_6_trifasico_agua_tolueno_benceno",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 9,
+      "pagina_pdf_libro": 520,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "10.C.6",
+      "caso_test": "test_10_C_6_proteina_glucosa_osmosis_y_crioscopia",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 10,
+      "pagina_pdf_libro": 590,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "10.C.7",
+      "caso_test": "test_10_C_7_eritrocitos_tonicidad_modelo_ideal",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 10,
+      "pagina_pdf_libro": 591,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "10.C.8",
+      "caso_test": "test_10_C_8_osmosis_inversa_iones_y_presion",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 10,
+      "pagina_pdf_libro": 592,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.C.6",
+      "caso_test": "test_11_C_6_mezcla_oxigeno_aire_puro",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 11,
+      "pagina_pdf_libro": 663,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.C.7",
+      "caso_test": "test_11_C_7_cloruros_estacionario_muestreo",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 11,
+      "pagina_pdf_libro": 663,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.C.8",
+      "caso_test": "test_11_C_8_mezclado_dos_solutos_y_agua",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 11,
+      "pagina_pdf_libro": 664,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.C.9",
+      "caso_test": "test_11_C_9_transferencia_farmaceutica_perdidas",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 11,
+      "pagina_pdf_libro": 664,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.C.10",
+      "caso_test": "test_11_C_10_bioproceso_balance_medio",
+      "modalidad": "intervención o apoyo de un módulo Python",
+      "capitulo": 11,
+      "pagina_pdf_libro": 664,
+      "resultado": "OK; unittest 2026-11-07"
+    },
+    {
+      "ejercicio": "11.C.11",
+      "caso_test": "test_11_C_11_consumo_glucosa_reactores",
+      "modalidad": "cálculo auxiliar independiente",
+      "capitulo": 11,
+      "pagina_pdf_libro": 665,
+      "resultado": "OK; unittest 2026-11-07"
+    }
+  ]
+}

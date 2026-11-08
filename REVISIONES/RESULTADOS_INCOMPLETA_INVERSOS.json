@@ -1,0 +1,17 @@
+{
+  "fecha": "2026-11-07",
+  "estado": "correcto",
+  "python": "3.13.5",
+  "pruebas_transversales": 143,
+  "pruebas_nuevas": 16,
+  "subcasos_aleatorios_nuevos": 150,
+  "capitulo_09": 24,
+  "capitulo_10": 77,
+  "capitulo_11": 58,
+  "capitulo_13": 12,
+  "capitulo_14": 23,
+  "capitulo_15_grupos": 12,
+  "pruebas_remotas_github_actions": "pendientes de subir esta revisión",
+  "publicacion": "solo copia local, sin release",
+  "notas": "La aprobación de pruebas seleccionadas no certifica todos los escenarios."
+}

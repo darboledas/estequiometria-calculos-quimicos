@@ -251,6 +251,10 @@ class FormulaParser:
             ch = self.text[self.i]
 
             if stop is not None and ch == stop:
+                if not total:
+                    raise ValueError(
+                        "No se admiten grupos vacíos en una fórmula química."
+                    )
                 self.i += 1
                 return total
 

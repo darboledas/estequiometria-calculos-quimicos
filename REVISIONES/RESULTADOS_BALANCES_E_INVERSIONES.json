@@ -1,0 +1,13 @@
+{
+  "revision": "bal_2026_11_07",
+  "python": "3.13.5",
+  "test_transversales": 114,
+  "test_cap_09": 24,
+  "test_cap_10": 77,
+  "test_cap_11": 58,
+  "test_cap_13": 12,
+  "test_cap_14": 23,
+  "test_cap_15_grupos": 12,
+  "estado": "correcto",
+  "pendiente": "validacion cientifica exhaustiva y CI remota"
+}

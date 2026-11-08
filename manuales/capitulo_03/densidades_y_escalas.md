@@ -186,4 +186,23 @@ Autoprueba incorporada: correcta en la revisión.
 
 ## 12. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 3** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 3** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **0 °Brix en la tabla incorporada ⇒ GE = 1**. Límite de agua de referencia de la tabla.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+
+### Opción Hall para el ejercicio 3.B.20 del libro
+
+La opción **Calcular GE por el ajuste cúbico de Hall (3.B.20)** utiliza
+`GE = 1,00001 + 0,0038661 B + 1,3488·10^-5 B² + 4,3074·10^-8 B³`,
+siendo `B` los grados Brix tratados como aproximación numérica de grados Plato.
+**Dominio: 0–33 °Bx** (aproximación al intervalo de ajuste original).
+Para `B=18,0`, se obtiene `GE=1,074221119568`; con densidad del agua
+`0,9982 g/mL`, `rho=1,072288 g/mL`, redondeando según el enunciado.
+Este cálculo no sustituye la conversión tabulada de 0–60 °Bx ya existente: 
+son correlaciones distintas con valores internos ligeramente diferentes.

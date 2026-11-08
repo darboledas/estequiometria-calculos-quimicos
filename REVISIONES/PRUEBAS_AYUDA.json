@@ -1,0 +1,170 @@
+[
+  {
+    "programa": "capitulo_02/unidades_y_dimensiones.py",
+    "resultado": "OK",
+    "stdout": "ades disponibles\n\nopciones:\n  -h, --help            muestra esta ayuda y termina\n  --version             muestra la versión y termina\n  --autocomprobar       ejecuta verificaciones internas y termina\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_03/ajuste_ecuaciones.py",
+    "resultado": "OK",
+    "stdout": "ceros finales.\n- Escriba volver en una entrada numérica para regresar al menú.\n\noptions:\n  -h, --help    show this help message and exit\n  --autoprueba  Ejecuta las comprobaciones internas y termina.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_03/conversion_rendimiento_selectividad.py",
+    "resultado": "OK",
+    "stdout": "ceros finales.\n- Escriba volver en una entrada numérica para regresar al menú.\n\noptions:\n  -h, --help    show this help message and exit\n  --autoprueba  Ejecuta las comprobaciones internas y termina.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_03/densidades_y_escalas.py",
+    "resultado": "OK",
+    "stdout": "ceros finales.\n- Escriba volver en una entrada numérica para regresar al menú.\n\noptions:\n  -h, --help    show this help message and exit\n  --autoprueba  Ejecuta las comprobaciones internas y termina.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_03/masa_molar.py",
+    "resultado": "OK",
+    "stdout": "d exit\n  --detalles   Muestra el recuento de átomos y las contribuciones elementales.\n  --fuentes    Muestra las fuentes de los datos.\n  --elementos  Muestra el diccionario de valores atómicos usado.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_03/reactivo_limitante.py",
+    "resultado": "OK",
+    "stdout": "ceros finales.\n- Escriba volver en una entrada numérica para regresar al menú.\n\noptions:\n  -h, --help    show this help message and exit\n  --autoprueba  Ejecuta las comprobaciones internas y termina.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_04/gases_ideales_y_mezclas.py",
+    "resultado": "OK",
+    "stdout": " incorporadas.\n    ayuda               Muestra ayuda conceptual.\n\noptions:\n  -h, --help            show this help message and exit\n  --sigfigs SIGFIGS     Fuerza N cifras significativas en la salida.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_05/gases_reales.py",
+    "resultado": "OK",
+    "stdout": "          Explica por qué BWR no se parametriza automáticamente.\n\noptions:\n  -h, --help            show this help message and exit\n  --sigfigs SIGFIGS     Fuerza N cifras significativas en la salida.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_06/presion_vapor.py",
+    "resultado": "OK",
+    "stdout": " presion_vapor.py interpolar --t1 320 --p1 12 --t2 340 --p2 28.5 --t 330\n  python presion_vapor.py grafica --sustancias agua,etanol,tolueno --tipo semilog --tmin 280 --tmax 369 --salida presiones.png\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_06/vapor_agua.py",
+    "resultado": "OK",
+    "stdout": "his help message and exit\n  --sig SIG             Cifras significativas de salida (por defecto: 3).\n\nSin subcomando se abre un menú interactivo. Los datos internos proceden de NISTIR 5078 / IAPWS-95.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_07/equilibrio_liquido_vapor.py",
+    "resultado": "OK",
+    "stdout": "ram-yx-pstar    Diagrama y-x binario a partir de P_1* y P_2*.\n    diagram-table       Genera T-x-y e y-x desde una tabla T;P_1*;P_2*.\n\noptions:\n  -h, --help            show this help message and exit\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_07/operaciones_liquido_vapor.py",
+    "resultado": "OK",
+    "stdout": "cula xf para una cantidad residual objetivo.\n    stages-alpha        Vaporizaciones-condensaciones ideales sucesivas con α constante.\n\noptions:\n  -h, --help            show this help message and exit\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_08/disoluciones_no_ideales.py",
+    "resultado": "OK",
+    "stdout": "las cifras significativas de los datos escritos por el\nusuario y redondea solo al presentar los resultados. NRTL y UNIQUAC no se\nimplementan porque el capítulo no desarrolla sus ecuaciones completas.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_09/equilibrio_liquido_liquido.py",
+    "resultado": "OK",
+    "stdout": "áfica\n5  Modelo teórico de Gibbs: binodal, espinodal y gráfica\n6  Gráficas cualitativas UCST / LCST / región cerrada\n7  Ayuda / alcance científico\n0  Salir\nSeleccione: \n  Interrumpido por el usuario.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_09/inmiscibles_y_arrastre_vapor.py",
+    "resultado": "OK",
+    "stdout": "ador / reflujo\n7  Comparar dos presiones o sistemas (gráfica T*–P)\n8  Diagrama T–composición de líquidos inmiscibles\n9  Ayuda, hipótesis y validez\n0  Salir\nSeleccione: \n  Interrumpido por el usuario.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_10/disoluciones_electroliticas.py",
+    "resultado": "OK",
+    "stdout": "no medibles\nindependientemente). SIT/Pitzer requieren parámetros externos identificados.\n\noptions:\n  -h, --help  show this help message and exit\n  --selftest  Ejecutar verificación automática y salir\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_10/propiedades_coligativas.py",
+    "resultado": "OK",
+    "stdout": " los cálculos. Los modelos ideales\nno representan automáticamente valores experimentales.\n\noptions:\n  -h, --help  show this help message and exit\n  --selftest  Verificar resultados sin entrar al menú\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_11/balances_materia.py",
+    "resultado": "OK",
+    "stdout": "salida SALIDA       Guardar resultado en archivo JSON o CSV (transitorios)\n  --grafica GRAFICA     Crear gráfica PNG (solo transitorios)\n  --version             show program's version number and exit\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_12/cristalizacion.py",
+    "resultado": "OK",
+    "stdout": "[-h]\n\nCristalización por enfriamiento a partir de datos de solubilidad.\n\noptions:\n  -h, --help  show this help message and exit\n\nIntroduzca las solubilidades en kg de soluto por 100 kg de disolvente.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_12/evaporacion.py",
+    "resultado": "OK",
+    "stdout": "ón por evaporación.\n\noptions:\n  -h, --help  show this help message and exit\n\nPuede trabajar con kg o con kg/h, siempre que mantenga la misma base. Los\nporcentajes se introducen como 20,0 para 20,0 %.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_12/extraccion_liquido_liquido.py",
+    "resultado": "OK",
+    "stdout": "essage and exit\n\nUse unidades coherentes para los volúmenes. La cantidad de soluto conserva la\nunidad introducida. El número de extracciones es un conteo exacto y no limita\nlas cifras significativas.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_12/filtracion.py",
+    "resultado": "OK",
+    "stdout": "nce de filtración con recuperación de sólido y composición de torta.\n\noptions:\n  -h, --help  show this help message and exit\n\nLos porcentajes se introducen como números, por ejemplo 95,0 para 95,0 %.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_12/secado.py",
+    "resultado": "OK",
+    "stdout": "secado en base húmeda o base seca.\n\noptions:\n  -h, --help  show this help message and exit\n\nLas humedades se introducen como porcentajes. El número de dígitos escrito\ndetermina la precisión del dato.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_12/separacion_corrientes.py",
+    "resultado": "OK",
+    "stdout": "message and exit\n\nIntroduzca porcentajes como números (por ejemplo 20,0 para 20,0 %). Todos los\ndígitos escritos se consideran significativos; use notación científica si\ndesea indicar otra precisión.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_13/balance_una_reaccion.py",
+    "resultado": "OK",
+    "stdout": "s estacionarios.\n\noptions:\n  -h, --help  show this help message and exit\n\nLas entradas se realizan interactivamente. Use coma o punto decimal. Los\ncoeficientes estequiométricos se consideran exactos.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_13/balance_varias_reacciones.py",
+    "resultado": "OK",
+    "stdout": "as reacciones\nestequiométricamente independientes.\n\noptions:\n  -h, --help  show this help message and exit\n\nNo requiere NumPy. Las relaciones se introducen mediante menús químicamente\ninterpretables.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_14/combustion.py",
+    "resultado": "OK",
+    "stdout": "rmal es interactiva. Se aceptan coma y punto decimal. Los cálculos se realizan sin redondeos intermedios y los resultados se presentan con cifras significativas coherentes con los datos introducidos.\n",
+    "stderr": ""
+  },
+  {
+    "programa": "capitulo_15/psicrometria.py",
+    "resultado": "OK",
+    "stdout": "umen específico.\n\nCifras significativas:\n  Los datos se leen como texto; 30, 30,0 y 30,00 no tienen la misma precisión.\n  El redondeo se aplica solo a la salida. Punto y coma decimal están admitidos.\n",
+    "stderr": ""
+  }
+]

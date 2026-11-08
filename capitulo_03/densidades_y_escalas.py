@@ -296,6 +296,8 @@ Para GE <-> Brix se interpola una tabla de densidad a 20 C.
 Intervalo incorporado: 0 a 60 Brix. No se extrapola.
 La interpolación es aproximada; la precisión de presentación no constituye
 una garantía de exactitud experimental.
+La opción Hall utiliza GE = 1,00001 + 0,0038661 B + 1,3488e-5 B² + 4,3074e-8 B³
+y restringe la aproximación Brix/Plato a 0-33 °Bx (libro, 3.B.20).
 En mezclas distintas de sacarosa/agua solo se calcula un equivalente
 densimétrico de sacarosa, que puede diferir del Brix refractométrico.
 
@@ -355,6 +357,32 @@ def brix_a_ge(bx):
         rho / RHO[0], bx, pendiente / RHO[0], -4
     )
 
+
+
+def brix_a_ge_hall(bx):
+    """Ajuste cúbico de Hall del libro, ec. cap. 3 y ejercicio 3.B.20.
+
+    Nota: Hall fue ajustado para grados Plato y 0-33 °P. El empleo con Brix
+    es la aproximación didáctica que el propio libro explicita; no sustituye
+    la conversión tabulada Brix-densidad del programa.
+    """
+    bx = Q.convertir(bx)
+    if not bx.v.is_finite() or not D(0) <= bx.v <= D(33):
+        raise ValueError("El ajuste de Hall se restringe a 0–33 °Bx (aproximación Brix/Plato).")
+    b = bx.v
+    ge = D("1.00001") + D("0.0038661")*b + D("0.000013488")*b*b + D("0.000000043074")*b*b*b
+    derivada = D("0.0038661") + D("0.000026976")*b + D("0.000000129222")*b*b
+    return resolver_precision(ge, bx, derivada, -5)
+
+
+def calcular_brix_hall():
+    print("Ajuste cúbico de Hall (aproximación Brix/Plato, 0-33 °Bx, referencia 20 °C).")
+    bx = leer("Grados Brix", minimo=0, maximo=33)
+    ge = brix_a_ge_hall(bx)
+    mostrar("Gravedad específica por Hall", ge)
+    rho_agua = leer("Densidad del agua de referencia [g/mL]", positivo=True)
+    mostrar("Densidad estimada del jarabe", ge * rho_agua, "g/mL")
+    print("Modelo empírico: no equivale a interpolar la tabla de sacarosa.")
 
 def ge_a_brix(ge):
     rho = ge.v * RHO[0]
@@ -539,6 +567,7 @@ def brix_masas():
 
 def autoprueba():
     assert len(RHO) == 61
+    assert abs(brix_a_ge_hall(Q(18)).v - D("1.074221119568")) < D("1e-10")
     assert desde_ge("3", Q("1.25")).v == 29
     assert desde_ge("5", Q("1.25")).v == 50
     assert a_ge("5", Q(100)).v == D("1.5")
@@ -556,6 +585,7 @@ if __name__ == "__main__":
             ("Calcular o convertir escalas pasando por GE", convertir),
             ("Calcular densidad mediante masa y volumen", densidad),
             ("Calcular Brix o masas de sacarosa y agua", brix_masas),
+            ("Calcular GE por el ajuste cúbico de Hall (3.B.20)", calcular_brix_hall),
         ],
         autoprueba
     )

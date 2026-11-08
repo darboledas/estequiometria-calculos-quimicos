@@ -27,6 +27,16 @@ class Antoine:
     origen: str = 'Coeficientes introducidos por el usuario'
     ncoef: int = 5
 
+    def __post_init__(self):
+        if (not all(math.isfinite(v) for v in (self.a, self.b, self.c, self.m))
+                or self.b < 0 or self.m <= 0):
+            raise ValueError('Los coeficientes Antoine deben ser finitos, B>=0 y masa molar>0.')
+        for limite in (self.t_min, self.t_max):
+            if limite is not None and (not math.isfinite(limite) or limite <= 0):
+                raise ValueError('Los límites de Antoine deben ser positivos y finitos.')
+        if self.t_min is not None and self.t_max is not None and self.t_min >= self.t_max:
+            raise ValueError('El intervalo Antoine requiere Tmin < Tmax.')
+
     def presion_bar(self, t:float, *,estricto=True)->float:
         if not math.isfinite(t) or t<=0:
             raise ValueError('La temperatura Kelvin debe ser positiva.')
@@ -34,8 +44,12 @@ class Antoine:
         if t+self.c <=0:
             raise ValueError(f'{self.nombre}: T+C <= 0, Antoine fuera de dominio.')
         expo=self.a-self.b/(t+self.c)
-        if expo>300: raise ValueError(f'{self.nombre}: desbordamiento de presión.')
-        return 10**expo
+        if not math.isfinite(expo) or expo>300:
+            raise ValueError(f'{self.nombre}: exponente Antoine no finito o desbordado.')
+        p = 10**expo
+        if not math.isfinite(p) or p <= 0:
+            raise ValueError(f'{self.nombre}: presión de vapor no finita o no positiva.')
+        return p
 
     def comprobar_validez(self,t:float):
         if self.t_min is not None and t < self.t_min-1e-9:

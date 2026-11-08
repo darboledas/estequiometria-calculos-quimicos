@@ -383,7 +383,7 @@ def resolver_red(config:dict, tolerancia:float=1e-10)->dict:
     for stream in streams:
         sid=str(stream['id'])
         o=stream.get('from'); d=stream.get('to')
-        if o==d or (o is None and d is None) or (o is not None and str(o) not in uids) or (d is not None and str(d) not in uids):
+        if (o is not None and d is not None and str(o)==str(d)) or (o is None and d is None) or (o is not None and str(o) not in uids) or (d is not None and str(d) not in uids):
             raise ErrorBalance(f'Conexiones inválidas en corriente {sid}.')
         total_terms={f'{sid}:{c}':1. for c in comps}
         if stream.get('total') is not None:
@@ -425,8 +425,13 @@ def resolver_red(config:dict, tolerancia:float=1e-10)->dict:
             terms={}
             for stream in streams:
                 sid=str(stream['id']);name=f'{sid}:{comp}'
-                if stream.get('to')==uid: terms[name]=terms.get(name,0.)+1.
-                if stream.get('from')==uid:terms[name]=terms.get(name,0.)-1.
+                # Los ID de unidades y corrientes se canonizan a cadenas.
+                # En JSON pueden haberse proporcionado como enteros (1) o textos ("1").
+                destino=stream.get('to'); origen=stream.get('from')
+                if destino is not None and str(destino)==uid:
+                    terms[name]=terms.get(name,0.)+1.
+                if origen is not None and str(origen)==uid:
+                    terms[name]=terms.get(name,0.)-1.
             source_value=_numero_cfg(source.get(comp,'0'))
             for j,r in enumerate(reactions):
                 coefficient=_numero_cfg(r.get('stoich',{}).get(comp,'0'))
@@ -445,16 +450,22 @@ def resolver_red(config:dict, tolerancia:float=1e-10)->dict:
             'cifras_conservadoras': menor_cifra(*valor_sf) if valor_sf else None}
     if res.estado!='unico':return result
     flows={}
+    # Escala relativa de los caudales, sin imponer un suelo de 1 kg/h o 1 mol/h:
+    # un balance de picomoles debe aplicar el mismo criterio físico que otro
+    # expresado en moles. Solo se tolera error residual de redondeo relativo.
+    escala_red = max((abs(res.valores[f'{sid}:{c}']) for sid in ids for c in comps), default=0.0)
+    tolerancia_negativa = 1e-10 * escala_red
     for sid in ids:
         fl={c:res.valores[f'{sid}:{c}'] for c in comps}
-        total=sum(fl.values())
-        if any(v < -1e-8*max(1,abs(total)) for v in fl.values()):
+        if any(v < -tolerancia_negativa for v in fl.values()):
             result['estado']='no_fisico';result['motivo']=f'Caudal negativo en corriente {sid}.'
             return result
-        fl={c:max(0,v) for c,v in fl.items()}
+        # Se eliminan únicamente residuos negativos dentro de la tolerancia
+        # relativa de redondeo; nunca se ocultarán salidas negativas reales.
+        fl={c:max(0.0,v) for c,v in fl.items()}
         total=sum(fl.values())
         flows[sid]={'total':total, 'componentes':fl,
-                    'fracciones':{c:fl[c]/total for c in comps} if total>EPS else None}
+                    'fracciones':{c:fl[c]/total for c in comps} if total>0 else None}
     result['corrientes']=flows
     return result
 

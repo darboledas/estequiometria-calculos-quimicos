@@ -1,10 +1,11 @@
 cff-version: 1.2.0
 message: >-
   Si utiliza este software en una publicación, cite la versión empleada.
-  Cuando Zenodo emita el DOI del software, se incorporará aquí.
+  El DOI general del software referencia todas las versiones; cite la versión concreta cuando sea necesario.
 title: "Estequiometría y cálculos químicos: software complementario"
 type: software
-version: "0.9.0"
+doi: 10.5281/zenodo.24020474
+version: "1.0.0"
 authors:
   - family-names: "Arboledas Brihuega"
     given-names: "David"

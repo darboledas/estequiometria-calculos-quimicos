@@ -139,7 +139,7 @@ ANTOINE: Dict[str, AntoineData] = {
     "agua": AntoineData("Agua", 7.06252, 1650.270, -46.854, 284.0, 441.0, ("water",)),
     "acetona": AntoineData("Acetona", 6.25017, 1214.208, -43.198, 241.0, 350.0, ("acetone",)),
     "acetonitrilo": AntoineData("Acetonitrilo", 6.27873, 1355.374, -37.853, 288.0, 362.0, ("acetonitrile",)),
-    "amoniaco": AntoineData("Amoníaco", 6.48536, 1277.026, -56.340, 179.0, 261.0, ("ammonia",)),
+    "amoniaco": AntoineData("Amoníaco", 6.86886, 1113.928, -10.409, 240.0, 372.0, ("ammonia",)),
     "benceno": AntoineData("Benceno", 6.03053, 1211.035, -52.360, 280.0, 377.0, ("benzene",)),
     "etanol": AntoineData("Etanol", 7.16985, 1554.301, -50.500, 270.0, 369.0, ("alcohol etilico", "alcohol_etilico", "ethyl alcohol")),
     "n-heptano": AntoineData("n-Heptano", 6.01876, 1264.370, -56.510, 270.0, 400.0, ("heptano", "nheptano", "n-heptane")),
@@ -173,9 +173,12 @@ def norm_text(text: str) -> str:
 def parse_number(value: str) -> float:
     """Acepta coma o punto como separador decimal."""
     try:
-        return float(value.strip().replace(" ", "").replace(",", "."))
+        result = float(value.strip().replace(" ", "").replace(",", "."))
     except Exception as exc:
         raise ValueError(f"No se reconoce como número: {value!r}") from exc
+    if not math.isfinite(result):
+        raise ValueError("El dato debe ser un número finito.")
+    return result
 
 
 def require_positive(value: float, name: str) -> float:
@@ -381,7 +384,10 @@ def antoine_pressure_kpa(T: float, data: AntoineData) -> float:
     if denom == 0:
         raise ValueError("T + C no puede ser cero en la ecuación de Antoine.")
     exponent = data.A - data.B / denom
-    P = 10.0 ** exponent
+    try:
+        P = 10.0 ** exponent
+    except OverflowError as exc:
+        raise ValueError("La presión calculada por Antoine excede el rango numérico representable.") from exc
     return require_positive(P, "La presión calculada")
 
 
@@ -443,7 +449,11 @@ def cc_pressure2(P1_kpa: float, T1: float, T2: float, dh_j_mol: float) -> float:
     require_positive(T2, "T2")
     require_positive(dh_j_mol, "La entalpía molar")
     ln_ratio = (dh_j_mol / R) * (1.0 / T1 - 1.0 / T2)
-    return P1_kpa * math.exp(ln_ratio)
+    try:
+        P2 = P1_kpa * math.exp(ln_ratio)
+    except OverflowError as exc:
+        raise ValueError("La presión obtenida por Clausius-Clapeyron excede el rango numérico.") from exc
+    return require_positive(P2, "La presión calculada")
 
 
 def cc_temperature2(P1_kpa: float, T1: float, P2_kpa: float, dh_j_mol: float) -> float:
@@ -515,8 +525,12 @@ def lee_kesler_pressure_kpa(
         print_warning(msg + " El resultado debe interpretarse con cautela.")
     f0, f1 = lee_kesler_ln_pr_terms(Tr)
     ln_Pr = f0 + omega * f1
-    Pr = math.exp(ln_Pr)
-    P_kpa = Pr * Pc_kpa
+    try:
+        Pr = math.exp(ln_Pr)
+        P_kpa = Pr * Pc_kpa
+    except OverflowError as exc:
+        raise ValueError("La presión estimada por Lee-Kesler excede el rango numérico.") from exc
+    require_positive(P_kpa, "La presión de vapor estimada")
     return Tr, f0, f1, Pr, P_kpa
 
 

@@ -26,4 +26,15 @@ Los directorios `ejemplos`, `muestras` y `pruebas`, cuando existan, contienen re
 
 ## Referencia y licencia
 
-Código y documentación de este repositorio: **licencia MIT** (`../LICENSE`). DOI del software **pendiente de asignación** tras publicar una versión y archivarla con Zenodo. DOI del libro relacionado: **10.5281/zenodo.24013068**.
+Código y documentación de este repositorio: **licencia MIT** (`../LICENSE`). DOI general del software: **10.5281/zenodo.24020474**; DOI de la versión 0.9.0: **10.5281/zenodo.24020473**. DOI del libro relacionado: **10.5281/zenodo.24013068**.
+
+
+### Validación adicional de las fuentes de presión de vapor (bloque VII)
+
+`DirectPsat`, `SimpleExpPsat` y `AntoinePsat` rechazan datos `NaN`, infinitos, presiones no positivas, series de distinta longitud y desbordamientos. `AntoinePsat` exige indicar la escala de temperatura en `C` o `K`. No se cambia la fórmula de los modelos ni su rango experimental de validez: estos controles evitan resultados indefinidos, pero **no** garantizan que las constantes ajustadas sean adecuadas para otra sustancia o intervalo.
+
+Referencias reproducibles: ejercicios **8.B.8** y **8.B.11** (rocío con Margules). El test se ejecuta desde la raíz:
+
+```bash
+python -m unittest discover -s pruebas_revision -p test_cotejo_bloque_07.py -v
+```

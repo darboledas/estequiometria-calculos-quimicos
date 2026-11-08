@@ -94,17 +94,20 @@ EPS = 1.0e-12
 
 def parse_decimal(value: str | float | int) -> float:
     """Convierte un número escrito con coma o punto decimal a float."""
-    if isinstance(value, (float, int)):
-        return float(value)
     s = str(value).strip().replace(" ", "").replace(",", ".")
     try:
-        return float(s)
+        result = float(s)
     except ValueError as exc:
         raise ValueError(f"No se reconoce como número: {value!r}") from exc
+    if not math.isfinite(result):
+        raise ValueError("El dato debe ser un número finito.")
+    return result
 
 
-def format_sig(value: float, sig: int = 5) -> str:
-    """Devuelve un número con cifras significativas y coma decimal."""
+def format_sig(value: float | None, sig: int = 5) -> str:
+    """Devuelve un número con cifras significativas y coma decimal; — si no procede."""
+    if value is None:
+        return "—"
     if not math.isfinite(value):
         return str(value)
     if value == 0:
@@ -154,7 +157,23 @@ class Component:
     Tmin: float | None = None
     Tmax: float | None = None
 
+    def __post_init__(self) -> None:
+        # En el modo de biblioteca los objetos pueden construirse directamente,
+        # sin pasar por parse_component() y su validación numérica.
+        if not self.name.strip():
+            raise ValueError("El nombre del componente no puede estar vacío.")
+        if any(not math.isfinite(float(v)) for v in (self.A, self.B, self.C)):
+            raise ValueError(f"Los coeficientes Antoine de {self.name} deben ser finitos.")
+        if self.Tmin is not None and (not math.isfinite(self.Tmin) or self.Tmin <= 0):
+            raise ValueError(f"Tmin de {self.name} debe ser positiva y finita.")
+        if self.Tmax is not None and (not math.isfinite(self.Tmax) or self.Tmax <= 0):
+            raise ValueError(f"Tmax de {self.name} debe ser positiva y finita.")
+        if self.Tmin is not None and self.Tmax is not None and self.Tmin >= self.Tmax:
+            raise ValueError(f"Para {self.name}, Tmin debe ser menor que Tmax.")
+
     def valid_temperature(self, T: float) -> bool:
+        if not math.isfinite(T) or T <= 0:
+            return False
         if self.Tmin is not None and T < self.Tmin - 1.0e-10:
             return False
         if self.Tmax is not None and T > self.Tmax + 1.0e-10:
@@ -194,8 +213,8 @@ class Component:
 
     def boiling_temperature(self, P: float) -> float:
         """Inversión analítica de Antoine para P* = P."""
-        if P <= 0:
-            raise ValueError("La presión debe ser positiva.")
+        if not math.isfinite(P) or P <= 0:
+            raise ValueError("La presión debe ser positiva y finita.")
         denom = self.A - math.log10(P)
         if abs(denom) < EPS:
             raise ValueError(
@@ -241,14 +260,27 @@ def psats(components: Sequence[Component], T: float) -> list[float]:
     return [c.psat(T) for c in components]
 
 
+def psats_presentes(
+    components: Sequence[Component], T: float, fractions: Sequence[float]
+) -> list[float | None]:
+    """Evalúa Antoine solo para especies presentes.
+
+    Para una especie ausente con Antoine fuera de intervalo, None indica
+    propiedad no disponible: no se inventa una presión de vapor cero.
+    """
+    return [c.psat(T) if zi > EPS else None
+            for c, zi in zip(components, fractions)]
+
+
 def bubble_pressure(
     components: Sequence[Component], x: Sequence[float], T: float
 ) -> tuple[float, list[float], list[float]]:
     x = validate_fraction_vector(x, "x_i")
     if len(components) != len(x):
         raise ValueError("El número de componentes no coincide con el número de x_i.")
-    pstar = psats(components, T)
-    partial = [xi * pi for xi, pi in zip(x, pstar)]
+    pstar = psats_presentes(components, T, x)
+    partial = [xi * pi if pi is not None else 0.0
+               for xi, pi in zip(x, pstar)]
     P = sum(partial)
     if P <= 0:
         raise ValueError("La presión de burbuja calculada no es positiva.")
@@ -263,12 +295,13 @@ def dew_pressure(
     y = validate_fraction_vector(y, "y_i")
     if len(components) != len(y):
         raise ValueError("El número de componentes no coincide con el número de y_i.")
-    pstar = psats(components, T)
-    denom = sum(yi / pi for yi, pi in zip(y, pstar))
+    pstar = psats_presentes(components, T, y)
+    denom = sum(yi / pi for yi, pi in zip(y, pstar) if pi is not None)
     if denom <= 0:
         raise ValueError("No puede calcularse una presión de rocío física.")
     P = 1.0 / denom
-    x = [yi * P / pi for yi, pi in zip(y, pstar)]
+    x = [yi * P / pi if pi is not None else 0.0
+         for yi, pi in zip(y, pstar)]
     x = validate_fraction_vector(x, "x_i calculadas")
     return P, x
 
@@ -277,8 +310,8 @@ def raoult(
     components: Sequence[Component], x: Sequence[float], T: float
 ) -> dict:
     P, partial, y = bubble_pressure(components, x, T)
-    pstar = psats(components, T)
-    K = [pi / P for pi in pstar]
+    pstar = psats_presentes(components, T, x)
+    K = [pi / P if pi is not None else None for pi in pstar]
     return {
         "P": P,
         "psat": pstar,
@@ -423,7 +456,9 @@ def physical_temperature_bracket(
         delta = max(1.0e-4, abs(lo) * 1.0e-8)
         lo -= delta
         hi += delta
-    common_lo, common_hi = common_temperature_interval(components)
+    common_lo, common_hi = common_temperature_interval(
+        [c for c, zi in zip(components, composition) if zi > EPS]
+    )
     if common_lo is not None:
         lo = max(lo, common_lo)
     if common_hi is not None:
@@ -666,14 +701,17 @@ def bubble_temperature(
     bracket = physical_temperature_bracket(components, P, x)
 
     def f(T: float) -> float:
-        return sum(xi * c.psat(T) for xi, c in zip(x, components)) - P
+        return sum(xi * c.psat(T) for xi, c in zip(x, components)
+                   if xi > EPS) - P
 
     def df(T: float) -> float:
-        return sum(xi * c.dpsat_dT(T) for xi, c in zip(x, components))
+        return sum(xi * c.dpsat_dT(T) for xi, c in zip(x, components)
+                   if xi > EPS)
 
     result = solve_root(f, df, bracket, method, xtol, ftol, max_iter)
-    pstar = psats(components, result.root)
-    y = [xi * pi / P for xi, pi in zip(x, pstar)]
+    pstar = psats_presentes(components, result.root, x)
+    y = [xi * pi / P if pi is not None else 0.0
+         for xi, pi in zip(x, pstar)]
     y = validate_fraction_vector(y, "y_i calculadas")
     return result, pstar, y
 
@@ -696,19 +734,23 @@ def dew_temperature(
     bracket = physical_temperature_bracket(components, P, y)
 
     def f(T: float) -> float:
-        return sum(yi * P / c.psat(T) for yi, c in zip(y, components)) - 1.0
+        return sum(yi * P / c.psat(T) for yi, c in zip(y, components)
+                   if yi > EPS) - 1.0
 
     def df(T: float) -> float:
         total = 0.0
         for yi, c in zip(y, components):
+            if yi <= EPS:
+                continue
             pi = c.psat(T)
             dpi = c.dpsat_dT(T)
             total += -yi * P * dpi / (pi * pi)
         return total
 
     result = solve_root(f, df, bracket, method, xtol, ftol, max_iter)
-    pstar = psats(components, result.root)
-    x = [yi * P / pi for yi, pi in zip(y, pstar)]
+    pstar = psats_presentes(components, result.root, y)
+    x = [yi * P / pi if pi is not None else 0.0
+         for yi, pi in zip(y, pstar)]
     x = validate_fraction_vector(x, "x_i calculadas")
     return result, pstar, x
 
@@ -1336,7 +1378,7 @@ def interactive_menu():
                 x = ask_composition(comps, "x")
                 P, partial, y = bubble_pressure(comps, x, T)
                 print(f"\nP_burbuja = {format_sig(P, sig)} kPa")
-                pstar = psats(comps, T)
+                pstar = psats_presentes(comps, T, x)
                 rows = [[xi, ps, pp, yi] for xi, ps, pp, yi in zip(x, pstar, partial, y)]
                 print_components_table(
                     comps, rows, ["x_i", "P_i* (kPa)", "p_i (kPa)", "y_i"], sig
@@ -1355,7 +1397,7 @@ def interactive_menu():
                 T = ask_float("T (K): ", positive=True)
                 y = ask_composition(comps, "y")
                 P, x = dew_pressure(comps, y, T)
-                pstar = psats(comps, T)
+                pstar = psats_presentes(comps, T, y)
                 print(f"\nP_rocío = {format_sig(P, sig)} kPa")
                 rows = [[yi, ps, xi] for yi, ps, xi in zip(y, pstar, x)]
                 print_components_table(comps, rows, ["y_i", "P_i* (kPa)", "x_i"], sig)
@@ -1717,7 +1759,7 @@ def main_cli(args):
         x = validate_fraction_vector([parse_decimal(v) for v in args.x], "x_i")
         T = parse_decimal(args.T)
         P, partial, y = bubble_pressure(comps, x, T)
-        pstar = psats(comps, T)
+        pstar = psats_presentes(comps, T, x)
         print(f"P_burbuja = {format_sig(P, sig)} kPa")
         rows = [[xi, ps, pp, yi] for xi, ps, pp, yi in zip(x, pstar, partial, y)]
         print_components_table(
@@ -1737,7 +1779,7 @@ def main_cli(args):
         y = validate_fraction_vector([parse_decimal(v) for v in args.y], "y_i")
         T = parse_decimal(args.T)
         P, x = dew_pressure(comps, y, T)
-        pstar = psats(comps, T)
+        pstar = psats_presentes(comps, T, y)
         print(f"P_rocío = {format_sig(P, sig)} kPa")
         rows = [[yi, ps, xi] for yi, ps, xi in zip(y, pstar, x)]
         print_components_table(comps, rows, ["y_i", "P_i* (kPa)", "x_i"], sig)

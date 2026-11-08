@@ -515,4 +515,22 @@ Inicio y ayuda revisados; no se ha ejecutado una batería de casos numéricos ex
 
 ## 12. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 7** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 7** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **Raoult: x = (0,4; 0,6), P* = (80; 40) kPa ⇒ P = 56 kPa**. Comprobación de presión parcial y fracciones de vapor.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+### Nota de verificación científica adicional
+
+Revisión adicional (7-11-2026): cuando la fracción molar de un componente es exactamente cero, no se requiere evaluar su presión de vapor si Antoine está fuera de su intervalo. El campo P_i* y el coeficiente K_i de esa especie ausente se indican con una raya (no disponible), nunca con un cero físico. Para mezclas con ambos componentes presentes se sigue exigiendo intersección de intervalos válidos. Se han contrastado 200 casos de reversibilidad T-burbuja/T-rocío.
+
+
+## Nota de validación — Bloque IX (2026-11-07)
+
+Se ha reforzado la comprobación de los datos en los objetos `Component` creados por código: los coeficientes A, B, C y los límites de temperatura deben ser finitos, la temperatura absoluta es positiva y la presión utilizada para invertir Antoine debe ser positiva y finita. Una presión `NaN` o infinita produce `ValueError` y no un resultado numérico aparente. Las entradas válidas de los ejercicios 7.B.10 (T_bur = 340,55835 K), 7.B.11 (fracción vaporizada β ≈ 0,51343) y 7.B.13 (β = 0,57898986) conservan sus resultados.
+
+Comprobación: `python -m unittest discover -s pruebas_revision -p test_cotejo_bloque_09.py -v`.

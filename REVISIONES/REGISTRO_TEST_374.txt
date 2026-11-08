@@ -1,0 +1,20 @@
+----------------------------------------------------------------------
+Ran 374 tests in 22.711s
+
+OK
+
+==============================================================================
+7B. MEZCLA CON ESPECIES CONOCIDAS A PARTIR DE MAGNITUDES ESTEQUIOMÉTRICAS
+==============================================================================
+Se introducen especies químicas candidatas y magnitudes medibles (CO2, H2O, O2 consumido, cantidad total, etc.). El programa construye y comprueba el sistema lineal; no se introducen ecuaciones algebraicas.
+
+==============================================================================
+7E. CANTIDAD DE UN COMBUSTIBLE PURO A PARTIR DEL O2 ESTEQUIOMÉTRICO
+==============================================================================
+
+
+Batería específica de bloque VII:
+----------------------------------------------------------------------
+Ran 29 tests in 0.049s
+
+OK

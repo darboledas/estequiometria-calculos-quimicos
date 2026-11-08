@@ -1,0 +1,260 @@
+{
+  "fecha": "2026-11-07",
+  "ejercicios_distintos": 22,
+  "metodos_adicionales": 30,
+  "total_pruebas_acumuladas": 262,
+  "total_ejercicios_distintos_acumulados": 90,
+  "matriz": [
+    {
+      "ejercicio": "7.C.1",
+      "pagina_pdf_libro": 363,
+      "capitulo": 7,
+      "modulos": "equilibrio_liquido_vapor.py / operaciones_liquido_vapor.py",
+      "comprobacion": "Raoult (metanol/agua), presión, vapor y desviación",
+      "metodos": [
+        "test_7_C_1_ideal_metoh_agua"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "7.C.3",
+      "pagina_pdf_libro": 364,
+      "capitulo": 7,
+      "modulos": "equilibrio_liquido_vapor.py / operaciones_liquido_vapor.py",
+      "comprobacion": "Flash binario, Rachford–Rice y balances de componente",
+      "metodos": [
+        "test_7_C_3_flash_rachford_rice"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "7.C.5",
+      "pagina_pdf_libro": 364,
+      "capitulo": 7,
+      "modulos": "equilibrio_liquido_vapor.py / operaciones_liquido_vapor.py",
+      "comprobacion": "Antoine, presión y temperatura de burbuja (puntos seleccionados)",
+      "metodos": [
+        "test_7_C_5_antoine_pxy",
+        "test_7_C_5_antoine_txy"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "8.C.1",
+      "pagina_pdf_libro": 461,
+      "capitulo": 8,
+      "modulos": "disoluciones_no_ideales.py",
+      "comprobacion": "Azeótropo Margules y punto de la curva P–x–y",
+      "metodos": [
+        "test_8_C_1_azeotropo_margules",
+        "test_8_C_1_curva_presion"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "8.C.3",
+      "pagina_pdf_libro": 462,
+      "capitulo": 8,
+      "modulos": "disoluciones_no_ideales.py",
+      "comprobacion": "Derivadas de Margules y Gibbs–Duhem",
+      "metodos": [
+        "test_8_C_3_gibbs_duhem_diferencial"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "8.C.5",
+      "pagina_pdf_libro": 463,
+      "capitulo": 8,
+      "modulos": "disoluciones_no_ideales.py",
+      "comprobacion": "γ–φ, presión y composición; ocho familias de entradas inválidas",
+      "metodos": [
+        "test_8_C_5_gamma_phi",
+        "test_8_C_5_rechaza_composicion_no_fisica",
+        "test_8_C_5_rechaza_coeficientes_incompletos_y_no_finitos",
+        "test_8_C_5_rechaza_temperatura_invalidas"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "9.C.1",
+      "pagina_pdf_libro": 517,
+      "capitulo": 9,
+      "modulos": "equilibrio_liquido_liquido.py / inmiscibles_y_arrastre_vapor.py",
+      "comprobacion": "Dos estados de coexistencia; masas y cierre",
+      "metodos": [
+        "test_9_C_1_coexistencia_002",
+        "test_9_C_1_coexistencia_0005"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "9.C.3",
+      "pagina_pdf_libro": 518,
+      "capitulo": 9,
+      "modulos": "equilibrio_liquido_liquido.py / inmiscibles_y_arrastre_vapor.py",
+      "comprobacion": "Arrastre agua–anilina, proporción másica y temperatura",
+      "metodos": [
+        "test_9_C_3_arrastre_vapor_anilina"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "10.C.1",
+      "pagina_pdf_libro": 589,
+      "capitulo": 10,
+      "modulos": "propiedades_coligativas.py / disoluciones_electroliticas.py",
+      "comprobacion": "Dos fundentes, pureza, crioscopía y fuerza iónica",
+      "metodos": [
+        "test_10_C_1_nacl_fundente",
+        "test_10_C_1_cacl2_fundente"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "10.C.3",
+      "pagina_pdf_libro": 589,
+      "capitulo": 10,
+      "modulos": "propiedades_coligativas.py / disoluciones_electroliticas.py",
+      "comprobacion": "Agua de mar ideal, molalidades y fuerza iónica (aproximación)",
+      "metodos": [
+        "test_10_C_3_agua_mar_ideal_limitaciones"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "11.C.1",
+      "pagina_pdf_libro": 661,
+      "capitulo": 11,
+      "modulos": "balances_materia.py",
+      "comprobacion": "Mezcla de medios DMEM, balances simultáneos",
+      "metodos": [
+        "test_11_C_1_mezcla_medio_dmem"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "11.C.3",
+      "pagina_pdf_libro": 662,
+      "capitulo": 11,
+      "modulos": "balances_materia.py",
+      "comprobacion": "Biorreactor, cierre de caudal y consumo de glucosa",
+      "metodos": [
+        "test_11_C_3_biorreactor_consumo_glucosa"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "12.C.1",
+      "pagina_pdf_libro": 714,
+      "capitulo": 12,
+      "modulos": "evaporacion.py / cristalizacion.py",
+      "comprobacion": "Evaporador y cristalizador en cascada; recuperación",
+      "metodos": [
+        "test_12_C_1_evaporador_kcl",
+        "test_12_C_1_cristalizador_kcl"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "12.C.3",
+      "pagina_pdf_libro": 715,
+      "capitulo": 12,
+      "modulos": "evaporacion.py / cristalizacion.py",
+      "comprobacion": "Cristalización, retención de licor y secado (última etapa algebraica)",
+      "metodos": [
+        "test_12_C_3_cristalizacion_filtracion_secado"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "13.C.1",
+      "pagina_pdf_libro": 762,
+      "capitulo": 13,
+      "modulos": "balances_materia.py (sistema lineal equivalente)",
+      "comprobacion": "Precipitación y filtración; balances equivalentes",
+      "metodos": [
+        "test_13_C_1_precipitacion_filtro"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "13.C.3",
+      "pagina_pdf_libro": 763,
+      "capitulo": 13,
+      "modulos": "balances_materia.py (sistema lineal equivalente)",
+      "comprobacion": "Dos rutas de reacción, extensiones y carbono",
+      "metodos": [
+        "test_13_C_3_oxidacion_dos_rutas"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "14.C.1",
+      "pagina_pdf_libro": 809,
+      "capitulo": 14,
+      "modulos": "combustion.py",
+      "comprobacion": "Mezcla combustible con inerte, aire y gases secos",
+      "metodos": [
+        "test_14_C_1_combustible_con_co2_inerte"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "14.C.3",
+      "pagina_pdf_libro": 809,
+      "capitulo": 14,
+      "modulos": "combustion.py",
+      "comprobacion": "Combustión incompleta, defecto de aire y gas seco",
+      "metodos": [
+        "test_14_C_3_combustion_incompleta_propano"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "14.C.5",
+      "pagina_pdf_libro": 809,
+      "capitulo": 14,
+      "modulos": "combustion.py",
+      "comprobacion": "Inversión de glucosa y ácido palmítico",
+      "metodos": [
+        "test_14_C_5_biocombustibles_inversion"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "15.C.1",
+      "pagina_pdf_libro": 887,
+      "capitulo": 15,
+      "modulos": "psicrometria.py",
+      "comprobacion": "Calentamiento y humidificación isoterma",
+      "metodos": [
+        "test_15_C_1_calentar_humidificar"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "15.C.3",
+      "pagina_pdf_libro": 888,
+      "capitulo": 15,
+      "modulos": "psicrometria.py",
+      "comprobacion": "Condensación frigorífica y agua separada",
+      "metodos": [
+        "test_15_C_3_enfriamiento_camara"
+      ],
+      "estado": "OK"
+    },
+    {
+      "ejercicio": "15.C.5",
+      "pagina_pdf_libro": 888,
+      "capitulo": 15,
+      "modulos": "psicrometria.py",
+      "comprobacion": "Mezcla adiabática; contraste con entalpías tabuladas redondeadas",
+      "metodos": [
+        "test_15_C_5_mezcla_adiabatica"
+      ],
+      "estado": "OK"
+    }
+  ],
+  "limitaciones": "Se contrastan magnitudes concretas. No se han validado cada uno de los apartados ni gráficos ni la validez experimental de las correlaciones."
+}

@@ -1,0 +1,39 @@
+{
+  "ejercicios": [
+    {
+      "id": "5.C.5",
+      "revisión": "Se contrastaron las entradas Tr/Pr, correlación de dos fluidos de referencia, selección de raíz y criterios de convergencia de Lee–Kesler. Sin prueba numérica adicional.",
+      "resultado": "coherencia de fuentes comprobada; no prueba de programa"
+    },
+    {
+      "id": "5.C.6",
+      "revisión": "Se contrastó la explicación de sensibilidad y fluctuaciones próximas al crítico y la recomendación de ecuaciones multiparamétricas de Helmholtz.",
+      "resultado": "coherencia de fuentes comprobada; no prueba de programa"
+    },
+    {
+      "id": "6.C.5",
+      "revisión": "Se verificó que la convergencia Cox se describe como tendencia empírica, no intersección termodinámica exacta.",
+      "resultado": "coherencia de fuentes comprobada; no prueba de programa"
+    },
+    {
+      "id": "6.C.6",
+      "revisión": "Se verificó la diferencia entre P-T lineal y escalas transformadas de Cox; figura 6.4 no se presenta como Cox.",
+      "resultado": "coherencia de fuentes comprobada; no prueba de programa"
+    },
+    {
+      "id": "6.C.7",
+      "revisión": "Se verificó que dos medidas no bastan para determinar tres parámetros Antoine sin hipótesis adicionales.",
+      "resultado": "coherencia de fuentes comprobada; no prueba de programa"
+    },
+    {
+      "id": "6.C.8",
+      "revisión": "Se inspeccionó visualmente la figura 6.4 (PDF p.278): las lecturas son aproximadas, ~500 mmHg tolueno a 100 °C; etanol más volátil a 60 °C; cortes ~35,78,100,110 °C.",
+      "resultado": "coherencia de fuentes comprobada; no prueba de programa"
+    },
+    {
+      "id": "6.C.10",
+      "revisión": "Se verificó que la liofilización requiere presión parcial de vapor inferior a la de sublimación del hielo y aporte de calor, no solo presión total inferior al punto triple.",
+      "resultado": "coherencia de fuentes comprobada; no prueba de programa"
+    }
+  ]
+}

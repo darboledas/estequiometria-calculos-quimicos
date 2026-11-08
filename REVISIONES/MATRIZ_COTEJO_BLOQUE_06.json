@@ -1,0 +1,236 @@
+{
+  "fecha": "2026-11-07",
+  "bloque": 6,
+  "copia_publicada": "v0.9.0, sin cambios",
+  "pruebas_nuevas": 28,
+  "ejercicios_nuevos_distintos": 23,
+  "pruebas_transversales_acumuladas": 345,
+  "ejercicios_distintos_acumulados": 162,
+  "identificadores_ejercicios_inventariados": 556,
+  "ejercicios_sin_cotejo_especifico": 394,
+  "pruebas_de_validacion_de_datos": [
+    "test_8_ajuste_rechaza_gamma_no_finitos",
+    "test_8_ajuste_rechaza_presiones_vapor_invalidas",
+    "test_8_margules_rechaza_series_incompletas",
+    "test_8_vanlaar_rechaza_series_invalidas"
+  ],
+  "matriz": [
+    {
+      "ejercicio": "2.C.5",
+      "pagina_pdf_libro": 99,
+      "objetivo": "Propagación de incertidumbre de titulación",
+      "metodo": "test_2_C_5_titulacion_incertidumbre",
+      "fuente": "Libro definitivo p. 99; solucionario desarrollado, apartado 2.C.5",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "3.C.2",
+      "pagina_pdf_libro": 161,
+      "objetivo": "Combustión estequiométrica de butano",
+      "metodo": "test_3_C_2_butano_co2",
+      "fuente": "Libro definitivo p. 161; solucionario desarrollado, apartado 3.C.2",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "3.C.3",
+      "pagina_pdf_libro": 161,
+      "objetivo": "Producción de H₂ por reacción de aluminio",
+      "metodo": "test_3_C_3_aluminio_hidrogeno",
+      "fuente": "Libro definitivo p. 161; solucionario desarrollado, apartado 3.C.3",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "3.C.5",
+      "pagina_pdf_libro": 162,
+      "objetivo": "Preparación gravimétrica de disolución",
+      "metodo": "test_3_C_5_mezcla_salina",
+      "fuente": "Libro definitivo p. 162; solucionario desarrollado, apartado 3.C.5",
+      "alcance": "Función real + relaciones algebraicas auxiliares; no implica menú único",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "4.C.1",
+      "pagina_pdf_libro": 191,
+      "objetivo": "Propiedades de gas de combustión multicomponente",
+      "metodo": "test_4_C_1_gases_combustion_masa_y_densidad",
+      "fuente": "Libro definitivo p. 191; solucionario desarrollado, apartado 4.C.1",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "4.C.7",
+      "pagina_pdf_libro": 192,
+      "objetivo": "Secador con balance de nitrógeno",
+      "metodo": "test_4_C_7_secador_nitrogeno_inerte",
+      "fuente": "Libro definitivo p. 192; solucionario desarrollado, apartado 4.C.7",
+      "alcance": "Función real + relaciones algebraicas auxiliares; no implica menú único",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "4.C.8",
+      "pagina_pdf_libro": 192,
+      "objetivo": "Absorción parcial de amoníaco",
+      "metodo": "test_4_C_8_absorcion_amoniaco",
+      "fuente": "Libro definitivo p. 192; solucionario desarrollado, apartado 4.C.8",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "4.C.9",
+      "pagina_pdf_libro": 192,
+      "objetivo": "Mezcla para enriquecimiento de oxígeno",
+      "metodo": "test_4_C_9_enriquecimiento_oxigeno",
+      "fuente": "Libro definitivo p. 192; solucionario desarrollado, apartado 4.C.9",
+      "alcance": "Función real + relaciones algebraicas auxiliares; no implica menú único",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "5.C.3",
+      "pagina_pdf_libro": 250,
+      "objetivo": "Peng–Robinson a 90 bar para metano",
+      "metodo": "test_5_C_3_metanopr_90bar",
+      "fuente": "Libro definitivo p. 250; solucionario desarrollado, apartado 5.C.3",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "5.C.4",
+      "pagina_pdf_libro": 251,
+      "objetivo": "Lee–Kesler para vapor de agua",
+      "metodo": "test_5_C_4_agua_leekesler",
+      "fuente": "Libro definitivo p. 251; solucionario desarrollado, apartado 5.C.4",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "6.B.14",
+      "pagina_pdf_libro": 293,
+      "objetivo": "Lee–Kesler frente a Antoine para n-heptano",
+      "metodo": "test_6_B_14_heptano_lee_kesler_antoine",
+      "fuente": "Libro definitivo p. 293; solucionario desarrollado, apartado 6.B.14",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "6.C.4",
+      "pagina_pdf_libro": 295,
+      "objetivo": "Interpolación mediante diagrama de Cox",
+      "metodo": "test_6_C_4_cox_etanol",
+      "fuente": "Libro definitivo p. 295; solucionario desarrollado, apartado 6.C.4",
+      "alcance": "Función real + relaciones algebraicas auxiliares; no implica menú único",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "7.C.4",
+      "pagina_pdf_libro": 365,
+      "objetivo": "Curvas de burbuja y rocío binario",
+      "metodo": "test_7_C_4_raoult_curvas_binarias",
+      "fuente": "Libro definitivo p. 365; solucionario desarrollado, apartado 7.C.4",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "7.C.7",
+      "pagina_pdf_libro": 365,
+      "objetivo": "Dos fases líquidas con C inmiscible",
+      "metodo": "test_7_C_7_c_dos_fases_inmiscibles",
+      "fuente": "Libro definitivo p. 365; solucionario desarrollado, apartado 7.C.7",
+      "alcance": "Función real + relaciones algebraicas auxiliares; no implica menú único",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "8.B.6",
+      "pagina_pdf_libro": 457,
+      "objetivo": "Modelo de Wilson y energía libre de exceso",
+      "metodo": "test_8_B_6_wilson",
+      "fuente": "Libro definitivo p. 457; solucionario desarrollado, apartado 8.B.6",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "8.C.2",
+      "pagina_pdf_libro": 461,
+      "objetivo": "Ajustes Margules y Van Laar de datos VLE",
+      "metodo": "test_8_C_2_regresion_margules2",
+      "fuente": "Libro definitivo p. 461; solucionario desarrollado, apartado 8.C.2",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "8.C.2",
+      "pagina_pdf_libro": 461,
+      "objetivo": "Ajustes Margules y Van Laar de datos VLE",
+      "metodo": "test_8_C_2_regresion_van_laar_comparada",
+      "fuente": "Libro definitivo p. 461; solucionario desarrollado, apartado 8.C.2",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "8.C.4",
+      "pagina_pdf_libro": 462,
+      "objetivo": "Enriquecimiento etapa a etapa de etanol",
+      "metodo": "test_8_C_4_etanol_agua_etapas",
+      "fuente": "Libro definitivo p. 462; solucionario desarrollado, apartado 8.C.4",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "9.C.2",
+      "pagina_pdf_libro": 518,
+      "objetivo": "Equilibrio trifásico con agotamiento",
+      "metodo": "test_9_C_2_trifasico_consumos_inventario",
+      "fuente": "Libro definitivo p. 518; solucionario desarrollado, apartado 9.C.2",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "9.C.4",
+      "pagina_pdf_libro": 519,
+      "objetivo": "Condensador y decantador de heteroazeótropo",
+      "metodo": "test_9_C_4_condensador_decantador",
+      "fuente": "Libro definitivo p. 519; solucionario desarrollado, apartado 9.C.4",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "10.C.4",
+      "pagina_pdf_libro": 590,
+      "objetivo": "Presión osmótica ideal del agua de mar",
+      "metodo": "test_10_C_4_osmosis_agua_mar",
+      "fuente": "Libro definitivo p. 590; solucionario desarrollado, apartado 10.C.4",
+      "alcance": "Función real del software y magnitudes de referencia",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "10.C.5",
+      "pagina_pdf_libro": 590,
+      "objetivo": "Osmolaridad e intensidad iónica de SRO",
+      "metodo": "test_10_C_5_sales_rehidratacion",
+      "fuente": "Libro definitivo p. 590; solucionario desarrollado, apartado 10.C.5",
+      "alcance": "Función real + relaciones algebraicas auxiliares; no implica menú único",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "11.C.4",
+      "pagina_pdf_libro": 662,
+      "objetivo": "Balance de glucosa en recambio de medio",
+      "metodo": "test_11_C_4_recambio_medio_celular",
+      "fuente": "Libro definitivo p. 662; solucionario desarrollado, apartado 11.C.4",
+      "alcance": "Función real + relaciones algebraicas auxiliares; no implica menú único",
+      "resultado": "PASS"
+    },
+    {
+      "ejercicio": "11.C.5",
+      "pagina_pdf_libro": 662,
+      "objetivo": "Dilución salina y envasado",
+      "metodo": "test_11_C_5_dilucion_y_envasado",
+      "fuente": "Libro definitivo p. 662; solucionario desarrollado, apartado 11.C.5",
+      "alcance": "Función real + relaciones algebraicas auxiliares; no implica menú único",
+      "resultado": "PASS"
+    }
+  ],
+  "advertencia": "La ejecución de una función del programa y de balances auxiliares no implica que el menú resuelva íntegramente todos los ejercicios; tampoco valida experimentalmente los modelos."
+}

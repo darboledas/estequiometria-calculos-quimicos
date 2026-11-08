@@ -163,4 +163,17 @@ Inicio y ayuda revisados; no se ha ejecutado una batería de casos numéricos ex
 
 ## 13. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 3** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 3** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+## Anexo: validación de fórmulas en la revisión posterior a 0.9.0
+
+El analizador de fórmulas rechaza los grupos vacíos, incluso si están dentro de una fórmula más extensa. Ejemplos como `Fe()2`, `Ca[]2` y `Al{}2` deben producir un mensaje de error; no constituyen fórmulas químicas válidas.
+
+Esta modificación se incorpora como propuesta de actualización del código posterior a la versión archivada 0.9.0.
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **M(H₂O) ≈ 18,015 g/mol**. Suma independiente de masas atómicas; tolerancia de redondeo 0,03 g/mol.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.

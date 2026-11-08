@@ -216,4 +216,26 @@ Validación interna: 12 grupos correctos.
 
 ## 12. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 15** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 15** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **A 25 °C, p*H₂O ≈ 3,17 kPa; W = 0,621945 pw/(P−pw)**. Cálculo de razón de humedad, inversa y estados válidos.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+### Nota de verificación científica adicional
+
+Revisión adicional (7-11-2026): el cálculo de estado rechaza razón de humedad NaN o infinita, sin transformarla accidentalmente en aire seco. Se han contrastado la conservación de masa de vapor y entalpía en una mezcla de dos corrientes y el orden físico Trocío ≤ Tbulbo húmedo ≤ Tbulbo seco en veinte estados. La referencia usada para la razón de humedad es ASHRAE.
+
+
+## Contraste adicional con el libro definitivo — Bloque V
+
+Ejercicio **15.C.10**: gas no condensable N₂ (28,01 g/mol) con vapor de etanol (46,07 g/mol), `P=100,0 kPa`, `T=30,0 °C`, `P*EtOH=10,5 kPa`, `p_v=5,00 kPa`. En el **modo 12 — gas–vapor general** la razón de humedad inicial calculada es aproximadamente `0,08657 kg EtOH/kg N₂`. Tras enfriar a 10,0 °C, usando `P*EtOH=3,12 kPa`, la razón final es `0,05297`; condensado `0,03360 kg/kg N₂`, calculado al encadenar dos estados del modelo.
+
+El modo general de Antoine está formulado con **T en °C**: `log10(P*/kPa) = A − B/(T_°C+C_°C)`. La tabla 6.1 del libro y el programa `presion_vapor.py` emplean **T en K**. Si las constantes están dadas para K, se debe transformar `C_°C=C_K+273,15`, conservando A y B, antes de introducirlas en el modo general. No se deben copiar sin conversión.
+
+A partir de esta revisión, valores `NaN`, infinitos, parámetros singulares y presiones calculadas no finitas se rechazan con un error explicativo en la modalidad Antoine. Las pruebas reproducibles están en `pruebas_revision/test_cotejo_integradores_05.py`.
+
+**Nota de convención, ejercicio 15.C.4:** el solucionario usa `c_p,aire=1,005`, `c_p,vapor=1,88` y `h_fg=2500`, mientras el programa usa `1,006`, `1,86` y `2501`. Se obtienen, respectivamente, ≈54,914 y ≈54,949 kJ/kg, diferencia ≈0,035 kJ/kg. Es una diferencia de constantes del modelo, no un fallo del cálculo.

@@ -26,4 +26,4 @@ Los directorios `ejemplos`, `muestras` y `pruebas`, cuando existan, contienen re
 
 ## Referencia y licencia
 
-Código y documentación de este repositorio: **licencia MIT** (`../LICENSE`). DOI del software **pendiente de asignación** tras publicar una versión y archivarla con Zenodo. DOI del libro relacionado: **10.5281/zenodo.24013068**.
+Código y documentación de este repositorio: **licencia MIT** (`../LICENSE`). DOI general del software: **10.5281/zenodo.24020474**; DOI de la versión 0.9.0: **10.5281/zenodo.24020473**. DOI del libro relacionado: **10.5281/zenodo.24013068**.

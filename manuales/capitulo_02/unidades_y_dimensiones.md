@@ -223,4 +223,19 @@ Inicio y ayuda revisados; no se ha ejecutado una batería de casos numéricos ex
 
 ## 13. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 2** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 2** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+## Anexo: validaciones incorporadas en la revisión posterior a 0.9.0
+
+La función de propagación comprueba que la matriz de correlación introducida sea **semidefinida positiva**, además de simétrica, con diagonal unitaria y coeficientes entre −1 y 1. Una matriz que incumpla esta condición no describe correlaciones compatibles y se rechaza, incluso cuando una combinación concreta de sensibilidades produzca una varianza numéricamente positiva.
+
+La función de cómputo de cifras significativas valida toda la notación científica, incluido el exponente; por ejemplo, `1e` y `1eXYZ` producen un error de entrada.
+
+Estas modificaciones se incorporan como propuesta de actualización del código posterior a la versión archivada 0.9.0.
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **1 pie = 0,3048 m**. Conversión de longitud; unidad de origen ft y destino m.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.

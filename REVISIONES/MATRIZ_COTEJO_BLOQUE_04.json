@@ -1,0 +1,275 @@
+{
+  "fecha": "2026-11-07",
+  "bloque": 4,
+  "ejercicios_nuevos": 26,
+  "metodos_nuevos": 28,
+  "ejercicios_distintos_acumulados": 116,
+  "pruebas_transversales_acumuladas": 290,
+  "alcance_general": "Pruebas seleccionadas; algunas operaciones se completan con balances algebraicos externos y no constituyen funcionalidad de un único menú.",
+  "pruebas_validacion_adicionales": [
+    "test_6_calidad_rechaza_valor_no_finito",
+    "test_6_calidad_rechaza_datos_de_saturacion_corruptos"
+  ],
+  "matriz": [
+    {
+      "ejercicio": "2.C.1",
+      "pagina_pdf_libro": 98,
+      "capitulo": 2,
+      "comprobacion": "2.C.1: 18,5 gal US/min -> 4,20 m³/h (3 cifras).",
+      "programas": "unidades_y_dimensiones / gases_ideales_y_mezclas",
+      "metodo": "test_2_C_1_caudal_galon_us",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "2.C.3",
+      "pagina_pdf_libro": 98,
+      "capitulo": 2,
+      "comprobacion": "2.C.3: 18,6 psi; 2,50 L; 298,15 K -> 0,12933 mol.",
+      "programas": "unidades_y_dimensiones / gases_ideales_y_mezclas",
+      "metodo": "test_2_C_3_presion_moles_y_redondeo_prematuro",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "2.C.4",
+      "pagina_pdf_libro": 98,
+      "capitulo": 2,
+      "comprobacion": "2.C.4: R=0,083144626 bar L mol-1 K-1; 5,16 bar.",
+      "programas": "unidades_y_dimensiones / gases_ideales_y_mezclas",
+      "metodo": "test_2_C_4_R_conversion_y_P",
+      "alcance": "conversiones analíticas y conversión de presión del programa",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "3.C.1",
+      "pagina_pdf_libro": 161,
+      "capitulo": 3,
+      "comprobacion": "3.C.1: 1,875 g CaCO3; 1,37 g HCl; 0,464 L CO2.",
+      "programas": "masa_molar / reactivo_limitante / balances_materia",
+      "metodo": "test_3_C_1_antiacido_carbonato",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "3.C.4",
+      "pagina_pdf_libro": 161,
+      "capitulo": 3,
+      "comprobacion": "3.C.4: se conservan 140 kg de sólido, final 152,17 kg.",
+      "programas": "masa_molar / reactivo_limitante / balances_materia",
+      "metodo": "test_3_C_4_secado_base_humeda",
+      "alcance": "conservación de masa y validación del residuo de balances",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "3.C.6",
+      "pagina_pdf_libro": 162,
+      "capitulo": 3,
+      "comprobacion": "3.C.6: Fe limitante; 31,5 g FeS y 3,52 g S remanente.",
+      "programas": "masa_molar / reactivo_limitante / balances_materia",
+      "metodo": "test_3_C_6_limitante_hierro_azufre",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "3.C.7",
+      "pagina_pdf_libro": 162,
+      "capitulo": 3,
+      "comprobacion": "3.C.7: H2 40% en 112 L; volumen amoniaco 29,9 L.",
+      "programas": "masa_molar / reactivo_limitante / balances_materia",
+      "metodo": "test_3_C_7_limitante_h2_gas",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "4.C.2",
+      "pagina_pdf_libro": 191,
+      "capitulo": 4,
+      "comprobacion": "4.C.2: mezcla CH4/N2/CO2; M=16,6469 y w(CH4)=92,5%.",
+      "programas": "gases_ideales_y_mezclas / balances_materia",
+      "metodo": "test_4_C_2_composicion_gas_natural",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "4.C.3",
+      "pagina_pdf_libro": 191,
+      "capitulo": 4,
+      "comprobacion": "4.C.3: pO2=120,1 kPa; V=1,3827 m3; rho=1,999.",
+      "programas": "gases_ideales_y_mezclas / balances_materia",
+      "metodo": "test_4_C_3_oxigeno_so2_presion_y_volumen",
+      "alcance": "motor de gases ideales más densidad tabulada",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "4.C.4",
+      "pagina_pdf_libro": 191,
+      "capitulo": 4,
+      "comprobacion": "4.C.4: N2/H2 1:3, p=(2,50;7,50) bar, M=8,5155.",
+      "programas": "gases_ideales_y_mezclas / balances_materia",
+      "metodo": "test_4_C_4_presiones_dalton_nh3",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "4.C.5",
+      "pagina_pdf_libro": 191,
+      "capitulo": 4,
+      "comprobacion": "4.C.5: 70,7 m3 salida y 37,1 kg HCl absorbido.",
+      "programas": "gases_ideales_y_mezclas / balances_materia",
+      "metodo": "test_4_C_5_absorcion_hcl_gas",
+      "alcance": "conversión de volumen del motor y balance algebraico de absorción",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "4.C.6",
+      "pagina_pdf_libro": 192,
+      "capitulo": 4,
+      "comprobacion": "4.C.6: condensación selectiva; volumen 91,92 m3 y agua 1,16 kg.",
+      "programas": "gases_ideales_y_mezclas / balances_materia",
+      "metodo": "test_4_C_6_condensacion_punto_de_rocio",
+      "alcance": "conversión de volumen del motor y balance algebraico de vapor",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "5.C.1",
+      "pagina_pdf_libro": 250,
+      "capitulo": 5,
+      "comprobacion": "5.C.1: Vm ideal 3,10; RK 2,97981; PR 2,96405 L/mol.",
+      "programas": "gases_reales",
+      "metodo": "test_5_C_1_rk_pr_amoniaco",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "5.C.2",
+      "pagina_pdf_libro": 250,
+      "capitulo": 5,
+      "comprobacion": "5.C.2: Lee-Kesler n-butano Z=0,9753154 (511K,5,1bar).",
+      "programas": "gases_reales",
+      "metodo": "test_5_C_2_lee_kesler_butano",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "5.C.7",
+      "pagina_pdf_libro": 252,
+      "capitulo": 5,
+      "comprobacion": "5.C.7: CO2 a 313K,100bar: ZPR=0,298924 y n=321,37mol.",
+      "programas": "gases_reales",
+      "metodo": "test_5_C_7_CO2_supercritico_pr",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "6.C.1",
+      "pagina_pdf_libro": 294,
+      "capitulo": 6,
+      "comprobacion": "6.C.1: 100 m3 aire húmedo, 303K, 100kPa: 0,5575 kg agua.",
+      "programas": "presion_vapor / vapor_agua / psicrometria",
+      "metodo": "test_6_C_1_condensacion_enfriamiento",
+      "alcance": "ecuación de gas ideal, razón de humedad y balance algebraico",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "6.C.3",
+      "pagina_pdf_libro": 295,
+      "capitulo": 6,
+      "comprobacion": "6.C.3: Duhring 7,2/35kPa: 16,627kPa a 335K.",
+      "programas": "presion_vapor / vapor_agua / psicrometria",
+      "metodo": "test_6_C_3_duhring_ajuste_y_estimacion",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "6.C.9",
+      "pagina_pdf_libro": 296,
+      "capitulo": 6,
+      "comprobacion": "6.C.9: x=(2400-417,5)/(2675,5-417,5)=0,877989.",
+      "programas": "presion_vapor / vapor_agua / psicrometria",
+      "metodo": "test_6_C_9_titulo_de_vapor_por_entalpia",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "7.C.2",
+      "pagina_pdf_libro": 363,
+      "capitulo": 7,
+      "comprobacion": "7.C.2: 131,2424 kPa, x=(0,462121;0,537879).",
+      "programas": "equilibrio_liquido_vapor / gases_ideales_y_mezclas",
+      "metodo": "test_7_C_2_rocio_binario_comprimido",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "7.C.6",
+      "pagina_pdf_libro": 365,
+      "capitulo": 7,
+      "comprobacion": "7.C.6: 3 especies, P=25kPa, x=(.2,.4,.4), w=(.125,.375,.5).",
+      "programas": "equilibrio_liquido_vapor / gases_ideales_y_mezclas",
+      "metodo": "test_7_C_6_rocio_ternario_composicion_masica",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "10.C.2",
+      "pagina_pdf_libro": 589,
+      "capitulo": 10,
+      "comprobacion": "10.C.2: NaCl 308mOsm/L, glucosa 252mOsm/L, pi=7,94/6,51bar.",
+      "programas": "propiedades_coligativas",
+      "metodo": "test_10_C_2_osmolaridad_farmaceutica",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "11.C.2",
+      "pagina_pdf_libro": 661,
+      "capitulo": 11,
+      "comprobacion": "11.C.2: distribuye 9,2L, controles 0,1, fondo 0,55 -> falta 0,15L.",
+      "programas": "balances_materia",
+      "metodo": "test_11_C_2_inventario_sin_contabilizar",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "12.C.2",
+      "pagina_pdf_libro": 714,
+      "capitulo": 12,
+      "comprobacion": "12.C.2: torta húmeda 64,145 kg; sólido 35,28; producto 36kg.",
+      "programas": "balances_materia",
+      "metodo": "test_12_C_2_filtracion_secado_multietapa",
+      "alcance": "balance algebraico multietapa; no ejecución completa de filtración y secado",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "13.C.2",
+      "pagina_pdf_libro": 762,
+      "capitulo": 13,
+      "comprobacion": "13.C.2: conversion etanol 75%; selectividad 4:1; xi=12 y 3.",
+      "programas": "balances_materia",
+      "metodo": "test_13_C_2_dos_rutas_etanol",
+      "alcance": "solución de las restricciones con motor lineal; no diálogo reactivo completo",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "14.C.2",
+      "pagina_pdf_libro": 809,
+      "capitulo": 14,
+      "comprobacion": "14.C.2: 3,6mmol glucosa => 21,6mmol O2, CO2, H2O.",
+      "programas": "combustion",
+      "metodo": "test_14_C_2_glucosa_oxidacion_estequiometrica",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    },
+    {
+      "ejercicio": "15.C.2",
+      "pagina_pdf_libro": 887,
+      "capitulo": 15,
+      "comprobacion": "15.C.2: agua condensa, omega 0,011895 ->0,010646, delta .001250.",
+      "programas": "psicrometria",
+      "metodo": "test_15_C_2_condensacion_en_vitrina",
+      "alcance": "función del programa o combinación de funciones verificadas",
+      "resultado": "OK"
+    }
+  ]
+}

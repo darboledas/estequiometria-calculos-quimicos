@@ -1,0 +1,215 @@
+==== unittest discover (345 pruebas) ====
+----------------------------------------------------------------------
+Ran 345 tests in 21.681s
+
+OK
+
+==============================================================================
+7B. MEZCLA CON ESPECIES CONOCIDAS A PARTIR DE MAGNITUDES ESTEQUIOMÉTRICAS
+==============================================================================
+Se introducen especies químicas candidatas y magnitudes medibles (CO2, H2O, O2 consumido, cantidad total, etc.). El programa construye y comprueba el sistema lineal; no se introducen ecuaciones algebraicas.
+
+==============================================================================
+7E. CANTIDAD DE UN COMBUSTIBLE PURO A PARTIR DEL O2 ESTEQUIOMÉTRICO
+==============================================================================
+
+
+===== autotest10e.log =====
+
+PASS 10.6 I | calculado=0.105 | referencia=0.105
+PASS 10.7 I | calculado=0.006 | referencia=0.006
+PASS 10.7 gamma± | calculado=0.8339616099595266 | referencia=0.834
+PASS 10.7 m± | calculado=0.003174802103936399 | referencia=0.003175
+PASS 10.7 a± | calculado=0.002647663073901692 | referencia=0.00265
+PASS 10.8 I NaCl | calculado=0.05 | referencia=0.05
+PASS 10.8 DH | calculado=0.7694566191174014 | referencia=0.769
+PASS 10.8 Davies | calculado=0.8215203108992103 | referencia=0.822
+PASS 10.8 discrepancia % | calculado=6.3374807769295005 | referencia=6.34
+PASS Electro-neutralidad sal de 2:1 | calculado=3 | referencia=3
+PASS DH límite I->0 | calculado=1.0 | referencia=1
+PASS Davies límite I->0 | calculado=1.0 | referencia=1
+PASS SIT D I=0 | calculado=0.0 | referencia=0
+PASS SIT sin término específico | calculado=-0.04442608695652175 | referencia=-0.04442608695652175
+PASS Pitzer B^gamma I->0 | calculado=0.7000000000000001 | referencia=0.7
+PASS Pitzer fγ I->0 | calculado=-0.0 | referencia=0
+PASS Pitzer gamma m baja | calculado=0.999628347829135 | referencia=1
+PASS actividad media 1:1 | calculado=0.848528137423857 | referencia=0.848528137423857
+PASS C3 agua mar I (seis iones) | calculado=0.7204611398963731 | referencia=0.719
+PASS C3 agua mar balance parcial no nulo | calculado=1 | referencia=1
+PASS bisec inversa DH | calculado=0.008081441447138788 | referencia=0.00808144148899484
+PASS 10.B.6 NaCl+CaCl2 I | calculado=0.05 | referencia=0.05
+PASS 10.B.6 Davies Ca2+ < Na+ | calculado=1 | referencia=1
+PASS 10.B.7 I CaCl2 | calculado=0.003 | referencia=0.003
+PASS 10.B.8 DH z2 más desviación | calculado=1 | referencia=1
+PASS 10.C.1 fuerza iónica NaCl | calculado=2.6881720430107525 | referencia=2.688172
+PASS 10.C.1 fuerza iónica CaCl2 | calculado=5.376344086021505 | referencia=5.376344
+PASS 10.C.3 total molalidad partículas | calculado=1.156963730569948 | referencia=1.156964
+PASS 10.C.4 concentración total partículas | calculado=1.1425284097999997 | referencia=1.14254
+PASS 10.C.4 presión osmótica ideal bar | calculado=28.322788329941474 | referencia=28.32279
+PASS 10.C.5 OMS concentración ionic molar (por litro) | calculado=0.17 | referencia=0.17
+PASS 10.C.7 NaCl 0,45% c_osm | calculado=0.1540041067761807 | referencia=0.154004
+PASS 10.C.7 NaCl 0,90% c_osm | calculado=0.3080082135523614 | referencia=0.308008
+PASS 10.C.7 NaCl 3,00% c_osm | calculado=1.026694045174538 | referencia=1.026694
+PASS formato actividad | calculado=1 | referencia=1
+RESULTADO: 39/39 pruebas correctas.
+
+
+===== autotest10p.log =====
+=42000.0
+PASS 10.4 i | calculado=1.8709677419354835 | referencia=1.87
+PASS 10.5 i dimerización | calculado=0.5277832031249999 | referencia=0.528
+PASS 10.5 α asociación | calculado=0.9444335937500001 | referencia=0.944
+PASS 10.6 fuerza iónica | calculado=0.105 | referencia=0.105
+PASS C2 p osmótica 0.9% NaCl | calculado=7.942701994928832 | referencia=7.95
+PASS C5 OMS osmolaridad nominal | calculado=0.245 | referencia=0.245
+PASS Raoult inversa | calculado=342.2965 | referencia=342.2965
+PASS C3 agua mar ideal m | calculado=1.1642487046632124 | referencia=1.164
+PASS 10.B.1 molalidad D-glucosa | calculado=0.3996447602131439 | referencia=0.399645
+PASS 10.B.1 descenso crioscópico | calculado=0.7433392539964476 | referencia=0.74334
+PASS 10.B.1 elevación ebulloscópica | calculado=0.20461811722912968 | referencia=0.20462
+PASS 10.B.2 molalidad naftaleno | calculado=0.2 | referencia=0.2
+PASS 10.B.2 ΔTf | calculado=1.024 | referencia=1.024
+PASS 10.B.2 ΔTb | calculado=0.506 | referencia=0.506
+PASS 10.B.3 NaCl factor | calculado=1.8279569892473118 | referencia=1.827956989
+PASS 10.B.4 9g glucosa 1L presión | calculado=1.2383777345926674 | referencia=1.23838
+PASS 10.B.5 fracción molar glucosa | calculado=0.009900990099009901 | referencia=0.009900990099009901
+PASS 10.B.5 descenso presión kPa | calculado=0.03138613861386119 | referencia=0.031386138613861386
+PASS 10.B.9 masa molar muestra | calculado=342.29999999999995 | referencia=342.3
+PASS 10.B.10 etilenglicol ΔTf IDEAL | calculado=3.72 | referencia=3.72
+PASS 10.B.10 etilenglicol ΔTb IDEAL | calculado=1.024 | referencia=1.024
+PASS 10.C.1 NaCl producto 98% | calculado=160.30283080974326 | referencia=160.303
+PASS 10.C.1 CaCl2 producto 97% | calculado=205.04009163802982 | referencia=205.04
+PASS 10.C.2 NaCl solución comercial 0,9% | calculado=7.942701994928832 | referencia=7.9427
+PASS 10.C.2 glucosa monohidratada 5% | calculado=6.506359643286642 | referencia=6.50636
+PASS 10.C.5 osmolaridad desde masas OMS | calculado=0.2435966566393228 | referencia=0.243597
+PASS 10.C.6 cociente Π(glucosa)/Π(BSA) | calculado=368.5612788632327 | referencia=368.5613
+PASS Conversión 25,0°C -> Kelvin 4 cifras | calculado=4 | referencia=4
+PASS cifras coma | calculado=3 | referencia=3
+PASS cifras ceros | calculado=3 | referencia=3
+PASS formato | calculado=1 | referencia=1
+PASS bisección | calculado=1.4142135623260401 | referencia=1.4142135623730951
+PASS ajuste QR | calculado=1.0000000000000022 | referencia=1
+RESULTADO: 38/38 comprobaciones correctas.
+
+
+===== autotest11.log =====
+_B12) ... ok
+test_B13 (__main__.ProblemasTipoB.test_B13) ... ok
+test_B14 (__main__.ProblemasTipoB.test_B14) ... ok
+test_B15 (__main__.ProblemasTipoB.test_B15) ... ok
+test_B16 (__main__.ProblemasTipoB.test_B16) ... ok
+test_B2 (__main__.ProblemasTipoB.test_B2) ... ok
+test_B3 (__main__.ProblemasTipoB.test_B3) ... ok
+test_B4 (__main__.ProblemasTipoB.test_B4) ... ok
+test_B5 (__main__.ProblemasTipoB.test_B5) ... ok
+test_B6 (__main__.ProblemasTipoB.test_B6) ... ok
+test_B7 (__main__.ProblemasTipoB.test_B7) ... ok
+test_B8 (__main__.ProblemasTipoB.test_B8) ... ok
+test_B9 (__main__.ProblemasTipoB.test_B9) ... ok
+test_C1 (__main__.ProblemasTipoC.test_C1) ... ok
+test_C10 (__main__.ProblemasTipoC.test_C10) ... ok
+test_C11 (__main__.ProblemasTipoC.test_C11) ... ok
+test_C2 (__main__.ProblemasTipoC.test_C2) ... ok
+test_C3 (__main__.ProblemasTipoC.test_C3) ... ok
+test_C4 (__main__.ProblemasTipoC.test_C4) ... ok
+test_C5 (__main__.ProblemasTipoC.test_C5) ... ok
+test_C6 (__main__.ProblemasTipoC.test_C6) ... ok
+test_C7 (__main__.ProblemasTipoC.test_C7) ... ok
+test_C8 (__main__.ProblemasTipoC.test_C8) ... ok
+test_C9 (__main__.ProblemasTipoC.test_C9) ... ok
+test_balance_tipo_B13_motor (__main__.PruebasIntegracionAplicada.test_balance_tipo_B13_motor) ... ok
+test_balance_tipo_B1_motor (__main__.PruebasIntegracionAplicada.test_balance_tipo_B1_motor) ... ok
+test_balance_tipo_B2_3_motor (__main__.PruebasIntegracionAplicada.test_balance_tipo_B2_3_motor) ... ok
+test_balance_tipo_B8_motor (__main__.PruebasIntegracionAplicada.test_balance_tipo_B8_motor) ... ok
+test_balance_tipo_B9_motor (__main__.PruebasIntegracionAplicada.test_balance_tipo_B9_motor) ... ok
+test_balance_tipo_C11_consumos_2_reactores (__main__.PruebasIntegracionAplicada.test_balance_tipo_C11_consumos_2_reactores) ... ok
+test_balance_tipo_C3_consumo_motor (__main__.PruebasIntegracionAplicada.test_balance_tipo_C3_consumo_motor) ... ok
+test_balance_tipo_C6_mezcla_gas_motor (__main__.PruebasIntegracionAplicada.test_balance_tipo_C6_mezcla_gas_motor) ... ok
+test_balance_tipo_C7_concentraciones_motor (__main__.PruebasIntegracionAplicada.test_balance_tipo_C7_concentraciones_motor) ... ok
+test_json_reacciones_fuentes_no_fisicas (__main__.PruebasIntegracionAplicada.test_json_reacciones_fuentes_no_fisicas) ... ok
+test_reproducibilidad_transitorio_y_csv (__main__.PruebasIntegracionAplicada.test_reproducibilidad_transitorio_y_csv) ... ok
+
+----------------------------------------------------------------------
+Ran 58 tests in 0.011s
+
+OK
+
+
+===== autotest13.log =====
+----------------------------------------------------------------------
+Ran 12 tests in 0.003s
+
+OK
+
+
+===== autotest14.log =====
+AUTOPRUEBAS DEL PROGRAMA
+  [OK] 14.3 O2 estequiométrico
+  [OK] 14.3 CO2
+  [OK] 14.3 H2O
+  [OK] 14.3 N2 ~226
+  [OK] 14.3 yCO2 seca ~0.113
+  [OK] 14.4 O2=9
+  [OK] 14.4 productos
+  [OK] 14.5 O2 ~9.84
+  [OK] 14.6 O2 consumido=18
+  [OK] 14.8 O2 in ~23.0
+  [OK] 14.8 H/C ~3.33
+  [OK] 14.8 mezcla binaria resoluble
+  [OK] 14.C.5 sistema único
+  [OK] 14.C.5 cantidades positivas
+  [OK] 14.C.10 CH8O2
+  [OK] 14.C.4 detecta mezcla no física
+  [OK] 14.C.7 detecta datos incompatibles
+  [OK] 14.C.6 sistema inverso resoluble
+  [OK] 14.C.9 mezcla inversa resoluble
+  [OK] 14.B.5 cantidad de butano
+  [OK] Entrada con coma decimal
+  [OK] Cero de composición no limita cifras
+  [OK] Parser Ca(OH)2
+
+Resultado global: CORRECTO (23/23)
+
+
+===== autotest15.log =====
+Validación correcta: 12 grupos de comprobaciones físicas, numéricas y de precisión.
+
+
+===== autotest9.log =====
+test_gibbs_y_estabilidad (__main__.Controles.test_gibbs_y_estabilidad) ... ok
+test_graficas_png_y_svg (__main__.Controles.test_graficas_png_y_svg) ... ok
+test_interpolacion_sin_extrapolar (__main__.Controles.test_interpolacion_sin_extrapolar) ... ok
+test_intervalos_y_errores (__main__.Controles.test_intervalos_y_errores) ... ok
+test_precision_y_coma (__main__.Controles.test_precision_y_coma) ... ok
+test_9_B_1 (__main__.VerificacionB.test_9_B_1) ... ok
+test_9_B_2 (__main__.VerificacionB.test_9_B_2) ... ok
+test_9_B_3 (__main__.VerificacionB.test_9_B_3) ... ok
+test_9_B_4 (__main__.VerificacionB.test_9_B_4) ... ok
+test_9_B_5 (__main__.VerificacionB.test_9_B_5) ... ok
+test_9_B_6 (__main__.VerificacionB.test_9_B_6) ... ok
+test_9_B_7 (__main__.VerificacionB.test_9_B_7) ... ok
+test_9_B_8 (__main__.VerificacionB.test_9_B_8) ... ok
+test_9_B_9 (__main__.VerificacionB.test_9_B_9) ... ok
+test_l1_rica_en_a_nomenclatura_general (__main__.VerificacionB.test_l1_rica_en_a_nomenclatura_general) ... ok
+test_9_C_1 (__main__.VerificacionC.test_9_C_1) ... ok
+test_9_C_2 (__main__.VerificacionC.test_9_C_2) ... ok
+test_9_C_3 (__main__.VerificacionC.test_9_C_3) ... ok
+test_9_C_4 (__main__.VerificacionC.test_9_C_4) ... ok
+test_9_C_5 (__main__.VerificacionC.test_9_C_5) ... ok
+test_9_C_6 (__main__.VerificacionC.test_9_C_6) ... ok
+test_ejemplo_9_1 (__main__.VerificacionEjemplos.test_ejemplo_9_1) ... ok
+test_ejemplo_9_2 (__main__.VerificacionEjemplos.test_ejemplo_9_2) ... ok
+test_ejemplo_9_3 (__main__.VerificacionEjemplos.test_ejemplo_9_3) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 1.990s
+
+OK
+  1. Mostrar   2. Guardar PNG (300 ppp)   3. Guardar SVG   4. Ambos formatos
+  Guardado: /tmp/tmpyt9t919k/figura.png
+  Guardado: /tmp/tmpyt9t919k/figura.svg
+  1. Mostrar | 2. PNG 300 ppp | 3. SVG vectorial | 4. PNG y SVG
+  Guardado /tmp/tmpyt9t919k/tx.png
+  Guardado /tmp/tmpyt9t919k/tx.svg
+  1. Mostrar | 2. PNG 300 ppp | 3. SVG vectorial | 4. PNG y SVG
+  Guardado /tmp/tmpyt9t919k/presiones.png

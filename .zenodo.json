@@ -5,8 +5,8 @@
     }
   ],
   "title": "Estequiometría y cálculos químicos: software complementario (28 aplicaciones Python)",
-  "version": "0.9.0",
-  "description": "Colección de 28 aplicaciones Python y sus manuales individuales para cálculo, verificación y representación de problemas químicos, complemento del libro Estequiometría y cálculos químicos: Fundamentos, balances de materia y aplicaciones. Código bajo licencia MIT. Esta versión se encuentra en preparación para su primera publicación.",
+  "version": "1.0.0",
+  "description": "Colección de 28 aplicaciones Python y sus manuales individuales para cálculo y comprobación química, complemento de Estequiometría y cálculos químicos: Fundamentos, balances de materia y aplicaciones. Versión 1.0.0 con correcciones científicas y 588 pruebas automatizadas locales; los casos comprobados no constituyen validación experimental universal. Software bajo licencia MIT.",
   "access_right": "open",
   "upload_type": "software",
   "license": "mit",

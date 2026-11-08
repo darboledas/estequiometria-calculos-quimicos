@@ -103,13 +103,14 @@ EPS = 1.0e-12
 
 def parse_decimal(value: str | float | int) -> float:
     """Convierte un número con coma o punto decimal a float."""
-    if isinstance(value, (float, int)):
-        return float(value)
     text = str(value).strip().replace(" ", "").replace(",", ".")
     try:
-        return float(text)
+        result = float(text)
     except ValueError as exc:
         raise ValueError(f"No se reconoce como número: {value!r}") from exc
+    if not math.isfinite(result):
+        raise ValueError("El dato debe ser un número finito.")
+    return result
 
 
 def format_sig(value: float, sig: int = 5) -> str:

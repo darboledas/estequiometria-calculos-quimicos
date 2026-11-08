@@ -1,3 +1,5 @@
+> **Archivo histórico:** elaborado antes de la publicación de `v0.9.0`. Para el estado actual consulte `README.md`, `COMPROBACIONES.md` y `REVISIONES/INFORME_AUDITORIA_INTEGRAL.md`.
+
 # Auditoría de prepublicación — 6 de noviembre de 2026
 
 Esta verificación no constituye una certificación de exactitud científica. Se conservaron los programas originales salvo correcciones puntuales documentadas en `CHANGELOG.md`.
@@ -27,3 +29,24 @@ Esta verificación no constituye una certificación de exactitud científica. Se
 - La precisión propagada en sistemas lineales acoplados del capítulo 13 usa una heurística conservadora basada en cifras significativas; no reemplaza el cálculo de incertidumbres de sistemas mal condicionados.
 - Antes de etiquetar `v1.0.0`, revisar científicamente los casos pendientes y completar los ejemplos tutoriales de los manuales si se desean.
 - El DOI de Zenodo del software no se ha asignado. La licencia MIT sí está incorporada.
+
+
+### Cuarto bloque — cotejo de aplicaciones y validación física (7-11-2026, no publicado)
+- 26 ejercicios tipo C nuevos con resultados cotejados y trazabilidad por número/página (116 ejercicios distintos acumulados).
+- 28 nuevos métodos de prueba: 26 ejercicios + 2 validaciones; total transversal **290/290**.
+- Corrección `vapor_agua.quality_from_property()`: `NaN` e infinito en propiedades de entrada o nodos de saturación generan `ValueError`, sin interpretar un título indefinido como estado bifásico.
+- Se documentan operaciones encadenadas resueltas por balances algebraicos, las diferencias de precisión en galones US, y los límites científicos del contraste.
+- Archivos: `REVISIONES/INFORME_COTEJO_APLICADOS_116.md`, `REVISIONES/MATRIZ_COTEJO_BLOQUE_04.json`.
+- GitHub y Zenodo siguen sin modificar.
+
+## Estado del bloque V — 7-11-2026
+317/317 pruebas transversales locales, 139 ejercicios distintos parcialmente cotejados. Incidencia de Antoine gas-vapor corregida. Pendiente completar el resto de ejercicios y ensayos de frontera; no publicar aún v1.0.0. Consulte REVISIONES/INFORME_COTEJO_INTEGRADORES_139.md.
+
+## Bloque VI — 7 de noviembre de 2026
+
+La copia local alcanza 345 pruebas transversales superadas y 162 ejercicios distintos con algún contraste (23 adicionales). Validación corregida en las funciones de obtención y ajuste de coeficientes de actividad, con rechazo de NaN/Inf y de observaciones incompletas. Quedan 394 identificadores de ejercicios sin cotejo individual. La publicación `v0.9.0` permanece sin cambios; no se declara completada la validación científica de `v1.0.0`.
+
+
+## Cierre de revisión conceptual — copia local sin publicar (7-11-2026)
+
+Se han revisado 206 respuestas tipo A y se han registrado tres propuestas de precisión editorial en el solucionario (6.A.16, 11.A.1, 12.A.6); no hay 206 nuevas funciones de software. La batería transversal contiene 588 métodos y ha pasado íntegramente. Continúan pendientes la ejecución del flujo CI tras el commit, la actualización coordinada de metadatos de versión y la publicación explícita de `v1.0.0`. Consulte `REVISIONES/INFORME_REVISION_CONCEPTUAL_A_206.md`.

@@ -1,0 +1,37 @@
+{
+  "basis": "mass",
+  "components": [
+    "A",
+    "B"
+  ],
+  "units": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ],
+  "streams": [
+    {
+      "id": 10,
+      "from": null,
+      "to": 1,
+      "total": "100,0",
+      "fractions": {
+        "A": "0,40",
+        "B": "0,60"
+      }
+    },
+    {
+      "id": 20,
+      "from": 1,
+      "to": 2
+    },
+    {
+      "id": 30,
+      "from": 2,
+      "to": null
+    }
+  ]
+}

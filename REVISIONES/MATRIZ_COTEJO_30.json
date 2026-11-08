@@ -1,0 +1,273 @@
+[
+  {
+    "ejercicio": "2.B.1",
+    "pagina_libro": 96,
+    "modulos": [
+      "unidades_y_dimensiones"
+    ],
+    "referencia": "Libro p. 96; solucionario 2.B.1: 125 ft³ = 3,54 m³ (3 cifras).",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "3.B.5",
+    "pagina_libro": 158,
+    "modulos": [
+      "ajuste_ecuaciones",
+      "masa_molar"
+    ],
+    "referencia": "Libro p. 158; 3.B.5: 11,5 g Na => 29,2 g NaCl.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "3.B.11",
+    "pagina_libro": 158,
+    "modulos": [
+      "densidades_y_escalas"
+    ],
+    "referencia": "Libro p. 158; 3.B.11: 180 g sacarosa / 600 g => 30,0 Bx.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "3.B.12",
+    "pagina_libro": 159,
+    "modulos": [
+      "ajuste_ecuaciones"
+    ],
+    "referencia": "Libro p. 159; 3.B.12: 2 : 15 : 14 : 6.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "3.B.13",
+    "pagina_libro": 159,
+    "modulos": [
+      "reactivo_limitante"
+    ],
+    "referencia": "Libro p. 159; 3.B.13: H2 limitante; NH3=20 mol; N2 restante=2 mol.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "3.B.16",
+    "pagina_libro": 159,
+    "modulos": [
+      "conversion_rendimiento_selectividad"
+    ],
+    "referencia": "Libro p. 159; 3.B.16: 100 mol etanol, 30 finales -> X=70%.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "3.B.20",
+    "pagina_libro": 161,
+    "modulos": [
+      "densidades_y_escalas"
+    ],
+    "referencia": "Libro p. 161; 3.B.20: Hall B=18 -> GE=1,074221119568.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "4.B.1",
+    "pagina_libro": 190,
+    "modulos": [
+      "gases_ideales_y_mezclas"
+    ],
+    "referencia": "Libro p. 190; 4.B.1: 0,716 y 2,86 g/L en condiciones normales.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "5.B.1",
+    "pagina_libro": 246,
+    "modulos": [
+      "gases_reales"
+    ],
+    "referencia": "Libro p. 246; 5.B.1: Vm ideal 3,6376 L/mol, Z=0,92 => 3,3466.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "6.B.11",
+    "pagina_libro": 293,
+    "modulos": [
+      "presion_vapor"
+    ],
+    "referencia": "Libro p. 293; 6.B.11: lineal 20,25; CC 18,7372 kPa.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "6.B.13",
+    "pagina_libro": 293,
+    "modulos": [
+      "vapor_agua"
+    ],
+    "referencia": "Libro p. 293; 6.B.13: vapor sobrecalentado; x~0,494.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "6.B.15",
+    "pagina_libro": 294,
+    "modulos": [
+      "presion_vapor"
+    ],
+    "referencia": "Libro p. 294; 6.B.15: 18,6 y 48,4 kPa; delta Hvap~38,1 kJ/mol.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "7.B.1",
+    "pagina_libro": 357,
+    "modulos": [
+      "equilibrio_liquido_vapor"
+    ],
+    "referencia": "Libro p. 357; 7.B.1: xhep 0,853125; yhep 0,892707.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "7.C.8",
+    "pagina_libro": 366,
+    "modulos": [
+      "operaciones_liquido_vapor"
+    ],
+    "referencia": "Libro p. 366; 7.C.8: L/F=V/F=0,5.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "8.B.3",
+    "pagina_libro": 456,
+    "modulos": [
+      "disoluciones_no_ideales"
+    ],
+    "referencia": "Libro p. 456; 8.B.3: gamma=(1,80038;1,11405); gE/RT=0,252.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "9.B.1",
+    "pagina_libro": 513,
+    "modulos": [
+      "equilibrio_liquido_liquido"
+    ],
+    "referencia": "Libro p. 513; 9.B.1: mL1=0,94818; mL2=1,55182 kg.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "9.B.5",
+    "pagina_libro": 515,
+    "modulos": [
+      "inmiscibles_y_arrastre_vapor"
+    ],
+    "referencia": "Libro p. 515; 9.B.5: T=342,27133 K, yagua=.296189.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "10.B.1",
+    "pagina_libro": 586,
+    "modulos": [
+      "propiedades_coligativas"
+    ],
+    "referencia": "Libro p. 586; 10.B.1: m=.39964, deltaTf=.7433, deltaTb=.2046.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "10.B.6",
+    "pagina_libro": 587,
+    "modulos": [
+      "disoluciones_electroliticas"
+    ],
+    "referencia": "Libro p. 587; 10.B.6: I=.05; gamma monovalente=.8215; Ca2+=.4555.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "11.B.7",
+    "pagina_libro": 658,
+    "modulos": [
+      "balances_materia"
+    ],
+    "referencia": "Libro p. 658; 11.B.7: 250 kg/h y wNaCl=0,160.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "12.B.3",
+    "pagina_libro": 711,
+    "modulos": [
+      "secado"
+    ],
+    "referencia": "Libro p. 711; 12.B.3: producto 101,44 kg; evaporada 18,6 kg.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "12.B.4",
+    "pagina_libro": 712,
+    "modulos": [
+      "evaporacion"
+    ],
+    "referencia": "Libro p. 712; 12.B.4: masa final 100 g, agua eliminada 150 g.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "12.B.7",
+    "pagina_libro": 712,
+    "modulos": [
+      "filtracion"
+    ],
+    "referencia": "Libro p. 712; 12.B.7: torta 28,3 kg; filtrado 221,69 kg.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "12.B.8",
+    "pagina_libro": 712,
+    "modulos": [
+      "cristalizacion"
+    ],
+    "referencia": "Libro p. 712; 12.B.8: agua~251,256 kg; cristales 10,3 kg.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "12.B.14",
+    "pagina_libro": 714,
+    "modulos": [
+      "separacion_corrientes"
+    ],
+    "referencia": "Libro p. 714; 12.B.14: recuperación 90%, flujos 180/420 kg/h.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "12.C.4",
+    "pagina_libro": 715,
+    "modulos": [
+      "extraccion_liquido_liquido"
+    ],
+    "referencia": "Libro p. 715; 12.C.4: E1 62,6866; E2 70,4631; E3 73,6594 %.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "13.B.1",
+    "pagina_libro": 759,
+    "modulos": [
+      "balance_una_reaccion"
+    ],
+    "referencia": "Libro p. 759; 13.B.1: xi=.250 mol, NO2=1 mol, O2=.250 mol.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "13.B.7",
+    "pagina_libro": 760,
+    "modulos": [
+      "balance_varias_reacciones"
+    ],
+    "referencia": "Libro p. 760; 13.B.7: xi=(3;2), A=7, B=3, C=4.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "14.B.6",
+    "pagina_libro": 808,
+    "modulos": [
+      "combustion"
+    ],
+    "referencia": "Libro p. 808; 14.B.6: 24,5 mol O2 y 117 mol aire teórico.",
+    "estado": "OK"
+  },
+  {
+    "ejercicio": "15.B.2",
+    "pagina_libro": 883,
+    "modulos": [
+      "psicrometria"
+    ],
+    "referencia": "Libro p. 883; 15.B.2: pv=1,5197 kPa, w=.00960, ws=.0149, S=64,5 %.",
+    "estado": "OK"
+  }
+]

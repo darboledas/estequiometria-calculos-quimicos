@@ -194,4 +194,67 @@ Comprobaciones internas: 23/23 correctas.
 
 ## 12. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 14** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 14** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **CH₄ + 2 O₂ → CO₂ + 2 H₂O**. Balance elemental de C, H y O y oxígeno teórico.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+
+## Revisión adicional de balances y combustión — 7 de noviembre de 2026
+
+### Contrastes inversos y fórmulas químicas
+
+El analizador de fórmulas rechaza grupos vacíos (`Fe()2`), subíndices nulos (`CH0`) y paréntesis desequilibrados. Sigue admitiendo fórmulas con paréntesis válidos, como `Ca(OH)2`.
+
+En la modalidad inversa para mezclas conocidas se comprueba un caso sintético: **2 mol de CH₄ y 3 mol de C₂H₆** producen, en combustión completa, **8 mol de CO₂ y 13 mol de H₂O**, y consumen **14,5 mol de O₂**. El programa recupera las dos cantidades de combustible a partir de los dos observables independientes. Con un solo observable el problema queda indeterminado, y el programa no debe asignar arbitrariamente una solución.
+
+El solucionador inverso escala ahora cada ecuación antes de la eliminación de Gauss-Jordan. Esto evita que caudales pequeños, por ejemplo del orden de `1e-12 mol`, se descarten debido a una tolerancia absoluta del sistema. Este escalado no resuelve la falta de identificabilidad ni los problemas mal condicionados: esos casos necesitan más datos o una evaluación numérica específica.
+
+```powershell
+python capitulo_14/combustion.py --self-test
+python -m unittest discover -s pruebas_revision -p test_balances_combustion_ampliada.py -v
+```
+
+## Ampliación: invariancia de escala de combustión (7 de noviembre de 2026)
+
+Se revisaron umbrales absolutos que omitían especies gaseosas y cantidades estequiométricas de O₂ cuando la base del problema era muy pequeña. Ahora se conservan las especies con cantidades estrictamente positivas, se rechazan cantidades negativas o no finitas y el cierre elemental utiliza tolerancia relativa (sin suelo numérico de 1 mol). La validación de entradas también impide cantidades negativas próximas a cero. La combustión completa no se acepta con un defecto real de O₂ solo porque su cantidad absoluta sea pequeña.
+
+**Contrastes analíticos:** por mol de CH₄, 2 mol de O₂ producen 1 mol de CO₂ y 2 de H₂O; por mol de CH₄O, se requieren 1,5 mol de O₂. Para C₂H₆S se obtienen 4,5 mol de O₂ con SO₂ o 5 mol con SO₃. Para C₂H₅N se requieren, respectivamente, 3,25, 3,75 o 4,25 mol de O₂ cuando todo el nitrógeno origina N₂, NO o NO₂. Se han repetido algunos balances con base de 10⁻¹² mol para comprobar que la escala no cambia las proporciones.
+
+Estos ejemplos **son balances estequiométricos con productos impuestos**, no predicciones de formación de NOₓ o SOₓ. La selección del mecanismo, los equilibrios y la cinética quedan fuera del modelo.
+
+```powershell
+python -m unittest discover -s pruebas_revision -p test_escalas_y_productos_combustion.py -v
+python capitulo_14/combustion.py --self-test
+```
+
+
+## Contraste adicional de combustión incompleta e inversiones (revisión 7 de noviembre de 2026)
+
+La revisión de la opción **5. Combustión incompleta** ha eliminado umbrales absolutos que ocultaban especies positivas, excedentes de O₂ y fracciones no reaccionadas cuando se utilizaban bases pequeñas. El programa muestra las cantidades positivas mediante notación científica y exige suficiente oxígeno para las cantidades de CO₂, CO y H₂O que el usuario haya impuesto. No determina por sí mismo la distribución real de productos.
+
+**Ejemplo reproducible:** 1 mol de CH₄, conversión 80 %, reparto del carbono reaccionado 75 % a CO₂ y 25 % a CO, con 1,8 mol de O₂ puro. Se obtiene: CH₄ no convertido 0,2 mol; CO₂ 0,6 mol; CO 0,2 mol; H₂O 1,6 mol; O₂ de salida 0,3 mol. El porcentaje molar de CO₂ en base seca es 46,1538… %. El balance elemental cierra y los resultados se escalan proporcionalmente para 10⁻¹² mol de alimentación.
+
+El modo inverso binario distingue cantidades pequeñas de cero y rechaza soluciones negativas; la modalidad de combustible puro requiere una necesidad estequiométrica de oxígeno estrictamente positiva para calcular el factor de aire. Los cálculos multicomponente se han contrastado con observables derivados de composiciones conocidas y con 150 sistemas sintéticos de cuatro componentes, con relaciones molares suficientes para obtener solución única.
+
+```powershell
+python -m unittest pruebas_revision.test_combustion_incompleta_inversos -v
+python capitulo_14/combustion.py --self-test
+```
+
+Los detalles, resultados y límites del contraste figuran en `REVISIONES/INFORME_COMBUSTION_INCOMPLETA_INVERSOS.md`. Las 16 pruebas nuevas han resultado correctas localmente. El código no predice cinética, equilibrio, temperatura adiabática ni formación de NOₓ/SOₓ.
+
+
+## Anexo: fiabilidad de los cálculos inversos (revisión local, 7-11-2026)
+
+El cálculo inverso de la opción 7 utiliza un solucionador con equilibrado por filas y columnas y pivoteo completo. Ante observables prácticamente dependientes o con escalas incompatibles muestra un error de **sistema mal condicionado** en lugar de presentar una composición no fiable. Es diferente de un sistema exactamente indeterminado o de un conjunto incompatible.
+
+Ejemplo: las ecuaciones `n1+n2=2` y `n1+1,000000001*n2=2,000000001` tienen solución algebraica (1,1). Una perturbación de 10⁻⁸ en el segundo dato modifica radicalmente las cantidades deducidas. No debe interpretarse una salida exacta del solucionador como certeza experimental.
+
+Las salvaguardas son heurísticas (pivotes relativos `10⁻⁸`; escala de columnas `10⁹`), no un cálculo del número de condición ni de la incertidumbre de datos. Si se recibe el mensaje, aporte observables físicamente independientes, mejore la precisión o utilice un tratamiento especializado.
+
+Comprobación local: `python -m unittest discover -s pruebas_revision -p test_estabilidad_inversos_empiricos.py -v`. La revisión todavía no se ha publicado en GitHub.

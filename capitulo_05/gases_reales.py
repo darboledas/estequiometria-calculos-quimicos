@@ -138,6 +138,8 @@ def parse_num(x: str | float | int) -> Num:
     s=raw.replace(" ","").replace(",",".")
     try: val=float(s)
     except ValueError as exc: raise ValueError(f"No se reconoce el número: {raw!r}") from exc
+    if not math.isfinite(val):
+        raise ValueError(f"El valor debe ser finito: {raw!r}")
     mant=re.split(r"[eE]",s)[0].lstrip("+-")
     if "." in mant:
         digits=mant.replace(".",""); stripped=digits.lstrip("0"); sig=len(stripped) if stripped else 1
@@ -247,6 +249,8 @@ def real_cubic_roots(a: float,b: float,c: float,d: float) -> list[float]:
 
 
 def eos_coefficients(model: str,T: float,P: float,g: Gas) -> dict:
+    if not all(math.isfinite(v) and v > 0 for v in (T,P,g.Tc,g.Pc)):
+        raise ValueError("Temperatura, presión y propiedades críticas deben ser positivas y finitas.")
     model=model.lower(); Tr=T/g.Tc
     if model=="vdw":
         a=27/64*R_BAR**2*g.Tc**2/g.Pc; b=R_BAR*g.Tc/(8*g.Pc)
@@ -310,6 +314,38 @@ def cubic_state(model: str,T: float,P: float,g: Gas,phase="vapor") -> dict:
     if g.M: out["rho"]=g.M/vm  # g/L = kg/m3
     out["lnphi"]=ln_phi(model,z,d["A"],d["B"]); out["phi"]=math.exp(out["lnphi"]); out["fugacity"]=out["phi"]*P
     return out
+
+
+
+def vdw_state_from_ab(T: float, P: float, a: float, b: float, M: float | None=None,
+                      phase: str="vapor") -> dict:
+    """Van der Waals con coeficientes a,b explícitos en L²·bar·mol⁻² y L·mol⁻¹.
+
+    T en K, P en bar; M opcional en g/mol. Devuelve Vm en L/mol.
+    A diferencia de cubic_state('vdw', ...), no infiere los coeficientes
+    a partir de Tc y Pc. Permite reproducir datos experimentales/de ejercicios.
+    """
+    if not all(math.isfinite(v) for v in (T,P,a,b)) or min(T,P,a,b) <= 0:
+        raise ValueError("T, P, a y b deben ser positivos y finitos.")
+    if M is not None and (not math.isfinite(M) or M <= 0):
+        raise ValueError("La masa molar debe ser positiva y finita.")
+    A = a*P/(R_BAR**2*T**2)
+    B = b*P/(R_BAR*T)
+    poly=(1.0,-(1.0+B),A,-A*B)
+    all_roots=real_cubic_roots(*poly)
+    roots=[z for z in all_roots if z>0 and z>B+1e-10]
+    z=choose_root(roots,phase)
+    vm=z*R_BAR*T/P
+    # La presión recalculada en la EoS es la prueba independiente de cierre.
+    pressure=R_BAR*T/(vm-b)-a/vm**2
+    if not math.isclose(pressure,P,rel_tol=2e-8,abs_tol=1e-10):
+        raise ValueError("La raíz obtenida no satisface la ecuación de estado.")
+    lnphi=ln_phi('vdw',z,A,B)
+    return dict(model='vdw',a=a,b=b,A=A,B=B,poly=poly,
+                roots_all=all_roots,roots=roots,Z=z,Vm=vm,
+                phase=phase,rho=M/vm if M is not None else None,
+                lnphi=lnphi,phi=math.exp(lnphi),fugacity=math.exp(lnphi)*P,
+                P_reconstructed=pressure)
 
 
 def lk_rhs(vr: float,Tr: float,c: dict) -> float:
@@ -400,6 +436,8 @@ def ideal_state(T: float,P: float,g: Gas) -> dict:
 
 
 def model_state(model: str,T: float,P: float,g: Gas,phase="vapor") -> dict:
+    if not all(math.isfinite(v) and v > 0 for v in (T,P,g.Tc,g.Pc)):
+        raise ValueError("Temperatura, presión y propiedades críticas deben ser positivas y finitas.")
     m=model.lower()
     if m in ("ideal","gasideal"): return ideal_state(T,P,g)
     if m in ("lk","lee-kesler","leekesler"): return lee_kesler(T,P,g,phase)
@@ -407,6 +445,8 @@ def model_state(model: str,T: float,P: float,g: Gas,phase="vapor") -> dict:
 
 
 def saturation_pressure(model: str,T: float,g: Gas) -> dict:
+    if not all(math.isfinite(v) and v > 0 for v in (T,g.Tc,g.Pc)):
+        raise ValueError("T, Tc y Pc deben ser positivas y finitas.")
     model=model.lower()
     if model not in ("vdw","rk","srk","pr"): raise ValueError("Saturación disponible para vdw, rk, srk y pr.")
     if T>=g.Tc: raise ValueError("T debe ser inferior a Tc para una coexistencia líquido-vapor de sustancia pura.")
@@ -440,6 +480,8 @@ def virial_pressure(P: float,Bp=0.0,Cp=0.0,Dp=0.0) -> float:
 
 
 def virial_volume(T: float,P: float,B=0.0,C=0.0,D=0.0) -> dict:
+    if not all(math.isfinite(v) for v in (T,P,B,C,D)) or T <= 0 or P <= 0:
+        raise ValueError("T y P deben ser positivas, y todos los datos finitos.")
     # Z = 1 + B/Vm + C/Vm^2 + D/Vm^3; B en L/mol, C en L2/mol2, D en L3/mol3.
     def f(v): return P*v/(R_BAR*T)-(1+B/v+C/v**2+D/v**3)
     guess=R_BAR*T/P
@@ -662,7 +704,7 @@ def build_parser():
     p=argparse.ArgumentParser(description="Cálculos de gases reales. Sin argumentos abre menú interactivo.",formatter_class=argparse.RawTextHelpFormatter)
     p.add_argument("--sigfigs",type=int,default=None,help="Fuerza N cifras significativas en la salida.")
     sub=p.add_subparsers(dest="cmd")
-    s=sub.add_parser("estado",help="Calcula Z, Vm, densidad, raíces y fugacidad."); common_tp(s); s.add_argument("--modelo",default="pr",choices=["ideal","vdw","rk","srk","pr","lk"]); s.add_argument("--fase",default="vapor",choices=["vapor","liquido","auto"])
+    s=sub.add_parser("estado",help="Calcula Z, Vm, densidad, raíces y fugacidad."); common_tp(s); s.add_argument("--modelo",default="pr",choices=["ideal","vdw","rk","srk","pr","lk"]); s.add_argument("--fase",default="vapor",choices=["vapor","liquido","auto"]); s.add_argument("--vdw-a",help="Coeficiente a directo [L² bar mol⁻²], solo con --modelo vdw"); s.add_argument("--vdw-b",help="Coeficiente b directo [L mol⁻¹], solo con --modelo vdw")
     s=sub.add_parser("comparar",help="Compara todos los modelos disponibles para un estado."); common_tp(s); s.add_argument("--fase",default="vapor",choices=["vapor","liquido"])
     s=sub.add_parser("lee-kesler",help="Muestra Z(0), Z(r), Z(1) y Z."); common_tp(s); s.add_argument("--fase",default="vapor",choices=["vapor","liquido"])
     s=sub.add_parser("idealidad",help="Decide si gas ideal cumple el error máximo indicado."); common_tp(s); s.add_argument("--error",required=True,help="Error máximo admisible, en %%"); s.add_argument("--magnitud",default="n",choices=["n","v"],help="n: cantidad/masa/densidad; v: volumen/volumen molar"); s.add_argument("--metodo",default="comparar",choices=["vdw","rk","srk","pr","lk","comparar","z"]); s.add_argument("--z",help="Z introducido por el usuario si --metodo z"); s.add_argument("--fase",default="vapor",choices=["vapor","liquido"]); s.add_argument("--grafica",help="Ruta PNG opcional para la gráfica del criterio.")
@@ -693,6 +735,19 @@ def main(argv=None):
             print(f"{g.name} ({g.formula}), modelo {args.modelo.upper()}"); print("P* =",fmt(r['P'],sig,"bar")); print("ZL =",fmt(r['ZL'],max(sig,5))); print("ZV =",fmt(r['ZV'],max(sig,5))); print("Vm,L =",fmt(r['VmL'],sig,"L mol⁻¹")); print("Vm,V =",fmt(r['VmV'],sig,"L mol⁻¹")); print("phiL =",fmt(r['phiL'],max(sig,5))); print("phiV =",fmt(r['phiV'],max(sig,5))); print("fL =",fmt(r['fL'],sig,"bar")); print("fV =",fmt(r['fV'],sig,"bar")); return 0
         Pn=parse_num(args.P); P=p_to_bar(Pn,args.P_unit); sig=args.sigfigs or min(sig_min(Tn,Pn),g.db_sig)
         if args.cmd=="estado":
+            explicit=(args.vdw_a is not None or args.vdw_b is not None)
+            if explicit:
+                if args.modelo != "vdw" or args.vdw_a is None or args.vdw_b is None:
+                    raise ValueError("--vdw-a y --vdw-b deben usarse juntos y solo con --modelo vdw.")
+                st=vdw_state_from_ab(T,P,parse_num(args.vdw_a).value,
+                                     parse_num(args.vdw_b).value,g.M,args.fase)
+                sig=args.sigfigs or sig_min(Tn,Pn,parse_num(args.vdw_a),parse_num(args.vdw_b))
+                print(f"vdW: a={args.vdw_a} L² bar mol⁻²; b={args.vdw_b} L mol⁻¹ (datos suministrados).")
+                print("Z =",fmt(st['Z'],max(sig,6)))
+                print("Vm =",fmt(st['Vm'],max(sig,6),"L mol⁻¹"))
+                print("P reconstruida =",fmt(st['P_reconstructed'],max(sig,6),"bar"))
+                if st['rho'] is not None: print("rho =",fmt(st['rho'],max(sig,6),"kg m⁻³"))
+                return 0
             st=model_state(args.modelo,T,P,g,args.fase); print_state(args.modelo.upper(),st,g,sig); [print("ADVERTENCIA:",w) for w in heuristic_warnings(T,P,g)]; return 0
         if args.cmd=="lee-kesler":
             st=lee_kesler(T,P,g,args.fase); print(f"Tr = {fmt(st['Tr'],sig)}; Pr = {fmt(st['Pr'],sig)}"); print("Z(0) =",fmt(st['Z0'],max(sig,5))); print("Z(r) =",fmt(st['Zr'],max(sig,5))); print("Z(1) =",fmt(st['Z1'],max(sig,5))); print("Z =",fmt(st['Z'],sig)); print("Vm =",fmt(st['Vm'],sig,"L mol⁻¹")); return 0

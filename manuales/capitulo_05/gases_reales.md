@@ -380,4 +380,28 @@ Inicio y ayuda revisados; no se ha ejecutado una batería de casos numéricos ex
 
 ## 12. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 5** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 5** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **Z = 1 + B′P con B′ = −0,002 bar⁻¹ y P = 10 bar ⇒ Z = 0,98**. Límite virial en presión; no valida todos los modelos cúbicos.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+### Nota de verificación científica adicional
+
+Revisión adicional (7-11-2026): el lector de datos y los calculadores de estado rechazan números no finitos, temperaturas no positivas y presiones no positivas. Se han comprobado residuos polinómicos de cuatro ecuaciones cúbicas, límite de baja presión e igualdad de fugacidades entre fases en doce casos seleccionados. No se han contrastado exhaustivamente los parámetros de todas las sustancias ni las regiones próximas al punto crítico.
+
+
+## Complemento 2026-11-07: parámetros van der Waals a, b introducidos por el usuario
+
+Para reproducir el ejercicio 5.B.2 del libro, el comando `estado` admite dos opciones **conjuntas** de parámetros directos:
+
+```bat
+python capitulo_05/gases_reales.py --sigfigs 8 estado --gas CO2 --T 300 --P 10 --modelo vdw --vdw-a 3.66 --vdw-b 0.0428
+```
+
+`--vdw-a`: L²·bar·mol⁻²; `--vdw-b`: L·mol⁻¹. La temperatura debe estar en kelvin y la presión en bar si no se indica otra unidad. La salida corresponde a `Z = 0,95677794` y `Vm = 2,3865283 L/mol`. La presión recalculada mediante la ecuación de estado es 10 bar.
+
+Las dos opciones únicamente son válidas juntas con `--modelo vdw`, rechazan valores no positivos o no finitos y no alteran los otros modelos. Sin `--vdw-a` y `--vdw-b` se mantienen los parámetros inferidos de las propiedades críticas, que no tienen por qué coincidir con los coeficientes empíricos dados en un ejercicio. El modo **no** garantiza la estabilidad física de una fase en condiciones de coexistencia: el usuario debe seleccionar la fase apropiada y justificar la aplicabilidad de vdW.

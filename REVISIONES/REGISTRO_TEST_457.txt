@@ -1,0 +1,14 @@
+Comando: OPENBLAS_NUM_THREADS=1 python -m unittest discover -s pruebas_revision -q
+----------------------------------------------------------------------
+Ran 457 tests in 19.022s
+
+OK
+
+==============================================================================
+7B. MEZCLA CON ESPECIES CONOCIDAS A PARTIR DE MAGNITUDES ESTEQUIOMÉTRICAS
+==============================================================================
+Se introducen especies químicas candidatas y magnitudes medibles (CO2, H2O, O2 consumido, cantidad total, etc.). El programa construye y comprueba el sistema lineal; no se introducen ecuaciones algebraicas.
+
+==============================================================================
+7E. CANTIDAD DE UN COMBUSTIBLE PURO A PARTIR DEL O2 ESTEQUIOMÉTRICO
+==============================================================================

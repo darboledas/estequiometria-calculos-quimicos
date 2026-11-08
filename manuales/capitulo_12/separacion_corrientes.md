@@ -126,4 +126,29 @@ Inicio y ayuda revisados; no se ha ejecutado una batería de casos numéricos ex
 
 ## 12. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 12** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 12** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **100 kg/h al 30 %, salidas al 50 % y 10 % ⇒ 50 kg/h en cada corriente**. Balance total y de soluto.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+
+### Entrada por recuperación del soluto, ejercicio 12.B.14
+
+El nuevo comando `python capitulo_12/separacion_corrientes.py --recuperacion`
+solicita caudal de alimentación, porcentaje másico de soluto en la alimentación,
+porcentaje másico de soluto en la corriente concentrada y porcentaje de recuperación
+del soluto en dicha corriente. Calcula ambas salidas y la concentración del rechazo.
+
+Ejemplo: `600`, `15,0`, `45,0`, `90,0` produce **180 kg/h** en la corriente
+concentrada, **420 kg/h** en la segunda corriente y **2,142857… %** de soluto
+en esta última, de acuerdo con el solucionario. El uso sin `--recuperacion`
+conserva la interacción anterior por dos composiciones de salida.
+
+Por propagación conservadora de las cifras significativas, la pantalla puede presentar
+la composición de rechazo como `2,1 %`; la línea *Valor interno aproximado para
+cotejo* permite verificar el `2,14 %` publicado en el solucionario. El valor interno
+no debe interpretarse como precisión experimental adicional.

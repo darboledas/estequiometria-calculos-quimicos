@@ -310,4 +310,15 @@ Inicio y ayuda revisados; no se ha ejecutado una batería de casos numéricos ex
 
 ## 13. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 7** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 7** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **Flash: z = (0,5; 0,5), K = (2; 0,5) ⇒ β = 0,5**. Raíz de Rachford–Rice y cierre de fases.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+### Nota de verificación científica adicional
+
+Revisión adicional (7-11-2026): comprobados 500 repartos aleatorios del flash multicomponente mediante cierres de composición y materia, y 200 integrales de Rayleigh frente a su solución analítica para volatilidad relativa constante. Los ejemplos constituyen pruebas de consistencia algebraica y no abarcan equipos reales ni coeficientes K dependientes de composición.

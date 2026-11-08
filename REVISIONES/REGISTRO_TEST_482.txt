@@ -1,0 +1,4 @@
+BLOQUE X — copia de trabajo 2026-11-07
+Base 457 + 21 cotejos nuevos + 4 controles = 482 pruebas.
+Unittest: Ran 482 tests ... OK. Compilación: OK.
+Ejercicios B/C pendientes: 97; conceptuales A pendientes: 206.

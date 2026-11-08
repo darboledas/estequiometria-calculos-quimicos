@@ -1,0 +1,224 @@
+{
+  "fecha": "2026-11-07",
+  "bloque": 5,
+  "pruebas_nuevas": 27,
+  "ejercicios_nuevos": 23,
+  "ejercicios_distintos_acumulados": 139,
+  "pruebas_transversales_acumuladas": 317,
+  "pruebas_validacion": [
+    "test_15_antoine_rechaza_nan_inf_directo",
+    "test_15_antoine_rechaza_desbordamiento_y_singularidad",
+    "test_15_antoine_convencion_kelvin_frente_a_celsius",
+    "test_15_antoine_interfaz_rechaza_coeficiente_nan"
+  ],
+  "nota": "Pruebas seleccionadas; algunas usan balances algebraicos auxiliares, no una solución completa del programa.",
+  "matriz": [
+    {
+      "ejercicio": "12.C.5",
+      "pagina_pdf_libro": 716,
+      "capitulo": 12,
+      "metodo": "test_12_C_5_tres_componentes_dos_separaciones",
+      "comprobacion": "12.C.5; separación A/B/C: caudales y cierres por especie.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "12.C.6",
+      "pagina_pdf_libro": 716,
+      "capitulo": 12,
+      "metodo": "test_12_C_6_evaporacion_y_mezcla",
+      "comprobacion": "12.C.6: evaporación a 15%, mezcla final al 7,20%.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "12.C.7",
+      "pagina_pdf_libro": 717,
+      "capitulo": 12,
+      "metodo": "test_12_C_7_balance_transitorio_celular",
+      "comprobacion": "12.C.7: 42 nmol al minuto 10 y al 30.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "12.C.8",
+      "pagina_pdf_libro": 717,
+      "capitulo": 12,
+      "metodo": "test_12_C_8_evaporador_cristalizador_filtracion",
+      "comprobacion": "12.C.8: base de dos horas y licor retenido en torta.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "13.C.4",
+      "pagina_pdf_libro": 763,
+      "capitulo": 13,
+      "metodo": "test_13_C_4_descomposicion_carbonato",
+      "comprobacion": "13.C.4: cantidad gas, riqueza 65,5% y masa residual 18,5g.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "13.C.5",
+      "pagina_pdf_libro": 763,
+      "capitulo": 13,
+      "metodo": "test_13_C_5_conversion_y_recuperacion_no_iguales",
+      "comprobacion": "13.C.5: 70% conversión, 85% recuperación física, 59,5% global.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "13.C.6",
+      "pagina_pdf_libro": 764,
+      "capitulo": 13,
+      "metodo": "test_13_C_6_fermentacion_glucosa_carbono",
+      "comprobacion": "13.C.6: 1,20 mol reaccionados; 2,4 mol etanol y CO2.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "13.C.7",
+      "pagina_pdf_libro": 764,
+      "capitulo": 13,
+      "metodo": "test_13_C_7_balance_carbono_biomasa",
+      "comprobacion": "13.C.7: balance elemental global del cultivo.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "13.C.8",
+      "pagina_pdf_libro": 764,
+      "capitulo": 13,
+      "metodo": "test_13_C_8_etilenglicol_fraccion_co2",
+      "comprobacion": "13.C.8: HCOOH=0,820 mol/h, fracción C a CO2=57,3%.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "13.C.9",
+      "pagina_pdf_libro": 765,
+      "capitulo": 13,
+      "metodo": "test_13_C_9_dos_extensiones_no_no2_n2o4",
+      "comprobacion": "13.C.9: ξ1=0,8 y ξ2=0,5; oxígeno consumido 0,8.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "13.C.10",
+      "pagina_pdf_libro": 765,
+      "capitulo": 13,
+      "metodo": "test_13_C_10_precipitado_baso4_y_filtro",
+      "comprobacion": "13.C.10: BaSO4 formado 6 mol/min, recuperado 5,4 mol/min.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "14.C.4",
+      "pagina_pdf_libro": 809,
+      "capitulo": 14,
+      "metodo": "test_14_C_4_inversion_ch4_c2h6_orSAT",
+      "comprobacion": "14.C.4: 59,1/40,9 mol%, agua 17,5; exceso 20,0%.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "14.C.6",
+      "pagina_pdf_libro": 809,
+      "capitulo": 14,
+      "metodo": "test_14_C_6_combustible_con_co_y_n2_inerte",
+      "comprobacion": "14.C.6: CH4/CO/N2=23,2/11,6/65,3%; aire 28,1% exceso.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "14.C.7",
+      "pagina_pdf_libro": 810,
+      "capitulo": 14,
+      "metodo": "test_14_C_7_respirometria_glucosa",
+      "comprobacion": "14.C.7: oxidación de 2,50 mmol glucosa y 40,0% O2 residual.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "14.C.8",
+      "pagina_pdf_libro": 810,
+      "capitulo": 14,
+      "metodo": "test_14_C_8_hc_por_analisis_seco_incompleto",
+      "comprobacion": "14.C.8: gases con CO y O2, H/C=2,90; 108 mol aire.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "14.C.9",
+      "pagina_pdf_libro": 810,
+      "capitulo": 14,
+      "metodo": "test_14_C_9_composicion_ch4_propano_inversa",
+      "comprobacion": "14.C.9: x(C3H8)=0,65605 con 11,0% CO2 seco.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "14.C.10",
+      "pagina_pdf_libro": 810,
+      "capitulo": 14,
+      "metodo": "test_14_C_10_sustrato_c4h8o2",
+      "comprobacion": "14.C.10: C4H8O2 + 5 O2 -> 4 CO2 + 4 H2O.",
+      "alcance": "motor del programa y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "15.C.4",
+      "pagina_pdf_libro": 888,
+      "capitulo": 15,
+      "metodo": "test_15_C_4_humidificacion_adiabatica_invernadero",
+      "comprobacion": "15.C.4: W1=0,00889, h=54,9, W2=0,0125, RH2≈71%.",
+      "alcance": "funciones del módulo psicrométrico y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "15.C.6",
+      "pagina_pdf_libro": 889,
+      "capitulo": 15,
+      "metodo": "test_15_C_6_enfriamiento_recalentamiento",
+      "comprobacion": "15.C.6: W inicial≈0,02018, condensado≈0,01144, RH final≈53%.",
+      "alcance": "funciones del módulo psicrométrico y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "15.C.7",
+      "pagina_pdf_libro": 889,
+      "capitulo": 15,
+      "metodo": "test_15_C_7_camara_fermentacion_dos_etapas",
+      "comprobacion": "15.C.7: 1,89 kg/h de agua; 11,4 kg en 6h.",
+      "alcance": "funciones del módulo psicrométrico y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "15.C.8",
+      "pagina_pdf_libro": 890,
+      "capitulo": 15,
+      "metodo": "test_15_C_8_condensacion_invernadero",
+      "comprobacion": "15.C.8: W condensada≈0,002256 kg/kg.",
+      "alcance": "funciones del módulo psicrométrico y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "15.C.9",
+      "pagina_pdf_libro": 890,
+      "capitulo": 15,
+      "metodo": "test_15_C_9_secadero_infusiones",
+      "comprobacion": "15.C.9: 1,629 kg/h, 4,073 kg en 2,5h, cap. 1,35kg/h.",
+      "alcance": "funciones del módulo psicrométrico y balances auxiliares",
+      "estado": "PASS"
+    },
+    {
+      "ejercicio": "15.C.10",
+      "pagina_pdf_libro": 891,
+      "capitulo": 15,
+      "metodo": "test_15_C_10_etanol_n2_interfaz_general",
+      "comprobacion": "15.C.10: interfaz gas-vapor general y 0,0866 kg EtOH/kg N2.",
+      "alcance": "interfaz del programa",
+      "estado": "PASS"
+    }
+  ]
+}

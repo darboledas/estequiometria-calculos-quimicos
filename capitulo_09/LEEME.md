@@ -27,4 +27,8 @@ Los directorios `ejemplos`, `muestras` y `pruebas`, cuando existan, contienen re
 
 ## Referencia y licencia
 
-Código y documentación de este repositorio: **licencia MIT** (`../LICENSE`). DOI del software **pendiente de asignación** tras publicar una versión y archivarla con Zenodo. DOI del libro relacionado: **10.5281/zenodo.24013068**.
+Código y documentación de este repositorio: **licencia MIT** (`../LICENSE`). DOI general del software: **10.5281/zenodo.24020474**; DOI de la versión 0.9.0: **10.5281/zenodo.24020473**. DOI del libro relacionado: **10.5281/zenodo.24013068**.
+
+## Validación de Antoine para líquidos inmiscibles (bloque VIII)
+
+Se rechazan parámetros no finitos, masa molar no positiva, B negativo, temperaturas límite incoherentes y presiones de vapor no físicas. Se conserva B=0 como correlación constante artificial de verificación. Referencia: ejercicio 9.B.3, T=351,1889 K a P=0,800 bar. Véase `REVISIONES/MATRIZ_COTEJO_BLOQUE_08.json`.

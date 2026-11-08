@@ -1,0 +1,207 @@
+{
+  "fecha": "2026-11-07",
+  "bloque": "X",
+  "base_pruebas": 457,
+  "nuevas_pruebas": 25,
+  "pruebas_acumuladas": 482,
+  "ejercicios_nuevos": 21,
+  "ejercicios_cotejados_total": 253,
+  "identificadores_libro": 556,
+  "pendientes_A": 206,
+  "pendientes_B": 46,
+  "pendientes_C": 51,
+  "pendientes_total": 303,
+  "validaciones_entradas_invalidas": 4,
+  "pruebas": "pruebas_revision/test_cotejo_bloque_10.py",
+  "matriz": [
+    {
+      "ejercicio": "5.B.15",
+      "pagina_pdf_libro": 248,
+      "programa": "gases_reales.py",
+      "resultado_referencia": "SRK: Z=0,789516; Vm=0,875253 L/mol",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "5.B.17",
+      "pagina_pdf_libro": 249,
+      "programa": "gases_reales.py",
+      "resultado_referencia": "PR: Psat=20,36572 bar; igualdad de fugacidades",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "5.B.19",
+      "pagina_pdf_libro": 249,
+      "programa": "gases_reales.py",
+      "resultado_referencia": "Virial: Z=0,95145894; P=10,08636 bar",
+      "alcance": "función + balance algebraico",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "6.B.10",
+      "pagina_pdf_libro": 293,
+      "programa": "presion_vapor.py",
+      "resultado_referencia": "Dühring: P(335 K)=20,0478 kPa",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "7.B.14",
+      "pagina_pdf_libro": 361,
+      "programa": "operaciones_liquido_vapor.py",
+      "resultado_referencia": "Rayleigh: W=17,7627 mol; D=82,2373 mol",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "7.B.15",
+      "pagina_pdf_libro": 362,
+      "programa": "operaciones_liquido_vapor.py",
+      "resultado_referencia": "Cuatro etapas: y_final=0,79050",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "7.B.16",
+      "pagina_pdf_libro": 362,
+      "programa": "inmiscibles_y_arrastre_vapor.py",
+      "resultado_referencia": "P=101,30 kPa; m_tol/m_agua=4,08643",
+      "alcance": "función + balance algebraico",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "8.B.12",
+      "pagina_pdf_libro": 459,
+      "programa": "disoluciones_no_ideales.py",
+      "resultado_referencia": "Margules1: x_az=0,695835; P_az=89,3934 kPa",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "8.B.13",
+      "pagina_pdf_libro": 459,
+      "programa": "disoluciones_no_ideales.py",
+      "resultado_referencia": "Margules2: x_az=0,733818; P_az=80,2656 kPa",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "8.B.14",
+      "pagina_pdf_libro": 460,
+      "programa": "disoluciones_no_ideales.py",
+      "resultado_referencia": "Margules2 y Van Laar: límites de dilución infinita",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "8.B.15",
+      "pagina_pdf_libro": 460,
+      "programa": "disoluciones_no_ideales.py",
+      "resultado_referencia": "EMA y RECM de dos ajustes",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "9.B.9",
+      "pagina_pdf_libro": 516,
+      "programa": "inmiscibles_y_arrastre_vapor.py",
+      "resultado_referencia": "Razón de presiones=0,0599694",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "9.B.10",
+      "pagina_pdf_libro": 516,
+      "programa": "equilibrio_liquido_liquido.py",
+      "resultado_referencia": "Regla de palanca en 20/25 °C; cierre de masa",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "10.B.10",
+      "pagina_pdf_libro": 588,
+      "programa": "propiedades_coligativas.py",
+      "resultado_referencia": "Etilenglicol: ΔTf=3,72 K; ΔTb=1,024 K",
+      "alcance": "función + balance algebraico",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "11.B.11",
+      "pagina_pdf_libro": 659,
+      "programa": "balances_materia.py",
+      "resultado_referencia": "Caudales N2=40, O2=10 mol/min",
+      "alcance": "función + balance algebraico",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "11.B.12",
+      "pagina_pdf_libro": 659,
+      "programa": "balances_materia.py",
+      "resultado_referencia": "Caudal másico N2=70,035 kg/h",
+      "alcance": "directa",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "12.B.9",
+      "pagina_pdf_libro": 713,
+      "programa": "cristalizacion.py",
+      "resultado_referencia": "KCl: 367,6752 kg cristal; balance de KCl",
+      "alcance": "función + balance algebraico",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "12.B.11",
+      "pagina_pdf_libro": 713,
+      "programa": "extraccion_liquido_liquido.py",
+      "resultado_referencia": "Ácido: 31,7731 kg extraídos; 74,1324 %",
+      "alcance": "función + balance algebraico",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "14.B.8",
+      "pagina_pdf_libro": 808,
+      "programa": "combustion.py",
+      "resultado_referencia": "Etano: 215 mol húmedos / 185 mol secos",
+      "alcance": "función + balance algebraico",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "15.B.8",
+      "pagina_pdf_libro": 884,
+      "programa": "psicrometria.py",
+      "resultado_referencia": "Enfriamiento sin condensación; humedad relativa=71 %",
+      "alcance": "función + balance algebraico",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    },
+    {
+      "ejercicio": "15.B.9",
+      "pagina_pdf_libro": 884,
+      "programa": "psicrometria.py",
+      "resultado_referencia": "Enfriamiento con condensación; Δω≈0,01394 kg/kg",
+      "alcance": "función + balance algebraico",
+      "estado": "PASS",
+      "procedencia": "Libro definitivo y solucionario desarrollado"
+    }
+  ]
+}

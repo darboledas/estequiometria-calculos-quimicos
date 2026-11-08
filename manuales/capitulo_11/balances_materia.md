@@ -163,4 +163,40 @@ Archivo de pruebas del capítulo 11: 58 pruebas correctas.
 
 ## 12. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 11** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 11** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **x + y = 3, x − y = 1 ⇒ (x, y) = (2, 1)**. Solución lineal y detección de incompatibilidad.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+
+## Revisión adicional de balances y combustión — 7 de noviembre de 2026
+
+### Redes y conexiones con identificadores numéricos
+
+El motor de redes admite identificadores de unidades y corrientes en JSON como números (por ejemplo `1`) o como cadenas (`"1"`). Se normalizan internamente para establecer las conexiones; dos identificadores que resulten iguales tras normalizarlos se consideran duplicados y se rechazan.
+
+Caso reproducible, desde la raíz del repositorio:
+
+```powershell
+python capitulo_11/balances_materia.py --red capitulo_11/ejemplos/red_ids_numericos.json
+```
+
+La red contiene dos unidades consecutivas y tres corrientes, con alimentación de **100,0 kg/h**, de los que el 40 % corresponde a A y el 60 % a B. Al no existir transformación ni purga, las tres corrientes conservan **40 kg/h de A y 60 kg/h de B**. Para automatizarlo se utiliza `pruebas_revision/test_balances_combustion_ampliada.py`.
+
+## Ampliación: invariancia de escala y balances elementales (7 de noviembre de 2026)
+
+Se corrigió un umbral absoluto que podía ocultar caudales negativos del orden de 10⁻⁹–10⁻¹² y suprimir la composición de una corriente pequeña pero positiva. El criterio actual compara las corrientes con una tolerancia relativa vinculada a la escala de la red, sin presuponer que la unidad de cálculo se encuentre próxima a 1.
+
+**Pruebas independientes:** una alimentación de 10⁻¹² unidades con consumo especificado del doble debe producir una salida negativa y ser rechazada. Si se consume el 20 % de la alimentación, la salida es 8·10⁻¹³ y la fracción de A sigue siendo 1,0. En una red con reciclado de 30 y alimentación de 100, el caudal intermedio es 130 y el producto neto es 100; sin especificar el reciclado, el sistema permanece indeterminado.
+
+Para reproducir los casos:
+
+```powershell
+python -m unittest discover -s pruebas_revision -p test_escalas_y_productos_combustion.py -v
+```
+
+La tolerancia relativa no reemplaza el análisis de condicionamiento ni la incertidumbre experimental, especialmente al combinar corrientes de escalas muy dispares.

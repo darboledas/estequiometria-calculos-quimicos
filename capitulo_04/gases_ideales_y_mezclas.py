@@ -221,8 +221,8 @@ def solve_ideal(P: Optional[float], V: Optional[float], n: Optional[float], T: O
     missing = [k for k, v in {"P":P,"V":V,"n":n,"T":T}.items() if v is None]
     if len(missing) != 1:
         raise ValueError("Debe proporcionar exactamente tres de P, V, n y T.")
-    if any(v is not None and v <= 0 for v in (P,V,n,T)):
-        raise ValueError("P, V, n y T deben ser positivos.")
+    if any(v is not None and (not math.isfinite(v) or v <= 0) for v in (P,V,n,T)):
+        raise ValueError("P, V, n y T deben ser positivos y finitos.")
     if P is None: P = n*R*T/V
     elif V is None: V = n*R*T/P
     elif n is None: n = P*V/(R*T)

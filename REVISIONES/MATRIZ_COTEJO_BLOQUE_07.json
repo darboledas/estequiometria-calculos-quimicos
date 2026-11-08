@@ -1,0 +1,230 @@
+{
+  "fecha": "2026-11-07",
+  "bloque": 7,
+  "estado": "no publicado",
+  "ejercicios_nuevos": 26,
+  "controles_de_validacion_nuevos": 3,
+  "pruebas_nuevas": 29,
+  "pruebas_transversales_acumuladas": 374,
+  "ejercicios_distintos_acumulados": 188,
+  "identificadores_inventariados": 556,
+  "pendientes_sin_cotejo_especifico": 368,
+  "fuentes": [
+    "Libro definitivo 934 páginas",
+    "Solucionario desarrollado 220 páginas"
+  ],
+  "limitaciones": "No se certifica cada función de los 28 programas ni se valida el modelo contra datos experimentales. Algunas operaciones son algebraicas auxiliares.",
+  "erratas_solucionario": [
+    "5.B.6: la cúbica impresa omite multiplicadores RT y tiene signos incorrectos; los resultados de Vm y Z sí son correctos."
+  ],
+  "matriz": [
+    {
+      "ejercicio": "2.B.6",
+      "pagina_pdf_libro": 97,
+      "prueba": "test_2_B_6_reynolds",
+      "procedimiento": "cálculo algebraico y conversión mediante programa",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "3.B.14",
+      "pagina_pdf_libro": 159,
+      "prueba": "test_3_B_14_caliza",
+      "procedimiento": "masa molar del programa + cálculo algebraico",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "3.B.15",
+      "pagina_pdf_libro": 159,
+      "prueba": "test_3_B_15_conversion_so2",
+      "procedimiento": "ajuste químico y balance de reactivo limitante",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "4.B.7",
+      "pagina_pdf_libro": 190,
+      "prueba": "test_4_B_7_dalton",
+      "procedimiento": "ley de gases ideales + balance Dalton",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "4.C.10",
+      "pagina_pdf_libro": 193,
+      "prueba": "test_4_C_10_absorbedor_benceno",
+      "procedimiento": "gas ideal mediante programa + balance de absorción auxiliar",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "4.C.11",
+      "pagina_pdf_libro": 193,
+      "prueba": "test_4_C_11_absorbedor_nh3",
+      "procedimiento": "gas ideal mediante programa + balance de absorción auxiliar",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "5.B.6",
+      "pagina_pdf_libro": 247,
+      "prueba": "test_5_B_6_virial_isopropanol_y_errata_solu",
+      "procedimiento": "virial de tercer orden: función del programa y residuo polinómico independiente",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "5.B.7",
+      "pagina_pdf_libro": 247,
+      "prueba": "test_5_B_7_vdw_parametros_criticos_etano",
+      "procedimiento": "cálculo de parámetros vdW desde constantes incorporadas; álgebra auxiliar",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "5.B.12",
+      "pagina_pdf_libro": 248,
+      "prueba": "test_5_B_12_leekesler_datos_explicitos",
+      "procedimiento": "Lee–Kesler: propiedades críticas explícitas",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "5.B.16",
+      "pagina_pdf_libro": 249,
+      "prueba": "test_5_B_16_fugacidad_vdw",
+      "procedimiento": "vdW con parámetros explícitos: estado y fugacidad",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "5.B.20",
+      "pagina_pdf_libro": 249,
+      "prueba": "test_5_B_20_extremos_vdw_con_referencia",
+      "procedimiento": "extremos vdW: derivación y raíces polinómicas auxiliares; no interfaz directa",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "6.B.8",
+      "pagina_pdf_libro": 292,
+      "prueba": "test_6_B_8_acetona_camara",
+      "procedimiento": "Antoine e inventario de gas ideal",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "6.B.12",
+      "pagina_pdf_libro": 293,
+      "prueba": "test_6_B_12_sublimacion_clausius",
+      "procedimiento": "Clausius–Clapeyron directo e inversión de temperatura",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "6.C.2",
+      "pagina_pdf_libro": 294,
+      "prueba": "test_6_C_2_agua_50kpa",
+      "procedimiento": "Antoine: inversión y cierre de presión",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "7.B.6",
+      "pagina_pdf_libro": 359,
+      "prueba": "test_7_B_6_tabla_benceno_tolueno",
+      "procedimiento": "Raoult directo, ocho filas y suma de fracciones",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "7.B.7",
+      "pagina_pdf_libro": 359,
+      "prueba": "test_7_B_7_volatilidad_constante",
+      "procedimiento": "volatilidad relativa: relación algebraica auxiliar",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "7.B.8",
+      "pagina_pdf_libro": 359,
+      "prueba": "test_7_B_8_curvas_presiones_vapor",
+      "procedimiento": "Antoine + Raoult, malla 41 composiciones y puntos puros",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "8.B.8",
+      "pagina_pdf_libro": 458,
+      "prueba": "test_8_B_8_rocio_margules",
+      "procedimiento": "rocío Margules: iteración real del programa",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "8.B.11",
+      "pagina_pdf_libro": 459,
+      "prueba": "test_8_B_11_temperatura_rocio_margules",
+      "procedimiento": "rocío térmico: correlación exponencial e iteración real",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "10.B.5",
+      "pagina_pdf_libro": 587,
+      "prueba": "test_10_B_5_glucosa_raoult",
+      "procedimiento": "composición molar y descenso Raoult, funciones directas",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "10.B.7",
+      "pagina_pdf_libro": 588,
+      "prueba": "test_10_B_7_dh_vs_davies",
+      "procedimiento": "fuerza iónica y coeficiente medio Debye–Hückel/Davies directos",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "11.B.9",
+      "pagina_pdf_libro": 659,
+      "prueba": "test_11_B_9_dilucion",
+      "procedimiento": "balance de disolución con cierre de materia",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "11.B.10",
+      "pagina_pdf_libro": 659,
+      "prueba": "test_11_B_10_mezcla_dos_corrientes",
+      "procedimiento": "solución de dos ecuaciones de balance, función lineal",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "12.B.10",
+      "pagina_pdf_libro": 713,
+      "prueba": "test_12_B_10_reparto_fenol_agua",
+      "procedimiento": "palanca con dos balances lineales, función del programa",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "14.B.11",
+      "pagina_pdf_libro": 808,
+      "prueba": "test_14_B_11_combustion_incompleta_soporte_balance",
+      "procedimiento": "combustión incompleta: balance elemental auxiliar + cierre del programa",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    },
+    {
+      "ejercicio": "14.B.13",
+      "pagina_pdf_libro": 808,
+      "prueba": "test_14_B_13_orsat",
+      "procedimiento": "Orsat: base seca mediante programa + relación de aire auxiliar",
+      "resultado": "OK",
+      "alcance": "caso concreto, no validación experimental"
+    }
+  ]
+}

@@ -421,4 +421,31 @@ Inicio y ayuda revisados; no se ha ejecutado una batería de casos numéricos ex
 
 ## 13. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 6** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 6** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **Antoine directo e inverso a 300 K; Clausius–Clapeyron con T₁ = T₂ ⇒ P₂ = P₁**. Identidad analítica para datos de prueba.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+### Nota de verificación científica adicional
+
+Revisión adicional (7-11-2026): la correlación de Antoine para agua incorporada en la Tabla 6.1 se ha contrastado en 11 temperaturas, de 284 a 441 K, con la presión de saturación de IAPWS. La desviación relativa absoluta observada en esos puntos ha sido del 0,13 % al 2,33 %. No debe confundirse esta fórmula docente con una formulación IAPWS ni extrapolarse fuera del intervalo declarado. La aplicación rechaza entradas numéricas NaN/infinito.
+
+
+## Anexo: límites de correlaciones y excepciones numéricas (revisión local, 7-11-2026)
+
+Se han verificado las transformaciones directas e inversas de Antoine en 231 puntos calculados dentro de los rangos declarados por los 11 juegos de constantes incorporados. También se han contrastado sintéticamente Clausius-Clapeyron y Dühring y los límites didácticos de Lee-Kesler. Las llamadas de bajo nivel a Antoine deben acompañarse de `check_antoine_range`; no se debe extrapolar sin validación expresa.
+
+Si una combinación de coeficientes produce un exponente que desborda la precisión de coma flotante, el programa comunica un `ValueError` descriptivo en lugar de un error bruto de desbordamiento. Esta protección tampoco implica que la correlación sea válida físicamente en todo el rango numérico representable.
+
+**Atención a las unidades:** los coeficientes Antoine del programa se introducen para `log10(P*/kPa) = A − B/(T[K]+C)`; los de NIST WebBook suelen estar expresados con presión en bar. No se intercambian directamente.
+
+
+## Cotejo específico con el libro (7-11-2026)
+
+Se han comparado las 11 entradas de la **tabla 6.1** del libro con la biblioteca interna de Antoine. La entrada del **amoníaco** no coincidía; se ha sustituido por `A=6,86886; B=1113,928; C=−10,409`, rango `240–372 K`, con presión en kPa y temperatura en K. Las otras diez entradas coinciden con el texto.
+
+Resultados de ejercicios contrastados: **6.B.11:** 20,25 kPa (lineal) y 18,737 kPa (interpolación de Clausius); **6.B.14:** n-heptano, 50,893 kPa (Lee-Kesler) y 51,370 kPa (Antoine); **6.B.15:** metanol, 18,615 y 48,395 kPa a 300 y 320 K, con entalpía media estimada 38,130 kJ/mol. Las cifras redondeadas de los ejercicios 6.B.11 y 6.B.15 coinciden con el apéndice E.

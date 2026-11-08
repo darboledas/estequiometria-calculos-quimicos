@@ -1,0 +1,337 @@
+{
+  "fecha": "2026-11-07",
+  "fuente_libro": "Estequiometría y cálculos químicos, edición definitiva, 934 páginas",
+  "fuente_solucionario": "Solucionario desarrollado, capítulos 2–15, 220 páginas",
+  "metodos_totales_bloque": 41,
+  "ejercicios_distintos_bloque": 38,
+  "metodos": [
+    {
+      "metodo": "test_2_B_2_presion_atm_pa_psi",
+      "ejercicio": "2.B.2",
+      "pagina_libro": 96,
+      "descripcion": "2.B.2, libro p.96; solucionario p.4: 2,5 atm = 253312,5 Pa = 36,74 psi.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_2_B_3_calorias",
+      "ejercicio": "2.B.3",
+      "pagina_libro": 96,
+      "descripcion": "2.B.3, p.96: 150,0 cal termoquímicas = 627,6 J.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_2_B_4_velocidad",
+      "ejercicio": "2.B.4",
+      "pagina_libro": 96,
+      "descripcion": "2.B.4, p.96: 12,5 cm/s = 4,50·10² m/h.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_3_B_1_moles_co2",
+      "ejercicio": "3.B.1",
+      "pagina_libro": 158,
+      "descripcion": "3.B.1, p.158: 44,0 g CO₂ ~ 1,00 mol.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_3_B_6_cinc_hidrogeno",
+      "ejercicio": "3.B.6",
+      "pagina_libro": 158,
+      "descripcion": "3.B.6, p.158: 6,50 g Zn producen 2,23 L de H₂ (CN).",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_4_B_3_gasometro_metano",
+      "ejercicio": "4.B.3",
+      "pagina_libro": 190,
+      "descripcion": "4.B.3, p.190: Pabs=120 kPa, masa CH₄≈79,0 kg.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_4_B_4_mezcla_ideal_molar_y_masica",
+      "ejercicio": "4.B.4",
+      "pagina_libro": 190,
+      "descripcion": "4.B.4, p.190: M≈25,1475 g/mol; composición w y caudal ≈242 kg/h.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_4_B_5_mezcla_binaria_resuelta_por_balances",
+      "ejercicio": "4.B.5",
+      "pagina_libro": 190,
+      "descripcion": "4.B.5, p.190: H₂≈2,52 g y He≈7,48 g para masa total de 10 g.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_4_B_6_masa_molar_porcentajes",
+      "ejercicio": "4.B.6",
+      "pagina_libro": 190,
+      "descripcion": "4.B.6, p.190: Mmix≈19,8 g/mol; cuatro fracciones másicas.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_5_B_2_vdw_co2_casi_mismos_parametros",
+      "ejercicio": "5.B.2",
+      "pagina_libro": 246,
+      "descripcion": "5.B.2, p.246: vapor CO₂ van der Waals ~2,38653 L/mol. El programa infiere a,b de Tc,Pc de biblioteca, no acepta a,b del enunciado.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_5_B_2_vdw_parametros_del_enunciado",
+      "ejercicio": "5.B.2",
+      "pagina_libro": 246,
+      "descripcion": "5.B.2, p.246: a=3,66, b=0,0428 reproducen Vm=2,38653 L/mol.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_5_B_2_vdw_rechaza_coeficientes_no_fisicos",
+      "ejercicio": "5.B.2",
+      "pagina_libro": null,
+      "descripcion": "El modo de parámetros directos no acepta a,b negativos, cero, NaN.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_5_B_2_vdw_interfaz_cli_parametros_directos",
+      "ejercicio": "5.B.2",
+      "pagina_libro": null,
+      "descripcion": "La interfaz pública entrega los valores del ejercicio y valida opciones.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_5_B_3_rk_amoniaco",
+      "ejercicio": "5.B.3",
+      "pagina_libro": 246,
+      "descripcion": "5.B.3, p.246: RK NH₃, Z≈0,960829 y Vm≈2,97981 L/mol.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_5_B_5_virial_rama_vapor",
+      "ejercicio": "5.B.5",
+      "pagina_libro": 247,
+      "descripcion": "5.B.5, p.247: n-butano, raíz de vapor ≈8,2959 L/mol, no la pequeña.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_6_B_1_clausius_eter",
+      "ejercicio": "6.B.1",
+      "pagina_libro": 291,
+      "descripcion": "6.B.1, p.291: éter 385 kJ/kg, P(298)=71,8, P(308)=104 kPa.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_6_B_7_antoine_acrilonitrilo",
+      "ejercicio": "6.B.7",
+      "pagina_libro": 292,
+      "descripcion": "6.B.7, p.292: Antoine ad hoc acrilonitrilo P(300)≈15,3333 kPa.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_6_B_9_titulo_vapor_entalpia_tabla_enunciado",
+      "ejercicio": "6.B.9",
+      "pagina_libro": 292,
+      "descripcion": "6.B.9, p.292: x=(2100−640,1)/(2748,1−640,1)≈0,692552.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_7_B_2_raoult_masas_iguales",
+      "ejercicio": "7.B.2",
+      "pagina_libro": 358,
+      "descripcion": "7.B.2, p.358: benz/tol masa igual, P=9,38808 kPa, ybenz≈0,79618.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_7_B_3_rocio_ideal",
+      "ejercicio": "7.B.3",
+      "pagina_libro": 358,
+      "descripcion": "7.B.3, p.358: rocío P=57,55396 kPa, xA=.251799.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_7_B_4_burbuja_antoine",
+      "ejercicio": "7.B.4",
+      "pagina_libro": 358,
+      "descripcion": "7.B.4, p.358: Tbur=366,82004 K yhex=.208475.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_8_B_4_margules_asimetrico",
+      "ejercicio": "8.B.4",
+      "pagina_libro": 457,
+      "descripcion": "8.B.4, p.457: γ1≈1,45648; γ2≈1,23001; gE/RT=.266175.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_9_B_2_coexistencia_beysens",
+      "ejercicio": "9.B.2",
+      "pagina_libro": 513,
+      "descripcion": "9.B.2, p.513: epsilon=.0100; Δw=.42310786; mL1=.874082 kg.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_10_B_2_naftaleno_crioscopia",
+      "ejercicio": "10.B.2",
+      "pagina_libro": 587,
+      "descripcion": "10.B.2, p.587: 0,2 mol/kg, ΔTf=1,024 K, ΔTb=.506 K.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_10_B_3_vant_hoff_experimental",
+      "ejercicio": "10.B.3",
+      "pagina_libro": 587,
+      "descripcion": "10.B.3, p.587: i≈1,828 y desviación ≈−8,6 %.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_10_B_4_osmosis_glucosa",
+      "ejercicio": "10.B.4",
+      "pagina_libro": 587,
+      "descripcion": "10.B.4, p.587: 9,00 g/L glucosa, π≈1,23838 bar.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_11_B_5_corriente_etanol_agua",
+      "ejercicio": "11.B.5",
+      "pagina_libro": 658,
+      "descripcion": "11.B.5, p.658: 36+84=120 kg/h, wEtOH=.300.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_11_B_8_dilucion_glucosa",
+      "ejercicio": "11.B.8",
+      "pagina_libro": 658,
+      "descripcion": "11.B.8, p.658: 80 kg/h w=.3 + agua = 200 kg/h w=.12.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_12_B_1_secado_jabon",
+      "ejercicio": "12.B.1",
+      "pagina_libro": 711,
+      "descripcion": "12.B.1, p.711: 1000 kg al 50 % agua -> 625 kg al 20 %, 375 evaporada.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_12_B_5_dos_evaporadores",
+      "ejercicio": "12.B.5",
+      "pagina_libro": 712,
+      "descripcion": "12.B.5, p.712: F1=2000, F2=800, vapor 2000+1200 kg/h.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_13_B_2_descomposicion_amoniaco",
+      "ejercicio": "13.B.2",
+      "pagina_libro": 759,
+      "descripcion": "13.B.2, p.759: ξ=2,40; N₂=2,40 H₂=7,20 y NH₃ rem=3,20.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_13_B_3_hidrogenacion_acetaldehido",
+      "ejercicio": "13.B.3",
+      "pagina_libro": 759,
+      "descripcion": "13.B.3, p.759: X=.72, salida 1,4 CH3CHO; 3,4 H₂ y 3,6 etanol.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_13_B_8_reacciones_sucesivas",
+      "ejercicio": "13.B.8",
+      "pagina_libro": 760,
+      "descripcion": "13.B.8, p.760: A→B→C, ξ=(8;5) y salida (2;3;5).",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_14_B_1_combustion_etano",
+      "ejercicio": "14.B.1",
+      "pagina_libro": 807,
+      "descripcion": "14.B.1, p.807: 12 mol etano -> 42 O₂, 24 CO₂, 36 H₂O.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_14_B_2_combustion_propanol",
+      "ejercicio": "14.B.2",
+      "pagina_libro": 807,
+      "descripcion": "14.B.2, p.807: 5 mol C3H8O -> 22,5 O₂, 15 CO₂, 20 H₂O.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_14_B_3_aire_teorico_metano",
+      "ejercicio": "14.B.3",
+      "pagina_libro": 807,
+      "descripcion": "14.B.3, p.807: 25 mol CH₄, 50 mol O₂, 238,095 aire y 188,095 N₂.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_14_B_4_exceso_aire_propano",
+      "ejercicio": "14.B.4",
+      "pagina_libro": 807,
+      "descripcion": "14.B.4, p.807: 15 mol propano, aire real≈464,3; O₂ sobrante=22,5.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_14_B_7_mezcla_inertes_aire",
+      "ejercicio": "14.B.7",
+      "pagina_libro": 808,
+      "descripcion": "14.B.7, p.808: mezcla CH₄/C₂H₆/CO₂/N₂ da O₂=40 y CO₂=23.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_15_B_3_saturacion_35_grados",
+      "ejercicio": "15.B.3",
+      "pagina_libro": 883,
+      "descripcion": "15.B.3, p.883: pv*=5,628 kPa, yv=.05554, W=.03657 kg/kg.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_15_B_4_humedad_relativa_saturacion",
+      "ejercicio": "15.B.4",
+      "pagina_libro": 884,
+      "descripcion": "15.B.4, p.884: W=.010, pv≈1,604 kPa, RH≈37,8%, S≈36,8%.",
+      "resultado": "OK"
+    },
+    {
+      "metodo": "test_15_B_5_vapor_por_masa_aire_seco",
+      "ejercicio": "15.B.5",
+      "pagina_libro": 884,
+      "descripcion": "15.B.5, p.884: 2 kg aire seco RH=.45 -> 15,3 g de vapor.",
+      "resultado": "OK"
+    }
+  ],
+  "ejercicios": [
+    "2.B.2",
+    "2.B.3",
+    "2.B.4",
+    "3.B.1",
+    "3.B.6",
+    "4.B.3",
+    "4.B.4",
+    "4.B.5",
+    "4.B.6",
+    "5.B.2",
+    "5.B.3",
+    "5.B.5",
+    "6.B.1",
+    "6.B.7",
+    "6.B.9",
+    "7.B.2",
+    "7.B.3",
+    "7.B.4",
+    "8.B.4",
+    "9.B.2",
+    "10.B.2",
+    "10.B.3",
+    "10.B.4",
+    "11.B.5",
+    "11.B.8",
+    "12.B.1",
+    "12.B.5",
+    "13.B.2",
+    "13.B.3",
+    "13.B.8",
+    "14.B.1",
+    "14.B.2",
+    "14.B.3",
+    "14.B.4",
+    "14.B.7",
+    "15.B.3",
+    "15.B.4",
+    "15.B.5"
+  ],
+  "nota": "Una prueba puede verificar una parte del ejercicio; la coincidencia no certifica todo el menú ni exactitud experimental."
+}

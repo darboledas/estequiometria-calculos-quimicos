@@ -1,0 +1,323 @@
+{
+  "bloque": "IX",
+  "fecha": "2026-11-07",
+  "publicado": false,
+  "base_previas": 418,
+  "pruebas_nuevas": 39,
+  "ejercicios_evaluados": 33,
+  "ejercicios_nuevos": 21,
+  "ejercicios_recontrastados": 12,
+  "guardias_validacion": 6,
+  "total_pruebas": 457,
+  "total_ejercicios_distintos": 232,
+  "identificadores_inventariados": 556,
+  "sin_cotejo_especifico": 324,
+  "metodologia": "Las pruebas con cálculos auxiliares no deben interpretarse como funcionalidades autónomas del programa.",
+  "matriz": [
+    {
+      "ejercicio": "3.B.4",
+      "pagina_PDF_libro": 158,
+      "pagina_solucionario": "Localizable por identificador 3.B.4",
+      "prueba": "test_3_B_4",
+      "estado": "nuevo",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "3.B.6",
+      "pagina_PDF_libro": 158,
+      "pagina_solucionario": "Localizable por identificador 3.B.6",
+      "prueba": "test_3_B_6",
+      "estado": "recontraste",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "4.B.4",
+      "pagina_PDF_libro": 190,
+      "pagina_solucionario": "Localizable por identificador 4.B.4",
+      "prueba": "test_4_B_4",
+      "estado": "recontraste",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "4.B.6",
+      "pagina_PDF_libro": 190,
+      "pagina_solucionario": "Localizable por identificador 4.B.6",
+      "prueba": "test_4_B_6",
+      "estado": "recontraste",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "5.B.13",
+      "pagina_PDF_libro": 248,
+      "pagina_solucionario": "Localizable por identificador 5.B.13",
+      "prueba": "test_5_B_13",
+      "estado": "nuevo",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "6.B.1",
+      "pagina_PDF_libro": 291,
+      "pagina_solucionario": "Localizable por identificador 6.B.1",
+      "prueba": "test_6_B_1",
+      "estado": "recontraste",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "7.B.10",
+      "pagina_PDF_libro": 360,
+      "pagina_solucionario": "Localizable por identificador 7.B.10",
+      "prueba": "test_7_B_10",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "7.B.11",
+      "pagina_PDF_libro": 360,
+      "pagina_solucionario": "Localizable por identificador 7.B.11",
+      "prueba": "test_7_B_11",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "8.B.1",
+      "pagina_PDF_libro": 456,
+      "pagina_solucionario": "Localizable por identificador 8.B.1",
+      "prueba": "test_8_B_1",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "8.B.7",
+      "pagina_PDF_libro": 457,
+      "pagina_solucionario": "Localizable por identificador 8.B.7",
+      "prueba": "test_8_B_7",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "8.B.9",
+      "pagina_PDF_libro": 458,
+      "pagina_solucionario": "Localizable por identificador 8.B.9",
+      "prueba": "test_8_B_9",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "9.B.6",
+      "pagina_PDF_libro": 515,
+      "pagina_solucionario": "Localizable por identificador 9.B.6",
+      "prueba": "test_9_B_6",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "9.B.7",
+      "pagina_PDF_libro": 515,
+      "pagina_solucionario": "Localizable por identificador 9.B.7",
+      "prueba": "test_9_B_7",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "10.B.2",
+      "pagina_PDF_libro": 587,
+      "pagina_solucionario": "Localizable por identificador 10.B.2",
+      "prueba": "test_10_B_2",
+      "estado": "recontraste",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "10.B.8",
+      "pagina_PDF_libro": 588,
+      "pagina_solucionario": "Localizable por identificador 10.B.8",
+      "prueba": "test_10_B_8",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "11.B.4",
+      "pagina_PDF_libro": 658,
+      "pagina_solucionario": "Localizable por identificador 11.B.4",
+      "prueba": "test_11_B_4",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "11.B.5",
+      "pagina_PDF_libro": 658,
+      "pagina_solucionario": "Localizable por identificador 11.B.5",
+      "prueba": "test_11_B_5",
+      "estado": "recontraste",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "12.B.1",
+      "pagina_PDF_libro": 711,
+      "pagina_solucionario": "Localizable por identificador 12.B.1",
+      "prueba": "test_12_B_1",
+      "estado": "recontraste",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "12.B.6",
+      "pagina_PDF_libro": 712,
+      "pagina_solucionario": "Localizable por identificador 12.B.6",
+      "prueba": "test_12_B_6",
+      "estado": "nuevo",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "13.B.3",
+      "pagina_PDF_libro": 759,
+      "pagina_solucionario": "Localizable por identificador 13.B.3",
+      "prueba": "test_13_B_3",
+      "estado": "recontraste",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "14.B.1",
+      "pagina_PDF_libro": 807,
+      "pagina_solucionario": "Localizable por identificador 14.B.1",
+      "prueba": "test_14_B_1",
+      "estado": "recontraste",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "14.B.4",
+      "pagina_PDF_libro": 807,
+      "pagina_solucionario": "Localizable por identificador 14.B.4",
+      "prueba": "test_14_B_4",
+      "estado": "recontraste",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "15.B.5",
+      "pagina_PDF_libro": 884,
+      "pagina_solucionario": "Localizable por identificador 15.B.5",
+      "prueba": "test_15_B_5",
+      "estado": "recontraste",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "7.B.12",
+      "pagina_PDF_libro": 361,
+      "pagina_solucionario": "Localizable por identificador 7.B.12",
+      "prueba": "test_7_B_12",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "7.B.13",
+      "pagina_PDF_libro": 361,
+      "pagina_solucionario": "Localizable por identificador 7.B.13",
+      "prueba": "test_7_B_13",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "8.B.10",
+      "pagina_PDF_libro": 458,
+      "pagina_solucionario": "Localizable por identificador 8.B.10",
+      "prueba": "test_8_B_10",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "9.B.8",
+      "pagina_PDF_libro": 516,
+      "pagina_solucionario": "Localizable por identificador 9.B.8",
+      "prueba": "test_9_B_8",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "10.B.9",
+      "pagina_PDF_libro": 588,
+      "pagina_solucionario": "Localizable por identificador 10.B.9",
+      "prueba": "test_10_B_9",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "11.B.6",
+      "pagina_PDF_libro": 658,
+      "pagina_solucionario": "Localizable por identificador 11.B.6",
+      "prueba": "test_11_B_6",
+      "estado": "nuevo",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "12.B.7",
+      "pagina_PDF_libro": 712,
+      "pagina_solucionario": "Localizable por identificador 12.B.7",
+      "prueba": "test_12_B_7",
+      "estado": "recontraste",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "13.B.5",
+      "pagina_PDF_libro": 760,
+      "pagina_solucionario": "Localizable por identificador 13.B.5",
+      "prueba": "test_13_B_5",
+      "estado": "nuevo",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "14.B.5",
+      "pagina_PDF_libro": 808,
+      "pagina_solucionario": "Localizable por identificador 14.B.5",
+      "prueba": "test_14_B_5",
+      "estado": "nuevo",
+      "tipo": "función de programa + cálculo auxiliar",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    },
+    {
+      "ejercicio": "15.B.7",
+      "pagina_PDF_libro": 884,
+      "pagina_solucionario": "Localizable por identificador 15.B.7",
+      "prueba": "test_15_B_7",
+      "estado": "nuevo",
+      "tipo": "función del programa",
+      "resultado": "conforme dentro de la tolerancia declarada en el test"
+    }
+  ],
+  "guardias": [
+    "inversión Antoine con NaN en presión",
+    "inversión Antoine con presión infinita",
+    "evaluación Antoine con temperatura NaN",
+    "evaluación Antoine con temperatura infinita",
+    "coeficientes Antoine no finitos A/B/C",
+    "intervalos Antoine no físicos o no finitos"
+  ]
+}

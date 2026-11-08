@@ -1,3 +1,5 @@
+> **Archivo histórico:** elaborado antes de la publicación de `v0.9.0`. Para el estado actual consulte `README.md`, `COMPROBACIONES.md` y `REVISIONES/INFORME_AUDITORIA_INTEGRAL.md`.
+
 # Publicación en GitHub y asignación de DOI del software
 
 ## 1. Preparar GitHub

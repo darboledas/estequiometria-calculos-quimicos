@@ -301,7 +301,12 @@ def main():
             "notación científica si desea indicar otra precisión."
         )
     )
-    parser.parse_args()
+    parser.add_argument(
+        '--recuperacion', action='store_true',
+        help='Resolver a partir de la recuperación porcentual de soluto en la corriente 1, '
+             'sin introducir la composición de la segunda corriente (ejercicio 12.B.14).'
+    )
+    args = parser.parse_args()
 
     print("\nSEPARACIÓN EN DOS CORRIENTES")
     print("-" * 31)
@@ -309,14 +314,24 @@ def main():
     m_f = pedir_medida("Caudal de alimentación [kg/h]: ", minimo=0, estricto_min=True)
     w_f = pedir_porcentaje("Soluto en la alimentación [% masa]: ")
     w_1 = pedir_porcentaje("Soluto en la corriente 1 [% masa]: ")
-    w_2 = pedir_porcentaje("Soluto en la corriente 2 [% masa]: ")
-
-    if w_1.valor == w_2.valor:
-        raise SystemExit("Las dos corrientes de salida no pueden tener la misma composición.")
-
-    denominador = restar(w_1, w_2)
-    m_1 = multiplicar(m_f, dividir(restar(w_f, w_2), denominador))
-    m_2 = multiplicar(m_f, dividir(restar(w_1, w_f), denominador))
+    if args.recuperacion:
+        recuperacion = pedir_porcentaje("Recuperación del soluto en corriente 1 [%]: ")
+        if w_1.valor <= 0:
+            raise SystemExit("La corriente concentrada debe contener soluto.")
+        m_1 = dividir(multiplicar(multiplicar(m_f, w_f), recuperacion), w_1)
+        m_2 = restar(m_f, m_1)
+        if m_2.valor <= 0:
+            raise SystemExit("El cálculo por recuperación requiere una segunda corriente de masa positiva.")
+        w_2 = dividir(restar(multiplicar(m_f, w_f), multiplicar(m_1, w_1)), m_2)
+        if w_2.valor < 0 or w_2.valor > 1:
+            raise SystemExit("La recuperación especificada produce una composición de salida no física.")
+    else:
+        w_2 = pedir_porcentaje("Soluto en la corriente 2 [% masa]: ")
+        if w_1.valor == w_2.valor:
+            raise SystemExit("Las dos corrientes de salida no pueden tener la misma composición.")
+        denominador = restar(w_1, w_2)
+        m_1 = multiplicar(m_f, dividir(restar(w_f, w_2), denominador))
+        m_2 = multiplicar(m_f, dividir(restar(w_1, w_f), denominador))
 
     if m_1.valor < 0 or m_2.valor < 0:
         raise SystemExit(
@@ -330,6 +345,12 @@ def main():
     print("-" * 10)
     print(f"Corriente 1: {formato(m_1)} kg/h")
     print(f"Corriente 2: {formato(m_2)} kg/h")
+    if args.recuperacion:
+        print(f"Concentración de soluto en corriente 2: {formato(multiplicar(w_2, exacto(100)))} % masa")
+        # La cifra interna permite comparar con el solucionario sin atribuirle
+        # más precisión a los datos experimentales de entrada.
+        valor_interno = (w_2.valor * Decimal(100))
+        print(f"Valor interno aproximado para cotejo: {valor_interno:.8f} % masa".replace(".", ","))
 
     print("\nCOMPROBACIÓN")
     print("-" * 12)

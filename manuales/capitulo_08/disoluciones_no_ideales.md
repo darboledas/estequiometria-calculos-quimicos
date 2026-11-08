@@ -188,4 +188,44 @@ Inicio y ayuda revisados; no se ha ejecutado una batería de casos numéricos ex
 
 ## 12. Correspondencia bibliográfica
 
-Programa de apoyo al **capítulo 8** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; el DOI específico del software se incorporará tras la primera publicación en Zenodo.
+Programa de apoyo al **capítulo 8** de *Estequiometría y cálculos químicos*. El texto del libro es una exposición científica; este manual explica la ejecución del software suministrado. El código y el manual se distribuyen bajo licencia MIT; DOI general del software: [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474). DOI de la versión publicada 0.9.0: [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473). DOI del libro: [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).
+
+
+## Comprobación independiente de revisión integral
+
+Caso de referencia: **Límite ideal γ = 1: x = (0,2; 0,8), P* = (100; 50) kPa ⇒ P = 60 kPa**. Coincidencia con Raoult y rechazo de composiciones no físicas.
+
+La prueba reproducible figura en `pruebas_revision/test_auditoria_integral.py`; los invariantes adicionales, cuando corresponden, están en `pruebas_revision/test_invariantes_cientificos.py`. Se trata de comprobaciones de casos seleccionados, no de una verificación exhaustiva del dominio del modelo.
+
+### Nota de verificación científica adicional
+
+Revisión adicional (7-11-2026): se ha comprobado numéricamente la relación diferencial de Gibbs–Duhem para Margules de uno y dos parámetros, Van Laar y Wilson en cinco composiciones binarias cada uno. Esto contrasta la consistencia termodinámica local del modelo implementado, pero no valida parámetros ajustados a datos experimentales.
+
+
+## 13. Cotejo integrador y control de datos γ–φ (7-11-2026, no publicado)
+
+Se verificó la formulación a factores tabulados del ejercicio **8.C.5** del libro definitivo:
+
+- Raoult modificado: **395,0 kPa**, composición del vapor `(0,65823; 0,34177)`.
+- γ–φ: **424,5867 kPa**, composición `(0,665343; 0,334657)`.
+- Error relativo tomando γ–φ como referencia: **−6,97 %**.
+
+`bubble_pressure_gamma_phi` comprueba que `x` contenga fracciones molares válidas que sumen la unidad, temperatura absoluta positiva y finita, un valor de cada factor por componente, y que presiones, actividades, fugacidades y Poynting sean estrictamente positivos y finitos. Se rechazan `NaN`, infinito, dimensiones no coincidentes y resultados no físicos. Las entradas válidas conservan sus valores numéricos.
+
+La función trata los factores como constantes **porque así lo impone el ejercicio**; en un cálculo real dependen en general de presión, temperatura y composición. La prueba no valida valores experimentales ni el rango de aplicación de modelos γ–φ.
+
+Referencias: `pruebas_revision/test_cotejo_integradores_03.py` y `REVISIONES/INFORME_COTEJO_INTEGRADORES_90.md`.
+
+### Bloque VI (7-11-2026) — ajuste de datos experimentales de actividad
+
+La función `experimental_gammas(x1, y1, P, ps1, ps2)` requiere vectores de idéntica longitud, valores finitos y físicamente válidos: 0 < x1,y1 < 1, P>0 y presiones de vapor positivas. No se permiten NaN, infinito ni vectores incompletos. Las funciones `fit_margules2` y `fit_van_laar` exigen al menos dos observaciones completas y gamma finitos y positivos. El ajuste de Margules también rechaza un sistema incapaz de identificar sus dos parámetros.
+
+**Ejercicio 8.C.2:** con las seis parejas experimentales del libro, Margules da A12≈1,0000017; A21≈0,6002903, y Van Laar A12≈1,0415701; A21≈0,6490926. El error medio absoluto de presión es ≈0,00312 kPa (Margules) y ≈0,21624 kPa (Van Laar). Estas cifras se refieren solo a la tabla de ese ejercicio.
+
+Reproducción: `python -m unittest discover -s pruebas_revision -p test_cotejo_bloque_06.py -v`.
+
+## Revisión de controles científicos — Bloque X
+
+Las utilidades para el ajuste de modelos (EMA/RECM) rechazan ahora conjuntos experimentales de distinta longitud, vectores vacíos y datos `NaN` o infinitos. Las utilidades de azeótropos de Margules de un parámetro rechazan coeficientes o presiones de vapor no finitos, en lugar de devolver composiciones indefinidas o interpretar `NaN` como ausencia de azeótropo.
+
+**Controles positivos:** ejercicios 8.B.12, 8.B.13, 8.B.14 y 8.B.15 del libro. El resultado de un ajuste no prueba su aplicabilidad fuera del intervalo experimental ni su adecuación termodinámica.

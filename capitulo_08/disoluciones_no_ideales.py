@@ -376,8 +376,10 @@ class Wilson(ActivityModel):
 
 def activity_properties(x: Sequence[float], model: ActivityModel, T: Optional[float] = None):
     x = np.asarray(x, dtype=float)
-    if np.any(x < 0) or np.any(x > 1) or abs(float(np.sum(x))-1.0) > 1e-9:
-        raise ValueError("Las fracciones molares deben estar entre 0 y 1 y sumar 1.")
+    if (x.ndim != 1 or x.size == 0 or not np.all(np.isfinite(x))
+            or np.any(x < 0) or np.any(x > 1)
+            or abs(float(np.sum(x))-1.0) > 1e-9):
+        raise ValueError("Las fracciones molares deben ser finitas, estar entre 0 y 1 y sumar 1.")
     g = model.gammas(x, T)
     if np.any(g <= 0) or not np.all(np.isfinite(g)):
         raise ValueError("Coeficientes de actividad no físicos.")
@@ -396,15 +398,29 @@ class VaporPressure:
         raise NotImplementedError
 
 
+def _comprobar_psat(p: np.ndarray) -> np.ndarray:
+    """Impedir presiones de vapor indefinidas o sin significado físico."""
+    if (p.ndim != 1 or p.size == 0 or not np.all(np.isfinite(p))
+            or np.any(p <= 0)):
+        raise ValueError("Las presiones de vapor deben ser finitas y positivas.")
+    return p
+
+
+def _coeficientes_empiricos(*series) -> tuple[np.ndarray, ...]:
+    valores = tuple(np.asarray(s, dtype=float) for s in series)
+    if (not valores or any(v.ndim != 1 or v.size == 0 for v in valores)
+            or len(set(v.size for v in valores)) != 1
+            or any(not np.all(np.isfinite(v)) for v in valores)):
+        raise ValueError("Las series de coeficientes deben ser finitas y tener igual longitud.")
+    return valores
+
+
 @dataclass
 class DirectPsat(VaporPressure):
     values: Sequence[float]
     unit: str = "kPa"
     def psat(self, T: float = 298.15):
-        p = np.asarray(self.values, dtype=float)
-        if np.any(p <= 0):
-            raise ValueError("Las presiones de vapor deben ser positivas.")
-        return p
+        return _comprobar_psat(np.asarray(self.values, dtype=float))
 
 
 @dataclass
@@ -417,13 +433,16 @@ class SimpleExpPsat(VaporPressure):
     Tmax: Optional[float] = None
 
     def psat(self, T: float):
-        if T <= 0:
-            raise ValueError("La temperatura absoluta debe ser positiva.")
+        if not math.isfinite(T) or T <= 0:
+            raise ValueError("La temperatura absoluta debe ser positiva y finita.")
         if self.Tmin is not None and T < self.Tmin:
             raise ValueError("Temperatura por debajo del intervalo de validez declarado.")
         if self.Tmax is not None and T > self.Tmax:
             raise ValueError("Temperatura por encima del intervalo de validez declarado.")
-        return np.exp(np.asarray(self.A, dtype=float) - np.asarray(self.B, dtype=float)/T)
+        A, B = _coeficientes_empiricos(self.A, self.B)
+        with np.errstate(over='ignore', under='ignore', invalid='ignore'):
+            p = np.exp(A-B/T)
+        return _comprobar_psat(p)
 
 
 @dataclass
@@ -438,16 +457,22 @@ class AntoinePsat(VaporPressure):
     Tmax: Optional[float] = None
 
     def psat(self, T: float):
+        if not math.isfinite(T) or T <= 0:
+            raise ValueError("La temperatura absoluta debe ser positiva y finita.")
+        if self.T_scale.upper() not in ("C", "K"):
+            raise ValueError("La escala de temperatura de Antoine debe ser K o C.")
         Tin = T - 273.15 if self.T_scale.upper() == "C" else T
         if self.Tmin is not None and Tin < self.Tmin:
             raise ValueError("Temperatura por debajo del intervalo de validez declarado.")
         if self.Tmax is not None and Tin > self.Tmax:
             raise ValueError("Temperatura por encima del intervalo de validez declarado.")
-        A, B, C = map(lambda z: np.asarray(z, dtype=float), (self.A, self.B, self.C))
-        den = Tin + C
-        if np.any(abs(den) < 1e-14):
+        A, B, C = _coeficientes_empiricos(self.A, self.B, self.C)
+        den = Tin+C
+        if np.any(np.abs(den) < 1e-14):
             raise ValueError("Singularidad en la ecuación de Antoine.")
-        return 10.0**(A - B/den)
+        with np.errstate(over='ignore', under='ignore', invalid='ignore'):
+            p = np.power(10.0, A-B/den)
+        return _comprobar_psat(p)
 
 
 # ---------------------------------------------------------------------------
@@ -522,10 +547,17 @@ def find_brackets(f: Callable[[float], float], lo: float, hi: float,
 def bubble_pressure(x: Sequence[float], T: float, model: ActivityModel,
                     vp: VaporPressure) -> Tuple[float, np.ndarray, np.ndarray, np.ndarray]:
     x = np.asarray(x, dtype=float)
-    g = model.gammas(x, T)
-    pstar = vp.psat(T)
+    if (x.ndim != 1 or x.size == 0 or not np.all(np.isfinite(x))
+            or np.any(x < 0) or np.any(x > 1)
+            or abs(float(np.sum(x)) - 1.0) > 1e-9):
+        raise ValueError("Las fracciones molares deben ser finitas, estar entre 0 y 1 y sumar 1.")
+    g = np.asarray(model.gammas(x, T), dtype=float)
+    pstar = np.asarray(vp.psat(T), dtype=float)
     if len(pstar) != len(x) or len(g) != len(x):
         raise ValueError("Número de componentes inconsistente.")
+    if (not np.all(np.isfinite(g)) or np.any(g <= 0)
+            or not np.all(np.isfinite(pstar)) or np.any(pstar <= 0)):
+        raise ValueError("Coeficientes de actividad y presiones de vapor deben ser finitos y positivos.")
     contrib = x*g*pstar
     P = float(np.sum(contrib))
     if P <= 0:
@@ -537,17 +569,39 @@ def bubble_pressure(x: Sequence[float], T: float, model: ActivityModel,
 def bubble_pressure_gamma_phi(x: Sequence[float], T: float, model: ActivityModel,
                               vp: VaporPressure, phi_sat: Sequence[float],
                               phi_v: Sequence[float], poynting: Sequence[float]):
+    """Presión de burbuja γ–φ a factores de fugacidad y Poynting fijados.
+
+    Los factores proporcionados se tratan como constantes, según las hipótesis del
+    ejercicio 8.C.5. Se comprueban composición, dimensiones, finitud y positividad
+    para evitar presiones o composiciones físicamente indefinidas.
+    """
+    if not math.isfinite(T) or T <= 0:
+        raise ValueError("La temperatura absoluta debe ser finita y positiva.")
     x = np.asarray(x, dtype=float)
-    g = model.gammas(x, T)
-    ps = vp.psat(T)
+    if (x.ndim != 1 or x.size < 2 or not np.all(np.isfinite(x))
+            or np.any(x < 0) or np.any(x > 1)
+            or abs(float(np.sum(x)) - 1.0) > 1e-9):
+        raise ValueError("Las fracciones molares deben ser finitas, estar entre 0 y 1 y sumar 1.")
+
+    g = np.asarray(model.gammas(x, T), dtype=float)
+    ps = np.asarray(vp.psat(T), dtype=float)
     phis = np.asarray(phi_sat, dtype=float)
     phiv = np.asarray(phi_v, dtype=float)
     pi = np.asarray(poynting, dtype=float)
-    if np.any(phis <= 0) or np.any(phiv <= 0) or np.any(pi <= 0):
-        raise ValueError("φ y factores de Poynting deben ser positivos.")
-    contrib = x*g*ps*phis*pi/phiv
-    P = float(np.sum(contrib))
+    vectores = (g, ps, phis, phiv, pi)
+    if any(v.ndim != 1 or v.shape != x.shape for v in vectores):
+        raise ValueError("Cada coeficiente y presión de vapor requiere un valor por componente.")
+    if any(not np.all(np.isfinite(v)) or np.any(v <= 0) for v in vectores):
+        raise ValueError("γ, P*, φ y factores de Poynting deben ser finitos y positivos.")
+
+    with np.errstate(over="ignore", divide="ignore", invalid="ignore"):
+        contrib = x*g*ps*phis*pi/phiv
+        P = float(np.sum(contrib))
+    if not np.all(np.isfinite(contrib)) or not np.isfinite(P) or P <= 0:
+        raise ValueError("La presión γ–φ calculada no es finita y positiva.")
     y = contrib/P
+    if not np.all(np.isfinite(y)) or np.any(y < 0) or np.any(y > 1 + 1e-9):
+        raise ValueError("La composición de vapor γ–φ calculada no es física.")
     return P, y, g, ps, contrib
 
 
@@ -698,16 +752,41 @@ def flash_binary(z1: float, T: float, P: float, model: ActivityModel,
 # ---------------------------------------------------------------------------
 
 def experimental_gammas(x1, y1, P, ps1, ps2):
+    """Calcula gammas a partir de observaciones físicas de equilibrio binario.
+
+    No admite series truncadas, valores no finitos ni presiones imposibles.
+    """
     x1=np.asarray(x1,float); y1=np.asarray(y1,float); P=np.asarray(P,float)
-    x2=1-x1; y2=1-y1
+    if any(a.ndim != 1 for a in (x1,y1,P)) or not (len(x1)==len(y1)==len(P)) or len(x1)<1:
+        raise ValueError("Las series de x, y y P deben ser vectores de igual longitud no vacíos.")
+    if (not all(math.isfinite(float(v)) and float(v)>0 for v in (ps1,ps2))
+        or not all(np.all(np.isfinite(a)) for a in (x1,y1,P))
+        or np.any(P<=0)):
+        raise ValueError("Presiones, composiciones y presiones de vapor deben ser finitas y físicas.")
     if np.any((x1<=0)|(x1>=1)|(y1<=0)|(y1>=1)):
         raise ValueError("Para calcular γ experimentales se requieren 0 < x_i,y_i < 1.")
     g1=y1*P/(x1*ps1)
-    g2=y2*P/(x2*ps2)
+    g2=(1-y1)*P/((1-x1)*ps2)
+    if not (np.all(np.isfinite(g1)) and np.all(np.isfinite(g2)) and
+            np.all(g1>0) and np.all(g2>0)):
+        raise ValueError("Los coeficientes experimentales no son positivos y finitos.")
     return g1,g2
 
 
+def _validar_series_ajuste(x1, g1, g2):
+    """Evita descartar observaciones silenciosamente por zip y ajustes con NaN."""
+    x=np.asarray(x1,float); a=np.asarray(g1,float); b=np.asarray(g2,float)
+    if (any(v.ndim != 1 for v in (x,a,b)) or
+        not (len(x)==len(a)==len(b)) or len(x)<2):
+        raise ValueError("Para ajustar se necesitan al menos dos observaciones x, γ1, γ2 de igual longitud.")
+    if (not all(np.all(np.isfinite(v)) for v in (x,a,b)) or
+        np.any((x<=0)|(x>=1)) or np.any(a<=0) or np.any(b<=0)):
+        raise ValueError("Las composiciones deben pertenecer a (0,1) y los γ ser positivos y finitos.")
+    return x,a,b
+
+
 def fit_margules2(x1, g1, g2):
+    x1,g1,g2=_validar_series_ajuste(x1,g1,g2)
     rows=[]; obs=[]
     for x,g_1,g_2 in zip(x1,g1,g2):
         x2=1-x
@@ -718,7 +797,11 @@ def fit_margules2(x1, g1, g2):
         rows.append([x*x*(2*x2), x*x*(1-2*x2)])
         obs.append(math.log(g_2))
     A=np.asarray(rows,float); b=np.asarray(obs,float)
+    if np.linalg.matrix_rank(A)<2:
+        raise ValueError("El diseño de ajuste no identifica dos parámetros independientes.")
     p,*_=np.linalg.lstsq(A,b,rcond=None)
+    if not np.all(np.isfinite(p)):
+        raise ValueError("Los parámetros calculados no son finitos.")
     return float(p[0]),float(p[1])
 
 
@@ -764,9 +847,15 @@ def nelder_mead_2d(fun, x0, step=0.2, tol=1e-10, maxiter=2000):
 
 
 def fit_van_laar(x1,g1,g2,initial=(1.0,1.0)):
+    x1,g1,g2=_validar_series_ajuste(x1,g1,g2)
+    initial=np.asarray(initial,float)
+    if initial.shape!=(2,) or not np.all(np.isfinite(initial)) or np.any(np.abs(initial)<1e-10):
+        raise ValueError("El valor inicial de Van Laar debe contener dos parámetros finitos no nulos.")
     lng1=np.log(g1); lng2=np.log(g2)
     fun=lambda p: objective_van_laar(p,x1,lng1,lng2)
-    p,val,it=nelder_mead_2d(fun,np.array(initial,float))
+    p,val,it=nelder_mead_2d(fun,initial)
+    if not np.all(np.isfinite(p)) or not math.isfinite(val) or val>=1e100:
+        raise ValueError("No se obtuvieron parámetros Van Laar físicos y finitos.")
     return float(p[0]),float(p[1]),val,it
 
 
@@ -781,7 +870,14 @@ def model_predictions(x1, model, ps1, ps2):
 
 
 def mae_rmse(obs,pred):
-    d=np.asarray(pred)-np.asarray(obs)
+    """EMA/RECM sobre pares experimentales válidos, sin difusión de NumPy."""
+    a=np.asarray(obs,dtype=float)
+    b=np.asarray(pred,dtype=float)
+    if a.ndim != 1 or b.ndim != 1 or len(a) == 0 or len(a) != len(b):
+        raise ValueError("Las series observada y predicha deben ser vectores no vacíos de igual longitud.")
+    if not np.all(np.isfinite(a)) or not np.all(np.isfinite(b)):
+        raise ValueError("Los datos para EMA/RECM deben ser finitos.")
+    d=b-a
     return float(np.mean(np.abs(d))),float(np.sqrt(np.mean(d*d)))
 
 
@@ -805,14 +901,16 @@ def gibbs_duhem_residual_margules2(x1: float, A12: float, A21: float) -> float:
     return x1*d1 + (1-x1)*d2
 
 def azeotrope_margules1_analytic(A: float, ps1: float, ps2: float) -> Optional[float]:
+    if not all(math.isfinite(v) for v in (A, ps1, ps2)):
+        raise ValueError("A y las presiones de vapor deben ser finitos.")
     if A == 0 or ps1 <= 0 or ps2 <= 0:
         return None
     x = 0.5*(1.0 + math.log(ps1/ps2)/A)
     return x if 0.0 < x < 1.0 else None
 
 def azeotrope_margules1_threshold(ps1: float, ps2: float) -> float:
-    if ps1 <= 0 or ps2 <= 0:
-        raise ValueError("Las presiones de vapor deben ser positivas.")
+    if not all(math.isfinite(v) for v in (ps1, ps2)) or ps1 <= 0 or ps2 <= 0:
+        raise ValueError("Las presiones de vapor deben ser finitas y positivas.")
     return abs(math.log(ps1/ps2))
 
 def experimental_azeotrope_properties(x1: float, T: float, P: float, vp: VaporPressure):

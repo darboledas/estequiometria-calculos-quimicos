@@ -57,9 +57,9 @@ interpreta con 3 cifras significativas). Puede usarse notación científica.
 
 Uso
 ---
-    python tema14_combustion.py
-    python tema14_combustion.py --help
-    python tema14_combustion.py --self-test
+    python combustion.py
+    python combustion.py --help
+    python combustion.py --self-test
 
 La ejecución normal muestra un menú y solicita únicamente magnitudes químicamente
 reconocibles. No se introducen ecuaciones algebraicas ya planteadas.
@@ -175,9 +175,9 @@ def read_measurement(prompt: str, *, min_value: Optional[float] = None,
             m = parse_measurement(raw)
             if strictly_positive and m.value <= 0:
                 raise ValueError("El valor debe ser mayor que cero.")
-            if min_value is not None and m.value < min_value - TOL:
+            if min_value is not None and m.value < min_value:
                 raise ValueError(f"El valor debe ser >= {min_value}.")
-            if max_value is not None and m.value > max_value + TOL:
+            if max_value is not None and m.value > max_value:
                 raise ValueError(f"El valor debe ser <= {max_value}.")
             return m
         except ValueError as exc:
@@ -229,14 +229,14 @@ def min_sf(*items: object, default: int = 3) -> int:
         if isinstance(item, Measurement):
             # Un cero introducido para indicar ausencia de un componente (p. ej., 0 % S)
             # no debe degradar artificialmente la precisión de todos los resultados.
-            if abs(item.value) > TOL:
+            if item.value != 0.0:
                 vals.append(item.sigfigs)
         elif isinstance(item, int):
             vals.append(item)
         elif isinstance(item, (list, tuple, set)):
             for sub in item:
                 if isinstance(sub, Measurement):
-                    if abs(sub.value) > TOL:
+                    if sub.value != 0.0:
                         vals.append(sub.sigfigs)
                 elif isinstance(sub, int):
                     vals.append(sub)
@@ -246,8 +246,7 @@ def min_sf(*items: object, default: int = 3) -> int:
 def format_sig(value: float, sf: int = 3) -> str:
     if not math.isfinite(value):
         return str(value)
-    if abs(value) < TOL:
-        # Mantener una presentación limpia del cero.
+    if value == 0.0:
         return "0"
     sf = max(1, int(sf))
     av = abs(value)
@@ -322,9 +321,13 @@ def parse_formula(formula: str) -> Dict[str, float]:
             if len(stack) == 1:
                 raise CombustionError(f"Paréntesis no equilibrados en '{formula}'.")
             group = stack.pop()
+            if not group:
+                raise CombustionError(f"Grupo vacío en la fórmula '{formula}'.")
             mult = 1.0
             if i + 1 < len(tokens) and re.fullmatch(r"\d+(?:\.\d+)?", tokens[i + 1]):
                 mult = float(tokens[i + 1])
+                if not math.isfinite(mult) or mult <= 0:
+                    raise CombustionError(f"Subíndice no positivo o no finito en '{formula}'.")
                 i += 1
             for el, n in group.items():
                 stack[-1][el] = stack[-1].get(el, 0.0) + n * mult
@@ -334,6 +337,8 @@ def parse_formula(formula: str) -> Dict[str, float]:
             mult = 1.0
             if i + 1 < len(tokens) and re.fullmatch(r"\d+(?:\.\d+)?", tokens[i + 1]):
                 mult = float(tokens[i + 1])
+                if not math.isfinite(mult) or mult <= 0:
+                    raise CombustionError(f"Subíndice no positivo o no finito en '{formula}'.")
                 i += 1
             stack[-1][el] = stack[-1].get(el, 0.0) + mult
             i += 1
@@ -341,7 +346,7 @@ def parse_formula(formula: str) -> Dict[str, float]:
             raise CombustionError(f"Subíndice inesperado en '{formula}'.")
     if len(stack) != 1:
         raise CombustionError(f"Paréntesis no equilibrados en '{formula}'.")
-    if not stack[0]:
+    if not stack[0] or any(not math.isfinite(n) or n <= 0 for n in stack[0].values()):
         raise CombustionError(f"Fórmula no válida: '{formula}'.")
     return stack[0]
 
@@ -357,8 +362,8 @@ def molar_mass(formula: str) -> float:
 def element_totals(species: Dict[str, float]) -> Dict[str, float]:
     totals: Dict[str, float] = {}
     for formula, amount in species.items():
-        if amount < -TOL:
-            raise CombustionError(f"Cantidad negativa de {formula}.")
+        if not math.isfinite(amount) or amount < 0:
+            raise CombustionError(f"Cantidad negativa o no finita de {formula}.")
         comp = parse_formula(formula)
         for el, coeff in comp.items():
             totals[el] = totals.get(el, 0.0) + coeff * amount
@@ -378,8 +383,10 @@ def balance_residuals(reactants: Dict[str, float], products: Dict[str, float]) -
 
 
 def balance_ok(a: float, b: float) -> bool:
-    scale = max(1.0, abs(a), abs(b))
-    return abs(a - b) <= BAL_REL_TOL * scale
+    if not (math.isfinite(a) and math.isfinite(b)):
+        return False
+    scale = max(abs(a), abs(b))
+    return abs(a - b) <= BAL_REL_TOL * scale if scale > 0 else True
 
 
 # -----------------------------------------------------------------------------
@@ -387,7 +394,7 @@ def balance_ok(a: float, b: float) -> bool:
 # -----------------------------------------------------------------------------
 
 def validate_distribution(d: Dict[str, float], label: str) -> None:
-    if any(v < -TOL or v > 1 + TOL for v in d.values()):
+    if any(not math.isfinite(v) or v < 0 or v > 1 for v in d.values()):
         raise CombustionError(f"Las fracciones de {label} deben estar entre 0 y 1.")
     if abs(sum(d.values()) - 1.0) > 1e-8:
         raise CombustionError(f"Las fracciones de {label} deben sumar 1.")
@@ -398,7 +405,7 @@ def choose_product_model(elements: Dict[str, float]) -> Tuple[ProductModel, List
     measurements: List[Measurement] = []
     assumptions = ["En combustión completa, todo el C se expresa como CO2 y todo el H como H2O."]
 
-    if elements.get("S", 0.0) > TOL:
+    if elements.get("S", 0.0) > 0:
         choice = read_choice("El combustible contiene S. Indique los productos de azufre:", {
             "1": "Todo el S forma SO2",
             "2": "Todo el S forma SO3",
@@ -417,7 +424,7 @@ def choose_product_model(elements: Dict[str, float]) -> Tuple[ProductModel, List
             model.sulfur = {"SO2": f, "SO3": 1.0 - f}
             assumptions.append(f"Distribución del S: {format_sig(m.value, m.sigfigs)} % a SO2 y el resto a SO3.")
 
-    if elements.get("N", 0.0) > TOL:
+    if elements.get("N", 0.0) > 0:
         choice = read_choice("El combustible contiene N. El programa NO asignará su producto automáticamente:", {
             "1": "Todo el N forma N2",
             "2": "Todo el N forma NO",
@@ -447,7 +454,7 @@ def choose_product_model(elements: Dict[str, float]) -> Tuple[ProductModel, List
 
     standard = {"C", "H", "O", "S", "N"}
     for el in sorted(set(elements) - standard):
-        if elements[el] <= TOL:
+        if elements[el] <= 0:
             continue
         print(f"\nEl combustible contiene {el}. Debe especificarse su producto oxidado.")
         formula = input(f"Fórmula del óxido que contiene {el} (p. ej., P2O5): ").strip()
@@ -464,16 +471,18 @@ def choose_product_model(elements: Dict[str, float]) -> Tuple[ProductModel, List
 
 def complete_products_for_formula(formula: str, n_fuel: float, model: ProductModel) -> Dict[str, float]:
     atoms = parse_formula(formula)
+    if not math.isfinite(n_fuel) or n_fuel < 0:
+        raise CombustionError("La cantidad de combustible debe ser finita y no negativa.")
     products: Dict[str, float] = {}
     c = atoms.get("C", 0.0) * n_fuel
     h = atoms.get("H", 0.0) * n_fuel
-    if c > TOL:
+    if c > 0:
         products["CO2"] = products.get("CO2", 0.0) + c
-    if h > TOL:
+    if h > 0:
         products["H2O"] = products.get("H2O", 0.0) + h / 2.0
 
     s = atoms.get("S", 0.0) * n_fuel
-    if s > TOL:
+    if s > 0:
         if not model.sulfur:
             raise CombustionError("No se ha definido el producto del S.")
         validate_distribution(model.sulfur, "S")
@@ -482,7 +491,7 @@ def complete_products_for_formula(formula: str, n_fuel: float, model: ProductMod
             products[prod] = products.get(prod, 0.0) + s * frac
 
     n = atoms.get("N", 0.0) * n_fuel
-    if n > TOL:
+    if n > 0:
         if not model.nitrogen:
             raise CombustionError("No se ha definido el producto del N.")
         validate_distribution(model.nitrogen, "N")
@@ -492,7 +501,7 @@ def complete_products_for_formula(formula: str, n_fuel: float, model: ProductMod
 
     for el, oxide in model.other_oxides.items():
         amount_el = atoms.get(el, 0.0) * n_fuel
-        if amount_el > TOL:
+        if amount_el > 0:
             coeff = parse_formula(oxide)[el]
             products[oxide] = products.get(oxide, 0.0) + amount_el / coeff
     return products
@@ -503,7 +512,8 @@ def oxygen_stoich_formula(formula: str, n_fuel: float, model: ProductModel) -> T
     o_products = element_totals(products).get("O", 0.0)
     o_fuel = parse_formula(formula).get("O", 0.0) * n_fuel
     o2 = (o_products - o_fuel) / 2.0
-    if o2 < -TOL:
+    escala_oxigeno = max(abs(o_products), abs(o_fuel))
+    if o2 < -BAL_REL_TOL * escala_oxigeno:
         raise CombustionError(
             "El modelo especificado conduce a una necesidad externa de O2 negativa. "
             "Revise la sustancia y los productos adoptados."
@@ -538,7 +548,8 @@ def complete_products_for_mixture(components: List[Tuple[str, float, bool]], mod
     # en la necesidad de O2 de los reactivos.
     inert_o = sum(parse_formula(f).get("O", 0.0)*n for f, n, r in components if not r)
     o2 = (o_products_reaction - inert_o - o_fuel) / 2.0
-    if o2 < -TOL:
+    escala_oxigeno = max(abs(o_products_reaction), abs(inert_o), abs(o_fuel))
+    if o2 < -BAL_REL_TOL * escala_oxigeno:
         raise CombustionError("La mezcla conduce a una necesidad externa de O2 negativa.")
     return max(0.0, o2), products
 
@@ -578,7 +589,7 @@ def choose_oxidizer(*, allow_custom: bool = True) -> Oxidizer:
     if abs(total - 100.0) > COMP_TOL_PERCENT:
         raise CombustionError(f"La composición del comburente suma {total:.6g} %, no 100 %.")
     comp = {k: v/total for k, v in comp.items()}
-    if comp.get("O2", 0.0) <= TOL:
+    if comp.get("O2", 0.0) <= 0:
         raise CombustionError("La mezcla oxidante debe contener O2.")
     sf = min_sf(ms)
     return Oxidizer(
@@ -590,13 +601,13 @@ def choose_oxidizer(*, allow_custom: bool = True) -> Oxidizer:
 
 
 def oxidizer_amount_for_o2(o2: float, oxidizer: Oxidizer) -> float:
-    if oxidizer.y_o2 <= TOL:
+    if oxidizer.y_o2 <= 0:
         raise CombustionError("El comburente no contiene O2.")
     return o2 / oxidizer.y_o2
 
 
 def carrier_products(oxidizer: Oxidizer, n_oxidizer: float) -> Dict[str, float]:
-    return {sp: y*n_oxidizer for sp, y in oxidizer.composition.items() if sp != "O2" and y*n_oxidizer > TOL}
+    return {sp: y*n_oxidizer for sp, y in oxidizer.composition.items() if sp != "O2" and y*n_oxidizer > 0}
 
 
 def choose_supply(o2_st: float, oxidizer: Oxidizer, *, complete_required: bool) -> Tuple[float, float, List[Measurement], List[str]]:
@@ -630,8 +641,8 @@ def choose_supply(o2_st: float, oxidizer: Oxidizer, *, complete_required: bool) 
         ms.append(m)
         n_real = m.value / oxidizer.y_o2
     o2_real = n_real * oxidizer.y_o2
-    if complete_required and o2_real + 1e-10 < o2_st:
-        deficit = 100*(1-o2_real/o2_st) if o2_st > TOL else 0.0
+    if complete_required and o2_real + BAL_REL_TOL * o2_st < o2_st:
+        deficit = 100*(1-o2_real/o2_st) if o2_st > 0 else 0.0
         raise CombustionError(
             f"El O2 suministrado es insuficiente para la combustión completa especificada "
             f"(defecto aproximado {deficit:.6g} %). Use la opción 5 y defina los productos de combustión incompleta."
@@ -646,18 +657,20 @@ def choose_supply(o2_st: float, oxidizer: Oxidizer, *, complete_required: bool) 
 def gas_compositions(products: Dict[str, float], sf: int) -> Tuple[Dict[str, float], Dict[str, float], float, float]:
     # Se consideran gaseosas todas las especies de esta corriente. En un problema de
     # combustión del capítulo, esta función se usa con especies gaseosas explícitas.
-    wet_total = sum(v for v in products.values() if v > TOL)
-    if wet_total <= TOL:
+    if any(not math.isfinite(n) or n < 0 for n in products.values()):
+        raise CombustionError("Las cantidades de gases deben ser finitas y no negativas.")
+    wet_total = sum(v for v in products.values() if v > 0)
+    if wet_total <= 0:
         raise CombustionError("No hay gases de salida para calcular una composición.")
-    wet = {sp: n/wet_total for sp, n in products.items() if n > TOL}
-    dry_total = wet_total - products.get("H2O", 0.0)
-    dry = {sp: n/dry_total for sp, n in products.items() if sp != "H2O" and n > TOL} if dry_total > TOL else {}
+    wet = {sp: n/wet_total for sp, n in products.items() if n > 0}
+    dry_total = sum(v for sp, v in products.items() if sp != "H2O" and v > 0)
+    dry = {sp: n/dry_total for sp, n in products.items() if sp != "H2O" and n > 0} if dry_total > 0 else {}
     return wet, dry, wet_total, dry_total
 
 
 def print_species_amounts(species: Dict[str, float], sf: int, unit: str = "mol") -> None:
     for sp in sorted(species):
-        if species[sp] > TOL:
+        if species[sp] > 0:
             print(f"  {sp:>10s}: {format_sig(species[sp], sf)} {unit}")
 
 
@@ -931,7 +944,8 @@ def option5_incomplete() -> None:
     h2o=h_reac/2
     o_atoms_products=2*co2+co+h2o
     o2_consumed=(o_atoms_products-o_reac)/2
-    if o2_consumed < -TOL:
+    escala_oxigeno = max(abs(o_atoms_products), abs(o_reac))
+    if o2_consumed < -BAL_REL_TOL * escala_oxigeno:
         raise CombustionError("La distribución indicada conduce a consumo de O2 negativo. Revise las hipótesis.")
     o2_consumed=max(0,o2_consumed)
     # O2 estequiométrico para combustión completa del combustible ALIMENTADO
@@ -953,15 +967,16 @@ def option5_incomplete() -> None:
     else:
         m=read_measurement("Cantidad real de O2 suministrado (mol): ",min_value=0); supply_ms=[m]
         o2_real=m.value; n_oxid=o2_real/oxidizer.y_o2
-    if o2_real + 1e-10 < o2_consumed:
+    escala_suministro = max(abs(o2_real), abs(o2_consumed))
+    if o2_real < o2_consumed and o2_consumed - o2_real > BAL_REL_TOL * escala_suministro:
         raise CombustionError("El O2 suministrado no basta para producir simultáneamente las cantidades de CO2, CO y H2O especificadas.")
     products={"CO2":co2,"CO":co,"H2O":h2o}
-    if n_unreact>TOL: products[formula]=n_unreact
+    if n_unreact>0: products[formula]=n_unreact
     for sp,nv in carrier_products(oxidizer,n_oxid).items(): products[sp]=products.get(sp,0)+nv
-    if o2_real-o2_consumed>TOL: products["O2"]=products.get("O2",0)+(o2_real-o2_consumed)
+    if o2_real-o2_consumed>0: products["O2"]=products.get("O2",0)+(o2_real-o2_consumed)
     sf=min_sf(amount,conv,frac_co2,supply_ms,oxidizer.sigfigs)
-    lam=o2_real/o2_st if o2_st>TOL else float("nan")
-    deviation=(lam-1)*100 if o2_st>TOL else float("nan")
+    lam=o2_real/o2_st if o2_st>0 else float("nan")
+    deviation=(lam-1)*100 if o2_st>0 else float("nan")
     wet,dry,ntw,ntd=gas_compositions(products,sf)
 
     print_data_assumptions([
@@ -980,7 +995,7 @@ def option5_incomplete() -> None:
     print(f"  O2 consumido para los productos especificados: {format_sig(o2_consumed,sf)} mol")
     print(f"  O2 estequiométrico para combustión completa de la alimentación: {format_sig(o2_st,sf)} mol")
     print(f"  O2 realmente suministrado: {format_sig(o2_real,sf)} mol")
-    if o2_st>TOL:
+    if o2_st>0:
         if deviation>=-TOL: print(f"  Exceso respecto a combustión completa: {format_sig(max(0,deviation),sf)} %")
         else: print(f"  Defecto respecto a combustión completa: {format_sig(-deviation,sf)} %")
     print("  Productos/gases:"); print_species_amounts(products,sf)
@@ -1074,34 +1089,112 @@ def option6_analysis() -> None:
 # -----------------------------------------------------------------------------
 
 def solve_linear_system(A: List[List[float]], b: List[float], tol: float=1e-10) -> Tuple[str, Optional[List[float]]]:
-    """Gauss-Jordan. Devuelve ('unique'|'underdetermined'|'inconsistent', solution)."""
+    """Resuelve pequeños problemas lineales inversos sin dependencias externas.
+
+    Equilibra filas y columnas y utiliza pivoteo completo. Rechaza sistemas
+    numéricamente mal condicionados antes de dar una composición aparentemente
+    única; no confunde esa decisión con una indeterminación química exacta.
+
+    Devuelve ('unique'|'underdetermined'|'inconsistent', solución opcional).
+    Un sistema casi singular provoca CombustionError con mensaje específico.
+    La prueba de condicionamiento es NUMÉRICA; no sustituye el análisis de
+    incertidumbre de datos experimentales.
+    """
     if not A:
         return "underdetermined", None
-    m=len(A); n=len(A[0])
-    M=[list(map(float,A[i]))+[float(b[i])] for i in range(m)]
-    row=0; pivots=[]
-    for col in range(n):
-        pivot=max(range(row,m),key=lambda r:abs(M[r][col]),default=row) if row<m else row
-        if row>=m or abs(M[pivot][col])<=tol:
-            continue
-        M[row],M[pivot]=M[pivot],M[row]
-        pv=M[row][col]
-        M[row]=[x/pv for x in M[row]]
-        for r in range(m):
-            if r==row: continue
-            fac=M[r][col]
-            if abs(fac)>tol:
-                M[r]=[M[r][c]-fac*M[row][c] for c in range(n+1)]
-        pivots.append(col); row+=1
-        if row==m: break
+    m = len(A)
+    n = len(A[0])
+    if n == 0 or len(b) != m or any(len(row) != n for row in A):
+        raise CombustionError("Dimensiones incompatibles del sistema lineal inverso.")
+    if not math.isfinite(tol) or tol <= 0 or tol >= 1:
+        raise CombustionError("La tolerancia del solucionador debe ser finita y estar entre 0 y 1.")
+    original = []
+    rhs = []
+    M = []
+    for row, value in zip(A, b):
+        coeffs = [float(v) for v in row]
+        y = float(value)
+        if not all(math.isfinite(v) for v in coeffs + [y]):
+            raise CombustionError("El sistema inverso contiene coeficientes no finitos.")
+        original.append(coeffs)
+        rhs.append(y)
+        row_scale = max(abs(v) for v in coeffs)
+        if row_scale == 0.0:
+            # Una ecuación 0 = b solo es compatible si b es exactamente 0.
+            M.append([0.0] * n + [0.0 if y == 0.0 else math.copysign(1.0, y)])
+        else:
+            normalized = [v / row_scale for v in coeffs] + [y / row_scale]
+            if not all(math.isfinite(v) for v in normalized):
+                raise CombustionError("El sistema inverso excede el rango numérico de doble precisión.")
+            M.append(normalized)
+
+    # Preacondicionamiento de columnas: distingue escalas de las variables de
+    # una dependencia real entre ecuaciones; no cambia las soluciones físicas.
+    col_scales = [max(abs(M[r][c]) for r in range(m)) for c in range(n)]
+    nonzero_col_scales = [value for value in col_scales if value > 0.0]
+    if nonzero_col_scales and max(nonzero_col_scales) / min(nonzero_col_scales) > 1e9:
+        raise CombustionError(
+            "Sistema inverso con observables muy desiguales: no se pueden "
+            "determinar de forma fiable todos los componentes con esta escala ")
     for r in range(m):
-        if all(abs(M[r][c])<=tol for c in range(n)) and abs(M[r][n])>tol:
-            return "inconsistent",None
-    if len(pivots)<n:
-        return "underdetermined",None
-    x=[0.0]*n
-    for r,col in enumerate(pivots[:n]): x[col]=M[r][n]
-    return "unique",x
+        for c in range(n):
+            if col_scales[c] != 0.0:
+                M[r][c] /= col_scales[c]
+    perm = list(range(n))
+    rank = 0
+    near_singular_cutoff = 1e-8
+    numerical_zero = min(1e-12, tol * 0.01)
+    for k in range(min(m, n)):
+        # Pivoteo completo para no favorecer un orden arbitrario de componentes.
+        pivot_r, pivot_c = max(((r, c) for r in range(k, m) for c in range(k, n)),
+                               key=lambda rc: abs(M[rc[0]][rc[1]]))
+        largest = abs(M[pivot_r][pivot_c])
+        if largest <= numerical_zero:
+            break
+        if largest < near_singular_cutoff:
+            raise CombustionError(
+                "Sistema inverso numéricamente mal condicionado: las magnitudes "
+                "no permiten distinguir de forma fiable las cantidades de los componentes. "
+                "Se requieren observables independientes de mayor precisión.")
+        M[k], M[pivot_r] = M[pivot_r], M[k]
+        for row in M:
+            row[k], row[pivot_c] = row[pivot_c], row[k]
+        perm[k], perm[pivot_c] = perm[pivot_c], perm[k]
+        pivot_value = M[k][k]
+        M[k] = [value / pivot_value for value in M[k]]
+        for r in range(m):
+            if r == k:
+                continue
+            factor = M[r][k]
+            if factor != 0.0:
+                M[r] = [M[r][c] - factor * M[k][c] for c in range(n+1)]
+        rank += 1
+
+    # Evaluación de ecuaciones sobrantes, incluidas restricciones redundantes.
+    for r in range(rank, m):
+        if all(abs(M[r][c]) <= tol for c in range(n)) and abs(M[r][n]) > tol:
+            return "inconsistent", None
+    if rank < n:
+        return "underdetermined", None
+
+    solution = [0.0] * n
+    for k in range(n):
+        original_col = perm[k]
+        solution[original_col] = M[k][n] / col_scales[original_col]
+    if not all(math.isfinite(value) for value in solution):
+        raise CombustionError("La solución inversa no es representable con precisión finita.")
+
+    # Contraste de residuos en unidades originales, sin un umbral absoluto de
+    # moles que haga desaparecer datos cuando cambia la base de cálculo.
+    for coeffs, observed in zip(original, rhs):
+        estimated = math.fsum(c*x for c, x in zip(coeffs, solution))
+        scale = max(abs(observed), math.fsum(abs(c*x) for c, x in zip(coeffs, solution)))
+        if scale == 0.0:
+            if estimated != 0.0:
+                return "inconsistent", None
+        elif abs(estimated-observed) > max(2e-9, 10*tol) * scale:
+            return "inconsistent", None
+    return "unique", solution
 
 
 # -----------------------------------------------------------------------------
@@ -1113,6 +1206,12 @@ def inverse_hc_from_dry() -> None:
     print("Modelo: combustible formado únicamente por C, H (y, opcionalmente, O conocido); productos carbonados CO2/CO; todo H -> H2O; todo N2 del gas procede del aire.")
     basis,comp,ms,ass=read_analysis_composition()
     if basis!="seca": raise CombustionError("Esta modalidad está formulada para un análisis en base seca.")
+    # La inferencia H/C no es válida si hay especies ausentes del modelo.
+    extra={sp for sp, frac in comp.items()
+           if sp not in {"CO2", "CO", "O2", "N2"} and frac > TOL}
+    if extra:
+        raise CombustionError("El análisis seco contiene especies no admitidas en este modelo inverso: "
+                              + ", ".join(sorted(extra)))
     for sp in ("CO2","CO","O2","N2"): comp.setdefault(sp,0.0)
     amounts={sp:100*y for sp,y in comp.items()}
     if comp["N2"]<=TOL: raise CombustionError("Se necesita N2 en el análisis para inferir el aire suministrado.")
@@ -1185,9 +1284,11 @@ def inverse_binary_fuel() -> None:
     status,sol=solve_linear_system(A,[c,h])
     if status=="underdetermined": raise CombustionError("Las dos especies tienen relaciones C/H linealmente dependientes; los datos no determinan una composición única.")
     if status=="inconsistent" or sol is None: raise CombustionError("Los balances de C y H son incompatibles con las especies propuestas.")
-    if any(v<-1e-9 for v in sol): raise CombustionError("La solución exige una cantidad negativa de un componente: datos o modelo incompatibles.")
+    escala_solucion = max(abs(v) for v in sol)
+    if any(v < -BAL_REL_TOL * escala_solucion for v in sol):
+        raise CombustionError("La solución exige una cantidad negativa de un componente: datos o modelo incompatibles.")
     n1,n2=max(0,sol[0]),max(0,sol[1]); nt=n1+n2
-    if nt<=TOL: raise CombustionError("La cantidad total de combustible calculada es cero.")
+    if nt<=0: raise CombustionError("La cantidad total de combustible calculada es cero.")
     sf=min_sf(ms,DEFAULT_AIR_SF if source=="2" else None)
     print_data_assumptions([f"Especies candidatas: {f1}, {f2}",f"C total={format_sig(c,sf)}; H total={format_sig(h,sf)} mol de átomos"],assumptions)
     print("\nRESULTADOS")
@@ -1483,6 +1584,8 @@ def inverse_pure_from_stoich_o2() -> None:
     o2per,_=oxygen_stoich_formula(formula,1.0,model)
     if o2per<=TOL: raise CombustionError("El combustible no requiere O2 positivo bajo el modelo especificado.")
     o2tot=read_measurement("Cantidad total de O2 estequiométrico indicada en el problema: ",min_value=0)
+    if o2tot.value <= 0:
+        raise CombustionError("El cálculo inverso requiere una cantidad estequiométrica de O2 estrictamente positiva.")
     nf=o2tot.value/o2per
     oxidizer=choose_oxidizer()
     realmode=read_choice("Dato de comburente real:",{"1":"Cantidad total de comburente","2":"Cantidad de O2 real"})
@@ -1490,7 +1593,7 @@ def inverse_pure_from_stoich_o2() -> None:
         rm=read_measurement("Cantidad real total de comburente: ",min_value=0); nreal=rm.value; o2real=nreal*oxidizer.y_o2
     else:
         rm=read_measurement("Cantidad real de O2: ",min_value=0); o2real=rm.value; nreal=o2real/oxidizer.y_o2
-    lam=o2real/o2tot.value if o2tot.value>TOL else float('nan'); dev=100*(lam-1) if o2tot.value>TOL else float('nan')
+    lam=o2real/o2tot.value; dev=100*(lam-1)
     sf=min_sf(o2tot,rm,model_ms,oxidizer.sigfigs)
     print_data_assumptions([f"Combustible={formula}",f"O2 estequiométrico total={o2tot.raw}",f"Comburente real={oxidizer.name}"],ass+oxidizer.assumptions)
     print("\nRESULTADOS")

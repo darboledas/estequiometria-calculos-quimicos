@@ -27,4 +27,11 @@ Los directorios `ejemplos`, `muestras` y `pruebas`, cuando existan, contienen re
 
 ## Referencia y licencia
 
-Código y documentación de este repositorio: **licencia MIT** (`../LICENSE`). DOI del software **pendiente de asignación** tras publicar una versión y archivarla con Zenodo. DOI del libro relacionado: **10.5281/zenodo.24013068**.
+Código y documentación de este repositorio: **licencia MIT** (`../LICENSE`). DOI general del software: **10.5281/zenodo.24020474**; DOI de la versión 0.9.0: **10.5281/zenodo.24020473**. DOI del libro relacionado: **10.5281/zenodo.24013068**.
+
+
+## Nota de validación local: títulos de vapor (7-11-2026)
+
+`vapor_agua.py`: al calcular el título a partir de volumen, entalpía o entropía de saturación, la propiedad y las referencias `f` y `g` deben ser finitas. Valores `NaN` e infinitos se rechazan. Valores finitos que conduzcan a un título fuera de `[0, 1]` indican que el estado no pertenece a la región bifásica y se explican en la salida. El caso 6.C.9 (entalpía 2400 kJ/kg, referencias 417,5 y 2675,5 kJ/kg) produce `x=0,877989`.
+
+Pruebas: `python -m unittest discover -s pruebas_revision -p test_cotejo_aplicados_04.py -v` desde la raíz.
