@@ -14,13 +14,12 @@ solución con su ejercicio correspondiente.
 
 [Descargar el solucionario en PDF](https://github.com/darboledas/estequiometria-calculos-quimicos/releases/download/v1.0.0/Solucionario_Estequiometria.pdf)
 
-[![DOI](https://zenodo.org/badge/1448600320.svg)](https://doi.org/10.5281/zenodo.24020474)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24052749.svg)](https://doi.org/10.5281/zenodo.24052749)
 
 **Autor y titular del copyright:** David Arboledas Brihuega.  
-**Versión publicada en GitHub:** 1.0.0 · **Última versión publicada en Zenodo:** 0.9.0 · **Licencia:** [MIT](LICENSE).
+**Versión publicada en GitHub:** 1.0.0 · **Última versión publicada en Zenodo:** 1.0.0 · **Licencia:** [MIT](LICENSE).
 **DOI del libro:** [10.5281/zenodo.24013068](https://doi.org/10.5281/zenodo.24013068).  
-**DOI general del software:** [10.5281/zenodo.24020474](https://doi.org/10.5281/zenodo.24020474).  
-**DOI de la versión 0.9.0:** [10.5281/zenodo.24020473](https://doi.org/10.5281/zenodo.24020473).
+**DOI del software, versión 1.0.0:** [10.5281/zenodo.24052749](https://doi.org/10.5281/zenodo.24052749)
 
 El presente repositorio reúne 28 aplicaciones de cálculo y comprobación en Python, organizadas por capítulos. El contenido del libro impreso/eBook es independiente y no se distribuye en este repositorio.
 
